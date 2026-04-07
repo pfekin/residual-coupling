@@ -18,7 +18,7 @@ In the medical domain, the multi-bilateral topology reduces perplexity by **80.0
 
 Three scripts reproduce the experiments reported in the paper. Each can be run on a standard Colab T4 instance (gradient accumulation over 8 steps keeps GPU memory within single-card constraints).
 
-### Experiment 1 — Domain Generality · `lf_benchmark.py`
+### Experiment 1 — Domain Generality · `benchmark.py`
 
 One generalist, one specialist, three topologies (unilateral, bilateral, MoE), across four domains. Demonstrates proportional depth alignment for heterogeneous model pairs. Results are embedded as comments at the end of the file.
 
@@ -26,7 +26,7 @@ One generalist, one specialist, three topologies (unilateral, bilateral, MoE), a
 
 ---
 
-### Experiment 2 — Multi-Specialist Topology Sweep · `lf_three.py`
+### Experiment 2 — Multi-Specialist Topology Sweep · `three.py`
 
 One generalist, two specialist modules, four topologies, medical domain. Results embedded as comments at the end of the file.
 
@@ -34,7 +34,7 @@ One generalist, two specialist modules, four topologies, medical domain. Results
 
 ---
 
-### Experiment 3 — Factual Accuracy · `lf_qa.py`
+### Experiment 3 — Factual Accuracy · `qa.py`
 
 Same configuration as Experiment 2, extended with TruthfulQA Health evaluation under the MC1 protocol.
 
