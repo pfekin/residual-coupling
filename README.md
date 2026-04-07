@@ -44,7 +44,7 @@ Same configuration as Experiment 2, extended with TruthfulQA Health evaluation u
 
 ## Hyperparameters
 
-| Parameter | `lf_benchmark.py` | `lf_three.py` | `lf_qa.py` |
+| Parameter | `benchmark.py` | `three.py` | `qa.py` |
 |---|---|---|---|
 | MAX\_STEPS | 2,000 | 2,000 | 2,000 |
 | GRAD\_ACCUM | 8 | 8 | 8 |
