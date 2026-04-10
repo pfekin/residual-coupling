@@ -157,12 +157,12 @@ Adding a new domain:
 
 ---
 
-## Limitations
+## Notes and Extensions
 
-* Vocabulary alignment is approximate
-* Multi-bilateral scaling grows quadratically with number of models
-* Experiments limited to sub-billion parameter models
-* Cross-modal coupling not yet tested
+* Vocabulary alignment currently uses token clamping for heterogeneous model pairs. This can be extended to a learned soft alignment between embedding spaces.
+* Multi-bilateral connectivity scales with the number of model pairs. In practice, the star-bilateral topology provides most of the observed gains with lower parameter cost and simpler scaling.
+* Experiments are run on models up to 774M parameters. The mechanism is architecture-agnostic and can be applied to larger models.
+* Cross-modal coupling is a direct extension of the same mechanism and remains to be evaluated.
 
 ---
 
