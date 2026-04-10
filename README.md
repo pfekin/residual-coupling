@@ -9,14 +9,11 @@ Paper: [link to paper]
 
 ## Scripts
 
-* `benchmark.py` (Experiment 1)
-  Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/benchmark.py)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/benchmark.py) `benchmark.py` (Experiment 1)
 
-* `three.py` (Experiment 2)
-  Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/three.py)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/three.py) `three.py` (Experiment 2)
 
-* `qa.py` (Experiment 3)
-  Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/qa.py)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/qa.py) `qa.py` (Experiment 3)
 
 ---
 
@@ -175,5 +172,6 @@ Adding a new domain:
 
 ## Contact
 
-Pascal Ekin
-[pfekin@gmail.com](mailto:pfekin@gmail.com)
+* **Author**: Pascal Ekin
+* **Email**: [pfekin@gmail.com](mailto:pfekin@gmail.com)
+* **Issues**: Use the GitHub issue tracker for bugs/requests
