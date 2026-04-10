@@ -1,63 +1,179 @@
-# Computing Between Models with Residual Coupling
+# Residual Coupling (RC)
 
-Pascal Ekin pfekin@gmail.com
+Computing Between Models with Residual Coupling of Frozen Transformers
 
-> Residual Coupling (RC) is a third paradigm for multi-model computation that learns operators acting on the *differences* between latent states, enabling frozen models to produce structured corrective updates for one another without modifying their parameters.
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+
+Paper: [link to paper]
+
+## Scripts
+
+* `benchmark.py` (Experiment 1)
+  Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/benchmark.py)
+
+* `three.py` (Experiment 2)
+  Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/three.py)
+
+* `qa.py` (Experiment 3)
+  Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/qa.py)
 
 ---
 
 ## Overview
 
-Current scaling paradigms for large language models rely on monolithic fine-tuning or competitive Mixture-of-Experts (MoE) routing. Both suffer from structural fragility: fine-tuning risks catastrophic forgetting, while MoE's winner-take-all routing leaves most specialised parameters idle on any given forward pass. RC couples a frozen generalist anchor and one or more frozen specialist modules through learned, directional, gated linear operators placed at intermediate transformer layers. New domains are incorporated as non-destructive plugins without modifying any existing component.
+Residual Coupling (RC) is a framework for coupling frozen transformer models through learned operators acting on differences between their latent states. Instead of selecting between models or merging their representations, RC enables models to produce corrective updates for one another during a shared forward pass.
 
-In the medical domain, the multi-bilateral topology reduces perplexity by **80.07%** relative to the frozen generalist baseline (~7× the gain achieved by MoE at 10.66%), and improves factual accuracy on TruthfulQA Health by up to **5.5 percentage points** over MoE.
+Bidirectional coupling suppresses model-specific confabulation and reinforces shared factual signal. The effect emerges from the interaction between independently trained models rather than from additional supervision or fine-tuning.
 
----
-
-## Experiments & Code
-
-Three scripts reproduce the experiments reported in the paper. Each can be run on a standard Colab T4 instance (gradient accumulation over 8 steps keeps GPU memory within single-card constraints).
-
-### Experiment 1 — Domain Generality · `benchmark.py`
-
-One generalist, one specialist, three topologies (unilateral, bilateral, MoE), across four domains. Demonstrates proportional depth alignment for heterogeneous model pairs. Results are embedded as comments at the end of the file.
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/lf_benchmark.py)
+All base models remain frozen. Only lightweight bridge projections are trained.
 
 ---
 
-### Experiment 2 — Multi-Specialist Topology Sweep · `three.py`
+## Key Properties
 
-One generalist, two specialist modules, four topologies, medical domain. Results embedded as comments at the end of the file.
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/lf_three.py)
-
----
-
-### Experiment 3 — Factual Accuracy · `qa.py`
-
-Same configuration as Experiment 2, extended with TruthfulQA Health evaluation under the MC1 protocol.
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/lf_qa.py)
+* No modification of base model weights
+* No catastrophic forgetting
+* Parallel processing across all models
+* Continuous latent communication instead of token-level routing
+* Modular addition and removal of specialists
 
 ---
 
-## Hyperparameters
+## Why this works
 
-| Parameter | `benchmark.py` | `three.py` | `qa.py` |
-|---|---|---|---|
-| MAX\_STEPS | 2,000 | 2,000 | 2,000 |
-| GRAD\_ACCUM | 8 | 8 | 8 |
-| MAX\_SEQ\_LEN | 128 | 128 | 128 |
-| TEST\_SAMPLES | 20 | 50 | 50 |
-| Bridge LR | 1e-4 | 1e-4 | 1e-4 |
-| Router / mixing LR | 5e-3 | 5e-3 | 5e-3 |
-| Gate initialisation | −2.0 | −2.0 | −2.0 |
-| Optimiser | AdamW | AdamW | AdamW |
+Private noise and shared signal:
 
-## Implementation Notes
+Each model’s representation contains shared structure and model-specific noise. Noise is uncorrelated across independently trained models. During bidirectional coupling, bridge gates learn to amplify components that produce consistent cross-model updates and suppress components that do not. This acts as a sub-symbolic regulariser against hallucination.
 
-- **Vocabulary alignment** across heterogeneous model pairs is handled via `torch.clamp`, clamping token indices to the smaller vocabulary size before each model's embedding lookup.
-- **Bridge projections** are implemented without bias terms (`bias=False`), consistent with the pure-projection geometric interpretation.
-- All experiments use a causal language modelling objective.
+Differences as computation:
 
+The system does not operate on representations directly. It learns transformations between them. Bridge updates behave as directional corrections relative to the target model’s current state rather than as feature transfer.
+
+---
+
+## Architecture
+
+Each model processes the same input sequence in parallel. At selected transformer layers, bridge projections map latent states from a source model into corrective updates applied to a target model’s residual stream.
+
+Bridge update:
+
+h_target ← h_target + σ(g) · W · h_source
+
+The update is trained to act as a correction relative to the target model’s current state, not as a direct transfer of features.
+
+Topologies:
+
+* Unilateral: specialists inject into generalist only
+* Star-bilateral: bidirectional between generalist and each specialist
+* Multi-bilateral: bidirectional between all pairs
+* MoE: routing baseline
+
+---
+
+## Experiments
+
+All experiments use a causal language modelling objective with gradient accumulation over 8 steps.
+
+Improvements over MoE are interpreted as evidence that collaborative coupling extracts useful signal while suppressing model-specific noise.
+
+### Experiment 1: Domain Generality
+
+| Domain     | Generalist          | Specialist                 | Frozen A PPL | Frozen B PPL | MoE PPL | Uni PPL | Bi PPL | Bi vs MoE |
+| ---------- | ------------------- | -------------------------- | ------------ | ------------ | ------- | ------- | ------ | --------- |
+| Medical    | GPT-2 Medium (345M) | DialoGPT-Medium            | 45.71        | 331.04       | 50.35   | 12.89   | 11.04  | +78.1%    |
+| Scientific | GPT-2 Large (774M)  | gpt2-large-medical         | 35.82        | 34.32        | 31.94   | 21.68   | 21.57  | +32.5%    |
+| Coding     | GPT-2 (124M)        | CodeGPT-small-py           | 18.54        | 5M           | 66.81   | 13.34   | 6.49   | +90.3%    |
+| Legal      | GPT-2 (124M)        | open-australian-legal-gpt2 | 24.72        | 38.02        | 19.02   | 7.56    | 6.88   | +63.8%    |
+
+Bilateral coupling outperforms both unilateral and MoE across all domains.
+
+---
+
+### Experiment 2: Multi-Specialist Topology Sweep
+
+| Topology          | PPL   | vs MoE | vs Frozen Generalist |
+| ----------------- | ----- | ------ | -------------------- |
+| Multi-Unilateral  | 12.90 | +74.7% | +77.4%               |
+| Star-Bilateral    | 11.68 | +77.1% | +79.5%               |
+| Multi-Bilateral   | 11.37 | +77.7% | +80.1%               |
+| MoE               | 50.99 | —      | +10.7%               |
+| Frozen Generalist | 57.08 | —      | —                    |
+
+Multi-bilateral achieves the lowest perplexity.
+
+---
+
+### Experiment 3: Factual Accuracy (TruthfulQA Health)
+
+| Topology         | PPL   | PPL vs MoE | TruthfulQA (%) | TQA vs MoE |
+| ---------------- | ----- | ---------- | -------------- | ---------- |
+| Multi-Unilateral | 12.90 | +74.7%     | 23.64          | +5.46      |
+| Star-Bilateral   | 11.68 | +77.1%     | 21.82          | +3.64      |
+| Multi-Bilateral  | 11.37 | +77.7%     | 23.64          | +5.46      |
+| MoE              | 50.99 | —          | 18.18          | —          |
+
+All RC topologies improve factual accuracy over MoE.
+
+---
+
+## Implementation
+
+* Bridge layers selected proportionally to model depth
+* No bias in bridge projections
+* Vocabulary alignment via token clamping
+* AdamW optimiser
+* Learning rate: 1e-4 (bridges), 5e-3 (router/mixing)
+
+---
+
+## Parameter Overhead
+
+Example configuration (3 models, d = 768, 5 bridge layers):
+
+* Unilateral: ~4.7M
+* Star-bilateral: ~9.4M
+* Multi-bilateral: ~14.2M
+* MoE router: ~2.3K
+* Base model: ~124M
+
+Bridge parameters remain small relative to frozen models.
+
+---
+
+## Usage
+
+Basic workflow:
+
+1. Load frozen generalist and specialist models
+2. Insert bridge projections at selected layers
+3. Train bridges on domain data
+4. Run inference with all models in parallel
+
+The base models remain unchanged throughout; all adaptation is located in the bridge parameters.
+
+Adding a new domain:
+
+* Train a new specialist model
+* Train bridges between it and the existing system
+* No retraining of existing models required
+
+---
+
+## Limitations
+
+* Vocabulary alignment is approximate
+* Multi-bilateral scaling grows quadratically with number of models
+* Experiments limited to sub-billion parameter models
+* Cross-modal coupling not yet tested
+
+---
+
+## Citation
+
+[link to paper]
+
+## Contact
+
+Pascal Ekin
+[pfekin@gmail.com](mailto:pfekin@gmail.com)
