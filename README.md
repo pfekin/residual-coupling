@@ -48,7 +48,7 @@ Three models, medical domain. Multi-bilateral achieves the lowest perplexity, wi
 | MoE | 50.99 | baseline | +10.7% |
 | Frozen generalist | 57.08 | reference | reference |
 
-Multi-bilateral achieves roughly seven times the perplexity gain of MoE. The 0.31 PPL advantage over star-bilateral reflects the additional cross-specialist coupling and comes at roughly 50% more bridge parameters.
+Star-Bilateral and Multi-bilateral achieves roughly seven times the perplexity gain of MoE. In this example the 0.31 PPL advantage over star-bilateral comes at roughly 50% more bridge parameters.
 
 [`three.py`](three.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/three.py)
 
