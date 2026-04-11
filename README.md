@@ -73,7 +73,7 @@ Bridge update at layer $ℓ$ from model $j$ to model $i$:
 
 $h_i ← h_i + σ(g_ij) · W_{j→i} · h_j$
 
-$σ$ is the sigmoid function. The scalar gate $g_ij$ is initialised at −2.0, giving $σ(−2.0) ≈ 0.12$, so bridge contributions begin near zero and grow only as the training objective provides gradient signal. Bridge projections have no bias terms and in practice bias makes negligible difference to perplexity, and omitting it keeps each bridge as a pure projection between latent manifolds.
+$σ$ is the sigmoid function. The scalar gate $g_ij$ is initialised at −2.0, giving $σ(−2.0) ≈ 0.12$, so bridge contributions begin near zero and grow only as the training objective provides gradient signal. Bridge projections omit bias terms, keeping each bridge as a pure linear map between latent manifolds. The effect on perplexity is negligible.
 
 Models of different sizes and depths are coupled through non-square projections and proportional depth alignment: a bridge at generalist layer ℓ reads from specialist layer $floor(ℓ × L_B / L_A)$.
 
