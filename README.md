@@ -10,7 +10,7 @@ Paper: [link to paper]
 
 ## Overview
 
-Residual Coupling (RC) is a framework for coupling frozen transformer models through learned operators acting on differences between their latent states. Instead of selecting between models or merging their representations, RC enables models to produce corrective updates for one another during a shared forward pass.
+Residual Coupling (RC) is an architecture for coupling frozen transformer models through learned operators acting on differences between their latent states. Instead of selecting between models or merging their representations, RC enables models to produce corrective updates for one another during a shared forward pass.
 
 Bidirectional coupling suppresses model-specific confabulation and reinforces shared factual signal. The effect emerges from the interaction between independently trained models rather than from additional supervision or fine-tuning.
 
