@@ -73,11 +73,11 @@ Bridge update at layer $ℓ$ from model $j$ to model $i$:
 
 $h_i ← h_i + σ(g_ij) · W_{j→i} · h_j$
 
-$σ$ is the sigmoid function. The scalar gate $g_ij$ is initialised at −2.0, giving $σ(−2.0) ≈ 0.12$, so bridge contributions begin near zero and grow only as the training objective provides gradient signal. Bridge projections have no bias terms; in practice bias makes negligible difference to perplexity, and omitting it keeps each bridge as a pure projection between latent manifolds.
+$σ$ is the sigmoid function. The scalar gate $g_ij$ is initialised at −2.0, giving $σ(−2.0) ≈ 0.12$, so bridge contributions begin near zero and grow only as the training objective provides gradient signal. Bridge projections have no bias terms and in practice bias makes negligible difference to perplexity, and omitting it keeps each bridge as a pure projection between latent manifolds.
 
 Models of different sizes and depths are coupled through non-square projections and proportional depth alignment: a bridge at generalist layer ℓ reads from specialist layer $floor(ℓ × L_B / L_A)$.
 
-**Topologies:** unilateral (specialists inject into generalist only), star-bilateral (bidirectional between generalist and each specialist; specialists do not exchange directly), multi-bilateral (bidirectional between all pairs), MoE (routing baseline).
+**Topologies:** unilateral (specialists inject into generalist only), star-bilateral (bidirectional between generalist and each specialist and specialists do not exchange directly), multi-bilateral (bidirectional between all pairs), MoE (routing baseline).
 
 **Parameter overhead** for three models, d = 768, five bridge layers: unilateral ~4.7M, star-bilateral ~9.4M, multi-bilateral ~14.2M, against 124M per frozen base model and ~2.3K for the MoE router.
 
@@ -318,7 +318,7 @@ Vocabulary alignment uses token clamping for heterogeneous model pairs. A learne
 
 Multi-bilateral scales as O(n²) in bridge parameters. Star-bilateral is sufficient for most deployments and provides comparable factual accuracy gains.
 
-All experiments cover 124M to 774M parameter models. The mechanism is not architecture-specific; behaviour at larger scales has not yet been examined.
+All experiments cover 124M to 774M parameter models. The mechanism is not architecture-specific. Behaviour at larger scales has not yet been examined.
 
 Cross-modal coupling is a direct extension of the same mechanism and remains to be evaluated.
 
