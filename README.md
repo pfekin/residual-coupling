@@ -138,7 +138,7 @@ Example configuration (3 models, d = 768, 5 bridge layers):
 * Multi-bilateral: ~14.2M
 * MoE router: ~2.3K
 
-Bridge parameters remain small relative to frozen models ~124M.
+Bridge parameters remain small relative to frozen models ~124M parameters.
 
 ---
 
