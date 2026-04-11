@@ -44,9 +44,7 @@ The system does not operate on representations directly. It learns transformatio
 
 Each model processes the same input sequence in parallel. At selected transformer layers, bridge projections map latent states from a source model into corrective updates applied to a target model’s residual stream.
 
-Bridge update:
-
-h_target ← h_target + σ(g) · W · h_source
+Bridge update: *h_target ← h_target + σ(g) · W · h_source*
 
 The update is trained to act as a correction relative to the target model’s current state, not as a direct transfer of features.
 
