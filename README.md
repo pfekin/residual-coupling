@@ -86,7 +86,7 @@ Improvements over MoE are interpreted as evidence that collaborative coupling ex
 
 Bilateral coupling outperforms both unilateral and MoE across all domains.
 
-[`benchmark.py`](https://github.com/pfekin/residual-coupling/blob/main/benchmark.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/benchmark.py) 
+[`benchmark.py`](https://github.com/pfekin/residual-coupling/blob/main/benchmark.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/benchmark.py) 
 
 ---
 
@@ -102,7 +102,7 @@ Bilateral coupling outperforms both unilateral and MoE across all domains.
 
 Multi-bilateral achieves the lowest perplexity.
 
-[`three.py`](https://github.com/pfekin/residual-coupling/bolob/main/three.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/three.py) 
+[`three.py`](https://github.com/pfekin/residual-coupling/blob/main/three.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/three.py) 
 
 ---
 
@@ -117,7 +117,7 @@ Multi-bilateral achieves the lowest perplexity.
 
 All RC topologies improve factual accuracy over MoE.
 
-[`qa.py`](https://github.com/pfekin/residual-coupling/blob/main/three.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/qa.py) 
+[`qa.py`](https://github.com/pfekin/residual-coupling/blob/main/three.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/qa.py) 
 
 ---
 
