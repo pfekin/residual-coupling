@@ -28,7 +28,7 @@ All base models remain frozen. Only lightweight bridge projections are trained.
 
 ---
 
-## Why this works
+## Why Residual Coupling works
 
 Private noise and shared signal:
 
