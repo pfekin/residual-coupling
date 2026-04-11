@@ -96,7 +96,7 @@ Bilateral coupling outperforms both unilateral and MoE across all domains.
 | ----------------- | ----- | ------ | -------------------- |
 | Multi-Unilateral  | 12.90 | +74.7% | +77.4%               |
 | Star-Bilateral    | 11.68 | +77.1% | +79.5%               |
-| Multi-Bilateral   | **11.37** | +77.7% | +80.1%               |
+| Multi-Bilateral   | **11.37** | **+77.7%** | **+80.1%**               |
 | MoE               | 50.99 | —      | +10.7%               |
 | Frozen Generalist | 57.08 | —      | —                    |
 
@@ -112,7 +112,7 @@ Multi-bilateral achieves the lowest perplexity.
 | ---------------- | ----- | ---------- | -------------- | ---------- |
 | Multi-Unilateral | 12.90 | +74.7%     | 23.64          | +5.46      |
 | Star-Bilateral   | 11.68 | +77.1%     | 21.82          | +3.64      |
-| Multi-Bilateral  | **11.37** | +77.7%     | 23.64          | +5.46      |
+| Multi-Bilateral  | **11.37** | **+77.7%**     | **23.64**          | **+5.46**      |
 | MoE              | 50.99 | —          | 18.18          | —          |
 
 All RC topologies improve factual accuracy over MoE.
