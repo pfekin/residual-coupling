@@ -151,7 +151,7 @@ Basic workflow:
 3. Train bridges on domain data
 4. Run inference with all models in parallel
 
-The base models remain unchanged throughout; all adaptation is located in the bridge parameters.
+The base models remain unchanged throughout and all adaptation is located in the bridge parameters.
 
 Adding a new domain:
 
