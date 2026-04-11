@@ -79,10 +79,10 @@ Improvements over MoE are interpreted as evidence that collaborative coupling ex
 
 | Domain     | Generalist          | Specialist                 | Frozen A PPL | Frozen B PPL | MoE PPL | Uni PPL | Bi PPL | Bi vs MoE |
 | ---------- | ------------------- | -------------------------- | ------------ | ------------ | ------- | ------- | ------ | --------- |
-| Medical    | GPT-2 Medium (345M) | DialoGPT-Medium            | 45.71        | 331.04       | 50.35   | 12.89   | 11.04  | +78.1%    |
-| Scientific | GPT-2 Large (774M)  | gpt2-large-medical         | 35.82        | 34.32        | 31.94   | 21.68   | 21.57  | +32.5%    |
-| Coding     | GPT-2 (124M)        | CodeGPT-small-py           | 18.54        | 5M           | 66.81   | 13.34   | 6.49   | +90.3%    |
-| Legal      | GPT-2 (124M)        | open-australian-legal-gpt2 | 24.72        | 38.02        | 19.02   | 7.56    | 6.88   | +63.8%    |
+| Medical    | GPT-2 Medium (345M) | DialoGPT-Medium            | 45.71        | 331.04       | 50.35   | 12.89   | **11.04**  | +78.1%    |
+| Scientific | GPT-2 Large (774M)  | gpt2-large-medical         | 35.82        | 34.32        | 31.94   | 21.68   | **21.57**  | +32.5%    |
+| Coding     | GPT-2 (124M)        | CodeGPT-small-py           | 18.54        | 5M           | 66.81   | 13.34   | **6.49**   | +90.3%    |
+| Legal      | GPT-2 (124M)        | open-australian-legal-gpt2 | 24.72        | 38.02        | 19.02   | 7.56    | **6.88**   | +63.8%    |
 
 Bilateral coupling outperforms both unilateral and MoE across all domains.
 
@@ -96,7 +96,7 @@ Bilateral coupling outperforms both unilateral and MoE across all domains.
 | ----------------- | ----- | ------ | -------------------- |
 | Multi-Unilateral  | 12.90 | +74.7% | +77.4%               |
 | Star-Bilateral    | 11.68 | +77.1% | +79.5%               |
-| Multi-Bilateral   | 11.37 | +77.7% | +80.1%               |
+| Multi-Bilateral   | **11.37** | +77.7% | +80.1%               |
 | MoE               | 50.99 | —      | +10.7%               |
 | Frozen Generalist | 57.08 | —      | —                    |
 
@@ -112,7 +112,7 @@ Multi-bilateral achieves the lowest perplexity.
 | ---------------- | ----- | ---------- | -------------- | ---------- |
 | Multi-Unilateral | 12.90 | +74.7%     | 23.64          | +5.46      |
 | Star-Bilateral   | 11.68 | +77.1%     | 21.82          | +3.64      |
-| Multi-Bilateral  | 11.37 | +77.7%     | 23.64          | +5.46      |
+| Multi-Bilateral  | **11.37** | +77.7%     | 23.64          | +5.46      |
 | MoE              | 50.99 | —          | 18.18          | —          |
 
 All RC topologies improve factual accuracy over MoE.
