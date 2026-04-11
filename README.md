@@ -52,7 +52,7 @@ The update is trained to act as a correction relative to the target model’s cu
 
 <div align="center">
   <img src="architecture.png" alt="RC architecture." width="600"/>
-  <p><em>Figure 1: RC architecture./em></p>
+  <p><em>Figure 1: RC architecture.</em></p>
 </div>
 
 Topologies:
