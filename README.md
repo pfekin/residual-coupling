@@ -156,7 +156,7 @@ The base models remain unchanged throughout and all adaptation is located in the
 Adding a new domain:
 
 * Train a new specialist model
-* Train bridges between it and the existing system
+* Freeze specialist model and train bridges between it and the existing system
 * No retraining of existing models required
 
 ---
