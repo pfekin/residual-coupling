@@ -1,19 +1,10 @@
 # Residual Coupling (RC)
-
-Computing Between Models with Residual Coupling of Frozen Transformers
-
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
+Computing Between Models: Residual Coupling of Frozen Transformers
+
 Paper: [link to paper]
-
-## Scripts
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/benchmark.py) `benchmark.py` (Experiment 1)
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/three.py) `three.py` (Experiment 2)
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/qa.py) `qa.py` (Experiment 3)
 
 ---
 
@@ -95,6 +86,8 @@ Improvements over MoE are interpreted as evidence that collaborative coupling ex
 
 Bilateral coupling outperforms both unilateral and MoE across all domains.
 
+[`benchmark.py`](https://github.com/pfekin/residual-coupling/blob/main/benchmark.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/benchmark.py) 
+
 ---
 
 ### Experiment 2: Multi-Specialist Topology Sweep
@@ -109,6 +102,8 @@ Bilateral coupling outperforms both unilateral and MoE across all domains.
 
 Multi-bilateral achieves the lowest perplexity.
 
+[`three.py`](https://github.com/pfekin/residual-coupling/bolob/main/three.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/three.py) 
+
 ---
 
 ### Experiment 3: Factual Accuracy (TruthfulQA Health)
@@ -121,6 +116,8 @@ Multi-bilateral achieves the lowest perplexity.
 | MoE              | 50.99 | —          | 18.18          | —          |
 
 All RC topologies improve factual accuracy over MoE.
+
+[`qa.py`](https://github.com/pfekin/residual-coupling/blob/main/three.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/qa.py) 
 
 ---
 
