@@ -71,9 +71,9 @@ All RC topologies improve factual accuracy over MoE. Star-bilateral provides mos
 
 Bridge update at layer $ℓ$ from model $j$ to model $i$:
 
-$h_i ← h_i + σ(g_ij) · W_{j→i} · h_j$
+$h_i ← h_i + σ(g_{ij}) · W_{j→i} · h_j$
 
-$σ$ is the sigmoid function. The scalar gate $g_ij$ is initialised at −2.0, giving $σ(−2.0) ≈ 0.12$, so bridge contributions begin near zero and grow only as the training objective provides gradient signal. Bridge projections omit bias terms, keeping each bridge as a pure linear map between latent manifolds. The effect on perplexity is negligible.
+$σ$ is the sigmoid function. The scalar gate $g_{ij}$ is initialised at −2.0, giving $σ(−2.0) ≈ 0.12$, so bridge contributions begin near zero and grow only as the training objective provides gradient signal. Bridge projections omit bias terms, keeping each bridge as a pure linear map between latent manifolds. The effect on perplexity is negligible.
 
 Models of different sizes and depths are coupled through non-square projections and proportional depth alignment: a bridge at generalist layer ℓ reads from specialist layer $floor(ℓ × L_B / L_A)$.
 
@@ -328,7 +328,7 @@ Cross-modal coupling is a direct extension of the same mechanism and remains to 
 
 ```bibtex
 @article{ekin2025rc,
-  title={Computing Between Models with Residual Coupling},
+  title={Computing Between Models: Residual Coupling of Frozen Transformers},
   author={Ekin, Pascal},
   year={2025}
 }
