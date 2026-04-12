@@ -154,7 +154,7 @@ elif C["layers"] == 24: BRIDGE_LAYERS = [4, 8, 12, 16, 20]
 else: BRIDGE_LAYERS = [3, 6, 9]
 
 # =============================================================================
-# ARCHITECTURE MODULES (Replicating benchmark.py stability logic)
+# ARCHITECTURE MODULES (Replicating benchmark.py logic)
 # =============================================================================
 
 class LatentBridge(nn.Module):
