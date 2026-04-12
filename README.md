@@ -332,7 +332,7 @@ Cross-modal coupling is a direct extension of the same mechanism and remains to 
 @article{ekin2025rc,
   title={Computing Between Models: Residual Coupling of Frozen Transformers},
   author={Ekin, Pascal},
-  year={2025}
+  year={2026}
 }
 ```
 
