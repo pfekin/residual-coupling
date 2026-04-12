@@ -53,7 +53,7 @@ Three models, medical domain. Multi-bilateral achieves the lowest perplexity, wi
 
 Star-Bilateral and Multi-bilateral achieves roughly seven times the perplexity gain of MoE. In this example the 0.31 PPL advantage over star-bilateral comes at roughly 50% more bridge parameters.
 
-[`three.py`](three.py) [![Open In Colab](https://colab.research.google.com/drive/1-1YW5g4HsQxCo725dZc0k8OPXj0KK-iE?usp=sharing)
+[`three.py`](three.py) [![Open In Colab](https://colab.research.google.com/drive/1-1YW5g4HsQxCo725dZc0k8OPXj0KK-iE?usp=sharing)]
 
 ### Experiment 3: Factual accuracy (TruthfulQA Health, MC1)
 
@@ -66,7 +66,7 @@ Star-Bilateral and Multi-bilateral achieves roughly seven times the perplexity g
 
 All RC topologies improve factual accuracy over MoE. Star-bilateral provides most of the factual accuracy gain at lower parameter cost and is the practical choice where perplexity is not the primary objective.
 
-[`qa.py`](qa.py) [![Open In Colab](https://colab.research.google.com/drive/1Zt8TwtmLYhGd59mxpOaLjtk_zPtPlBLQ?usp=sharing)
+[`qa.py`](qa.py) [![Open In Colab](https://colab.research.google.com/drive/1Zt8TwtmLYhGd59mxpOaLjtk_zPtPlBLQ?usp=sharing)]
 
 ---
 
