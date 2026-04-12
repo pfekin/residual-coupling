@@ -72,6 +72,11 @@ All RC topologies improve factual accuracy over MoE. Star-bilateral provides mos
 
 ## Architecture
 
+<div align="center">
+  <img src="architecture.png" alt="Figure 1: RC architecture" width="600"/>
+  <p><em>Figure 1: RC architecture.</em></p>
+</div>
+
 Bridge update at layer $ℓ$ from model $j$ to model $i$:
 
 $h_i ← h_i + σ(g_{ij}) · W_{j→i} · h_j$
@@ -81,6 +86,11 @@ $σ$ is the sigmoid function. The scalar gate $g_{ij}$ is initialised at −2.0,
 Models of different sizes and depths are coupled through non-square projections and proportional depth alignment: a bridge at generalist layer ℓ reads from specialist layer $floor(ℓ × L_B / L_A)$.
 
 **Topologies:** unilateral (specialists inject into generalist only), star-bilateral (bidirectional between generalist and each specialist and specialists do not exchange directly), multi-bilateral (bidirectional between all pairs), MoE (routing baseline).
+
+<div align="center">
+  <img src="topologies.png" alt="Figure 2: The four topologies side by side" width="600"/>
+  <p><em>Figure 2: The four topologies side by side.</em></p>
+</div>
 
 **Parameter overhead** for three models, d = 768, five bridge layers: unilateral ~4.7M, star-bilateral ~9.4M, multi-bilateral ~14.2M, against 124M per frozen base model and ~2.3K for the MoE router.
 
