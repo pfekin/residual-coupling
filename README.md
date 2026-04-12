@@ -37,7 +37,7 @@ One generalist, one specialist, four domains. Bilateral coupling outperforms MoE
 
 The coding result is notable. The specialist's frozen perplexity on the evaluation text is approximately 5.9 million, placing it entirely out of distribution. MoE achieves 66.81, worse than the frozen generalist alone. Bilateral coupling achieves 6.49. The bridge gates suppress the specialist's failures and extract only the components of its representation that produce consistent corrective updates in the generalist.
 
-[`benchmark.py`](benchmark.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/benchmark.py)
+[`benchmark.py`](benchmark.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VgymuxR8cDHJ-rIGpU3EnSc-f_fd4dxg?usp=sharing)
 
 ### Experiment 2: Multi-specialist topology sweep
 
@@ -53,7 +53,7 @@ Three models, medical domain. Multi-bilateral achieves the lowest perplexity, wi
 
 Star-Bilateral and Multi-bilateral achieves roughly seven times the perplexity gain of MoE. In this example the 0.31 PPL advantage over star-bilateral comes at roughly 50% more bridge parameters.
 
-[`three.py`](three.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/three.py)
+[`three.py`](three.py) [![Open In Colab](https://colab.research.google.com/drive/1-1YW5g4HsQxCo725dZc0k8OPXj0KK-iE?usp=sharing)
 
 ### Experiment 3: Factual accuracy (TruthfulQA Health, MC1)
 
@@ -66,7 +66,7 @@ Star-Bilateral and Multi-bilateral achieves roughly seven times the perplexity g
 
 All RC topologies improve factual accuracy over MoE. Star-bilateral provides most of the factual accuracy gain at lower parameter cost and is the practical choice where perplexity is not the primary objective.
 
-[`qa.py`](qa.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USERNAME/REPO/qa.py)
+[`qa.py`](qa.py) [![Open In Colab](https://colab.research.google.com/drive/1Zt8TwtmLYhGd59mxpOaLjtk_zPtPlBLQ?usp=sharing)
 
 ---
 
