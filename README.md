@@ -12,7 +12,7 @@
 
 Transformer language models memorise. They distil statistical patterns from training text at sufficient scale to appear to generalise, but that generalisation is an effect of scale rather than a distinct architectural mechanism. Fine-tuning does not teach a model to understand a new domain. Recent work demonstrates that it reactivates memorised content already present from pretraining [Liu et al., 2026]. The dominant paradigms for specialisation share this premise: capability lives inside individual models, and the question is how to configure or select among them.
 
-RC proposes a different architecture. Models are frozen. Rather than treating any individual model as the locus of capability, RC trains small linear operators on the differences between frozen models' latent representations. The operators are what learns. The models are the substrate.
+Residual Coupling (RC) proposes a different architecture. Models are frozen. Rather than treating any individual model as the locus of capability, RC trains small linear operators on the differences between frozen models' latent representations. The operators are what learns. The models are the substrate.
 
 The frozen models carry absolute knowledge: fixed, parametric, the accumulated trace of their training. The bridge operators carry relational knowledge: continuous, interpolatable, defined by the structured difference between what two closed systems know. The two modes are complementary. The system's capability is a product of both.
 
