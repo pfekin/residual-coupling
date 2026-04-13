@@ -10,17 +10,17 @@
 
 ---
 
-Residual Coupling trains small linear operators on the *differences* between frozen models' latent states. All models process the same input in parallel. At selected transformer layers, each model receives a learned corrective update derived from the others' hidden states. No base model is ever modified.
+Transformer language models memorise. They distil statistical patterns from training text at sufficient scale to appear to generalise, but that generalisation is an effect of scale rather than a distinct architectural mechanism. Fine-tuning does not teach a model to understand a new domain. Recent work demonstrates that it reactivates memorised content already present from pretraining [Liu et al., 2026]. The dominant paradigms for specialisation share this premise: capability lives inside individual models, and the question is how to configure or select among them.
 
-The standard alternative is to route: pick one expert and discard the rest. RC does not route. It asks what the difference between models contains and learns to make that difference useful.
+RC proposes a different architecture. Models are frozen. Rather than treating any individual model as the locus of capability, RC trains small linear operators on the differences between frozen models' latent representations. The operators are what learns. The models are the substrate.
 
-Because each model is frozen, it does not adapt to incoming bridge signals. It processes them through its own unchanged weights. The signal that propagates forward is not the bridge update but the bridge update as interpreted by a system that has remained itself. This is what prevents catastrophic forgetting: not regularisation, but the fact that the condition causing forgetting is never met. Maturana and Varela called this operational closure. The bridge parameters are the coupling site between closed systems, not a modification of either.
+The frozen models carry absolute knowledge: fixed, parametric, the accumulated trace of their training. The bridge operators carry relational knowledge: continuous, interpolatable, defined by the structured difference between what two closed systems know. The two modes are complementary. The system's capability is a product of both.
 
-Independently trained models share factual structure but have uncorrelated confabulation. During bidirectional coupling, shared signal is present in both representations and reinforces. Model-specific noise is absent from the partner model and does not. The bridge gate learns the same operation as a differential amplifier: components present in both models are common-mode and receive attenuated updates, while components absent from the partner model are amplified if they produce consistent corrective signal. Bilateral coupling closes this into a feedback loop, where each model's updated state becomes the source for the bridge running in the reverse direction at the same layer. The TruthfulQA results below show the practical consequence: all RC topologies improve factual accuracy over MoE on medical questions.
+Because each model is frozen, it does not adapt to incoming bridge signals. It processes them through its own unchanged weights, maintaining its identity while transforming external input according to its own internal organisation. This is what prevents catastrophic forgetting: not regularisation, but the fact that the condition causing forgetting is never met. Maturana and Varela called this operational closure.
 
-The architecture takes its name from this: the Différance Engine. The bridges are difference operators. The system's capability resides in the gap between its components rather than in any component alone.
+The architecture takes its name from this: the Différance Engine. The bridges are difference operators. What the system can do is a property of both the components and the relations between them.
 
-Two frozen off-the-shelf models, a generalist and a domain specialist, both already trained and publicly available, can be coupled by training a small number of bridge parameters in a few thousand gradient steps on a single GPU. No base model is modified, no training data is duplicated, and no existing capability is at risk. The computational cost of specialisation is reduced to the cost of training the bridges alone.
+Two frozen off-the-shelf models can be coupled in a few thousand gradient steps on a single GPU. No base model is modified. No training data is duplicated. The computational cost of specialisation is reduced to the cost of training the bridges alone.
 
 ---
 
@@ -43,7 +43,7 @@ The coding result is notable. The specialist's frozen perplexity on the evaluati
 
 ### Experiment 2: Multi-specialist topology sweep
 
-Three models, medical domain. Multi-bilateral achieves the lowest perplexity, with star-bilateral close behind at lower parameter cost.
+Three models, medical domain. With three frozen models, multi-bilateral couples all pairs and produces the lowest perplexity. Star-bilateral couples each specialist to the generalist but not to each other and produces perplexity within 0.31 of multi-bilateral at roughly two thirds of the bridge parameter count.
 
 | Topology | PPL | vs MoE | vs Frozen generalist |
 |---|---|---|---|
@@ -53,11 +53,11 @@ Three models, medical domain. Multi-bilateral achieves the lowest perplexity, wi
 | MoE | 50.99 | baseline | +10.7% |
 | Frozen generalist | 57.08 | reference | reference |
 
-Star-bilateral and multi-bilateral both achieve roughly seven times the perplexity gain of MoE. The 0.31 PPL advantage of multi-bilateral over star-bilateral comes at roughly 50% more bridge parameters.
-
 [`three.py`](three.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1-1YW5g4HsQxCo725dZc0k8OPXj0KK-iE?usp=sharing)
 
 ### Experiment 3: Factual accuracy (TruthfulQA Health, MC1)
+
+Perplexity measures fit to the training distribution. Experiment 3 asks whether the noise-suppression mechanism produces measurable improvements in factual accuracy on verifiable questions. All RC topologies improve over MoE. Star-bilateral provides most of the factual accuracy gain at lower parameter cost.
 
 | Topology | PPL vs MoE | TruthfulQA (%) | vs MoE |
 |---|---|---|---|
@@ -65,8 +65,6 @@ Star-bilateral and multi-bilateral both achieve roughly seven times the perplexi
 | Star-Bilateral | +77.1% | 21.82 | +3.64 pp |
 | **Multi-Bilateral** | **+77.7%** | **23.64** | **+5.46 pp** |
 | MoE | baseline | 18.18 | reference |
-
-All RC topologies improve factual accuracy over MoE. Star-bilateral provides most of the factual accuracy gain at lower parameter cost and is the practical choice where perplexity is not the primary objective.
 
 [`qa.py`](qa.py) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Zt8TwtmLYhGd59mxpOaLjtk_zPtPlBLQ?usp=sharing)
 
@@ -79,19 +77,21 @@ All RC topologies improve factual accuracy over MoE. Star-bilateral provides mos
   <p><em>Figure 1: RC architecture.</em></p>
 </div>
 
-Bridge update at layer $ℓ$ from model $j$ to model $i$:
+Bridge update at layer $\ell$ from model $j$ to model $i$:
 
-$h_i ← h_i + σ(g_{ij}) · W_{j→i} · h_j$
+$$h_i \leftarrow h_i + \sigma(g_{ij}) \cdot W_{j \to i} \cdot h_j$$
 
-$σ$ is the sigmoid function. The scalar gate $g_{ij}$ is initialised at −2.0, giving $σ(−2.0) ≈ 0.12$, so bridge contributions begin near zero and grow only as the training objective provides gradient signal. Bridge projections omit bias terms, keeping each bridge as a pure linear map between latent manifolds. The effect on perplexity is negligible.
+$\sigma$ is the sigmoid function. The scalar gate $g_{ij}$ is initialised at $-2.0$, giving $\sigma(-2.0) \approx 0.12$, so bridge contributions begin near zero and grow only as the training objective provides gradient signal. Bridge projections omit bias terms, keeping each bridge as a pure linear map between latent manifolds. The effect on perplexity is negligible.
 
-Models of different sizes and depths are coupled through non-square projections and proportional depth alignment: a bridge at generalist layer ℓ reads from specialist layer $floor(ℓ × L_B / L_A)$.
+The bridge gate learns an operation analogous to common-mode rejection in a differential amplifier: components present in both models pass through attenuated, while components absent from the partner model are amplified if they produce consistent corrective updates. In the bilateral case, each model's updated state feeds back into the bridge running in the reverse direction, closing a correction loop across the full depth of the network.
 
-**Topologies:** unilateral (specialists inject into generalist only), star-bilateral (bidirectional between generalist and each specialist and specialists do not exchange directly), multi-bilateral (bidirectional between all pairs), MoE (routing baseline).
+Models of different sizes and depths are coupled through non-square projections and proportional depth alignment: a bridge at generalist layer $\ell$ reads from specialist layer $\lfloor \ell \times L_B / L_A \rceil$.
+
+**Topologies:** unilateral (specialists inject into generalist only), star-bilateral (bidirectional between generalist and each specialist; specialists do not exchange directly), multi-bilateral (bidirectional between all pairs), MoE (routing baseline).
 
 <div align="center">
-  <img src="topologies.png" alt="Figure 2: The four topologies side by side" width="600"/>
-  <p><em>Figure 2: The four topologies side by side.</em></p>
+  <img src="topologies.png" alt="Figure 2: The four topologies" width="600"/>
+  <p><em>Figure 2: The four topologies.</em></p>
 </div>
 
 **Parameter overhead** for three models, d = 768, five bridge layers: unilateral ~4.7M, star-bilateral ~9.4M, multi-bilateral ~14.2M, against 124M per frozen base model and ~2.3K for the MoE router.
@@ -104,7 +104,7 @@ Models of different sizes and depths are coupled through non-square projections 
 pip install torch transformers datasets
 ```
 
-The script below is the two-model bilateral case in full. Set `DOMAIN = "legal"` to switch domains. Results are reproduced from `benchmark.py`.
+The script below is the two-model bilateral case in full. Set `DOMAIN = "legal"` to switch domains. Results reproduce those in the paper.
 
 ```python
 import torch
@@ -118,14 +118,12 @@ import numpy as np
 from tqdm import tqdm
 
 # =============================================================================
-# STANDALONE CONFIGURATION
+# CONFIGURATION
 # =============================================================================
-DOMAIN         = "legal"     # Options: "scientific", "legal", "coding", "medical"
-MODE           = "bilateral"  # Options: "unilateral", "bilateral", "moe"
+DOMAIN         = "coding"    # "coding", "legal", "scientific", "medical"
+MODE           = "bilateral"
 DEVICE         = "cuda" if torch.cuda.is_available() else "cpu"
 SEED           = 42
-
-# Replicating high-gain hyperparameters from benchmark.py
 MAX_STEPS      = 2000
 GRAD_ACCUM     = 8
 MAX_SEQ_LEN    = 128
@@ -148,38 +146,39 @@ CONFIGS = {
     "scientific": {
         "A": "gpt2-large", "B": "Locutusque/gpt2-large-medical",
         "dataset": "ccdv/pubmed-summarization", "subset": "document",
-        "dim": 1280, "layers": 36, "map": lambda x: x['article'][:600]
+        "dim": 1280, "layers": 36, "map": lambda x: x["article"][:600]
     },
     "legal": {
         "A": "gpt2", "B": "isaacus/open-australian-legal-gpt2",
         "dataset": "lex_glue", "subset": "scotus",
-        "dim": 768, "layers": 12, "map": lambda x: x['text'][:600]
+        "dim": 768, "layers": 12, "map": lambda x: x["text"][:600]
     },
     "coding": {
         "A": "gpt2", "B": "microsoft/CodeGPT-small-py",
         "dataset": "iamtarun/python_code_instructions_18k_alpaca",
-        "dim": 768, "layers": 12, "map": lambda x: f"Instruction: {x['instruction']}\nCode: {x['output'][:400]}"
+        "dim": 768, "layers": 12,
+        "map": lambda x: f"Instruction: {x['instruction']}\nCode: {x['output'][:400]}"
     }
 }
 
 C = CONFIGS[DOMAIN]
-# Dynamic bridge selection mapped to model depth
-if C["layers"] == 36: BRIDGE_LAYERS = [6, 12, 18, 24, 30]
+if C["layers"] == 36:   BRIDGE_LAYERS = [6, 12, 18, 24, 30]
 elif C["layers"] == 24: BRIDGE_LAYERS = [4, 8, 12, 16, 20]
-else: BRIDGE_LAYERS = [3, 6, 9]
+else:                   BRIDGE_LAYERS = [3, 6, 9]
 
 # =============================================================================
-# ARCHITECTURE MODULES (Replicating benchmark.py logic)
+# ARCHITECTURE
 # =============================================================================
 
 class LatentBridge(nn.Module):
     def __init__(self, dim, mode="bilateral"):
         super().__init__()
         self.mode = mode
-        # Initializing gates at -2.0 for stability as seen in source
-        self.proj_a2b, self.gate_b = nn.Linear(dim, dim), nn.Parameter(torch.tensor([-2.0]))
+        self.proj_a2b = nn.Linear(dim, dim, bias=False)
+        self.gate_b   = nn.Parameter(torch.tensor(-2.0))
         if mode == "bilateral":
-            self.proj_b2a, self.gate_a = nn.Linear(dim, dim), nn.Parameter(torch.tensor([-2.0]))
+            self.proj_b2a = nn.Linear(dim, dim, bias=False)
+            self.gate_a   = nn.Parameter(torch.tensor(-2.0))
 
 class LatentMoE(nn.Module):
     def __init__(self, dim):
@@ -193,137 +192,130 @@ class LatentMoE(nn.Module):
 class DifferanceEngine(nn.Module):
     def __init__(self, model_A, model_B, mode="bilateral"):
         super().__init__()
-        self.mode, self.model_A, self.model_B = mode, model_A, model_B
-        self.v_A, self.v_B = self.model_A.config.vocab_size, self.model_B.config.vocab_size
+        self.mode    = mode
+        self.model_A = model_A
+        self.model_B = model_B
+        self.v_A     = model_A.config.vocab_size
+        self.v_B     = model_B.config.vocab_size
         set_seed(SEED)
         if mode == "moe":
             self.bridges = nn.ModuleDict({str(l): LatentMoE(C["dim"]) for l in BRIDGE_LAYERS})
         else:
             self.bridges = nn.ModuleDict({str(l): LatentBridge(C["dim"], mode) for l in BRIDGE_LAYERS})
-        self.final_mix = nn.Parameter(torch.tensor([0.0]))
+        self.final_mix = nn.Parameter(torch.tensor(0.0))
 
     def forward(self, ids):
-        # Safety: Per-model clamping prevents CUDA Assert errors during vocab mismatch
-        ids_A, ids_B = torch.clamp(ids, 0, self.v_A-1), torch.clamp(ids, 0, self.v_B-1)
-        pos = torch.arange(0, ids.size(1), device=ids.device).unsqueeze(0)
-        h_A = (self.model_A.transformer.wte(ids_A) + self.model_A.transformer.wpe(pos)).clone()
-        h_B = (self.model_B.transformer.wte(ids_B) + self.model_B.transformer.wpe(pos)).clone()
+        ids_A = torch.clamp(ids, 0, self.v_A - 1)
+        ids_B = torch.clamp(ids, 0, self.v_B - 1)
+        pos   = torch.arange(ids.size(1), device=ids.device).unsqueeze(0)
+        h_A   = (self.model_A.transformer.wte(ids_A) + self.model_A.transformer.wpe(pos)).clone()
+        h_B   = (self.model_B.transformer.wte(ids_B) + self.model_B.transformer.wpe(pos)).clone()
 
         for i in range(C["layers"]):
-            h_A_next, h_B_next = self.model_A.transformer.h[i](h_A)[0], self.model_B.transformer.h[i](h_B)[0]
+            h_A_next = self.model_A.transformer.h[i](h_A)[0]
+            h_B_next = self.model_B.transformer.h[i](h_B)[0]
             if str(i) in self.bridges:
                 br = self.bridges[str(i)]
-                if self.mode == "moe": h_A_next, h_B_next = br(h_A_next, h_B_next)
+                if self.mode == "moe":
+                    h_A_next, h_B_next = br(h_A_next, h_B_next)
                 else:
-                    # Bounded updates using sigmoid-gated projections
-                    delta_B = br.proj_a2b(h_A_next) * torch.sigmoid(br.gate_b)
-                    h_B_fused = h_B_next + delta_B
+                    delta_B  = br.proj_a2b(h_A_next) * torch.sigmoid(br.gate_b)
+                    h_B_next = h_B_next + delta_B
                     if self.mode == "bilateral":
-                        delta_A = br.proj_b2a(h_B_next) * torch.sigmoid(br.gate_a)
+                        delta_A  = br.proj_b2a(h_B_next) * torch.sigmoid(br.gate_a)
                         h_A_next = h_A_next + delta_A
-                    h_B_next = h_B_fused
             h_A, h_B = h_A_next, h_B_next
 
-        l_A, l_B = self.model_A.lm_head(self.model_A.transformer.ln_f(h_A)), self.model_B.lm_head(self.model_B.transformer.ln_f(h_B))
-        
-        # Logit Alignment: Neutral padding for missing vocabulary indices
+        l_A = self.model_A.lm_head(self.model_A.transformer.ln_f(h_A))
+        l_B = self.model_B.lm_head(self.model_B.transformer.ln_f(h_B))
         max_v = max(self.v_A, self.v_B)
-        if l_A.size(-1) < max_v: 
-            l_A = torch.cat([l_A, torch.full((*l_A.shape[:-1], max_v - self.v_A), -1e4, device=DEVICE, dtype=l_A.dtype)], dim=-1)
-        if l_B.size(-1) < max_v: 
-            l_B = torch.cat([l_B, torch.full((*l_B.shape[:-1], max_v - self.v_B), -1e4, device=DEVICE, dtype=l_B.dtype)], dim=-1)
-        
+        if l_A.size(-1) < max_v:
+            l_A = torch.cat([l_A, torch.full((*l_A.shape[:-1], max_v - self.v_A),
+                             -1e4, device=ids.device, dtype=l_A.dtype)], dim=-1)
+        if l_B.size(-1) < max_v:
+            l_B = torch.cat([l_B, torch.full((*l_B.shape[:-1], max_v - self.v_B),
+                             -1e4, device=ids.device, dtype=l_B.dtype)], dim=-1)
         mix = torch.sigmoid(self.final_mix)
-        return (mix * l_A) + ((1-mix) * l_B)
+        return mix * l_A + (1 - mix) * l_B
 
 # =============================================================================
-# DATA & REPRODUCTION SUITE
+# TRAINING AND EVALUATION
 # =============================================================================
 
 def run_experiment():
     set_seed(SEED)
-    print(f"Initializing {DOMAIN.upper()} Benchmark...")
     tokenizer = AutoTokenizer.from_pretrained(C["A"])
     tokenizer.pad_token = tokenizer.eos_token
 
     model_A = AutoModelForCausalLM.from_pretrained(C["A"]).to(DEVICE)
     model_B = AutoModelForCausalLM.from_pretrained(C["B"]).to(DEVICE)
-    for p in model_A.parameters(): p.requires_grad = False
-    for p in model_B.parameters(): p.requires_grad = False
+    for p in list(model_A.parameters()) + list(model_B.parameters()):
+        p.requires_grad = False
 
-    # Dynamic dataset loading matching benchmark.py
     subset = C.get("subset")
-    ds = load_dataset(C["dataset"], subset, split="train", streaming=True, trust_remote_code=True) if subset \
-         else load_dataset(C["dataset"], split="train", streaming=True, trust_remote_code=True)
-
+    ds = load_dataset(C["dataset"], subset, split="train", streaming=True,
+                      trust_remote_code=True) if subset \
+         else load_dataset(C["dataset"], split="train", streaming=True,
+                           trust_remote_code=True)
     ds = ds.shuffle(seed=SEED, buffer_size=1000)
     it = iter(ds)
-    test_texts = [C["map"](next(it)) for _ in range(TEST_SAMPLES)]
-    test_ids = tokenizer(test_texts, return_tensors="pt", padding=True, truncation=True, max_length=MAX_SEQ_LEN).input_ids.to(DEVICE)
 
-    # Bridge selection and engine setup
-    engine = DifferanceEngine(model_A, model_B, mode=MODE).to(DEVICE).to(model_A.dtype)
-    
-    # Differential learning rates for routers and mix parameters
+    test_texts = [C["map"](next(it)) for _ in range(TEST_SAMPLES)]
+    test_ids   = tokenizer(test_texts, return_tensors="pt", padding=True,
+                           truncation=True, max_length=MAX_SEQ_LEN).input_ids.to(DEVICE)
+
+    engine    = DifferanceEngine(model_A, model_B, mode=MODE).to(DEVICE).to(model_A.dtype)
     optimizer = torch.optim.AdamW([
-        {"params": [p for n, p in engine.named_parameters() if p.requires_grad and "router" not in n and "mix" not in n], "lr": 1e-4},
-        {"params": [p for n, p in engine.named_parameters() if p.requires_grad and ("router" in n or "mix" in n)], "lr": 5e-3}
+        {"params": [p for n, p in engine.named_parameters()
+                    if p.requires_grad and "mix" not in n], "lr": 1e-4},
+        {"params": [engine.final_mix],                      "lr": 5e-3},
     ])
 
-    print(f"Training (Dtype: {model_A.dtype} | Mode: {MODE.upper()} | Steps: {MAX_STEPS})")
     engine.train()
-    pbar = tqdm(range(MAX_STEPS))
-    for i in pbar:
-        try: ex = next(it)
+    for i in tqdm(range(MAX_STEPS)):
+        try:    ex = next(it)
         except StopIteration: break
-        ids = tokenizer(C["map"](ex), return_tensors="pt", truncation=True, max_length=MAX_SEQ_LEN).input_ids.to(DEVICE)
+        ids = tokenizer(C["map"](ex), return_tensors="pt", truncation=True,
+                        max_length=MAX_SEQ_LEN).input_ids.to(DEVICE)
         if ids.size(1) < 2: continue
-        
-        logits = engine(ids)
-        loss = F.cross_entropy(logits[:, :-1, :].reshape(-1, logits.size(-1)), ids[:, 1:].reshape(-1))
+        loss = F.cross_entropy(
+            engine(ids)[:, :-1].reshape(-1, max(engine.v_A, engine.v_B)),
+            ids[:, 1:].reshape(-1)
+        )
         (loss / GRAD_ACCUM).backward()
-        
         if (i + 1) % GRAD_ACCUM == 0:
             torch.nn.utils.clip_grad_norm_(engine.parameters(), 1.0)
-            optimizer.step(); optimizer.zero_grad()
-            pbar.set_description(f"Loss: {loss.item():.4f}")
+            optimizer.step()
+            optimizer.zero_grad()
 
     engine.eval()
     with torch.no_grad():
         mask = test_ids[:, 1:] != tokenizer.pad_token_id
-        
-        # Reproducing Benchmark Perplexity Passes
-        syn_logits = engine(test_ids)
-        ids_A, ids_B = torch.clamp(test_ids, 0, engine.v_A - 1), torch.clamp(test_ids, 0, engine.v_B - 1)
-        pure_l_A = engine.model_A(ids_A).logits
-        pure_l_B = engine.model_B(ids_B).logits
 
-        def get_ppl(l, t, m):
-            l_s, t_s = l[:, :-1, :].contiguous(), t[:, 1:].contiguous()
-            if l_s.size(-1) < t_s.max().item() + 1: t_s = torch.clamp(t_s, 0, l_s.size(-1) - 1)
-            loss = F.cross_entropy(l_s.view(-1, l_s.size(-1)).float(), t_s.view(-1), reduction='none')
-            avg_loss = loss.view(t_s.size(0), -1)[m].mean().item()
-            return math.exp(avg_loss) if avg_loss < 20 else 1e12
+        def get_ppl(logits, ids):
+            ls = logits[:, :-1].contiguous().float()
+            ts = ids[:, 1:].contiguous()
+            ts = torch.clamp(ts, 0, ls.size(-1) - 1)
+            loss = F.cross_entropy(ls.view(-1, ls.size(-1)), ts.view(-1), reduction="none")
+            avg  = loss.view(ts.size(0), -1)[mask].mean().item()
+            return math.exp(avg) if avg < 20 else 1e12
 
-        ppl_a, ppl_b, ppl_syn = get_ppl(pure_l_A, test_ids, mask), get_ppl(pure_l_B, test_ids, mask), get_ppl(syn_logits, test_ids, mask)
-        gain_pct = ((min(ppl_a, ppl_b) - ppl_syn) / min(ppl_a, ppl_b)) * 100
+        ppl_A   = get_ppl(model_A(test_ids.clamp(0, engine.v_A - 1)).logits, test_ids)
+        ppl_B   = get_ppl(model_B(test_ids.clamp(0, engine.v_B - 1)).logits, test_ids)
+        ppl_syn = get_ppl(engine(test_ids), test_ids)
+        gain    = (min(ppl_A, ppl_B) - ppl_syn) / min(ppl_A, ppl_B) * 100
 
-        print("\n" + "═"*55)
-        print(f" FINAL REPRODUCTION: {DOMAIN.upper()} | {MODE.upper()}")
-        print("─"*55)
-        print(f" Frozen Generalist (A) PPL:  {ppl_a:.2f}")
-        print(f" Frozen Specialist (B) PPL:  {ppl_b:.2f}")
-        print(f" SYNERGY Result PPL:        {ppl_syn:.2f}")
-        print("─"*55)
-        print(f" SYNERGY GAIN:              {gain_pct:+.2f}%")
-        print(f" Logit Mixture (A Weight):   {torch.sigmoid(engine.final_mix).item():.2%}")
-        print("═"*55)
+        print(f"\nFrozen A:  {ppl_A:.2f}")
+        print(f"Frozen B:  {ppl_B:.2f}")
+        print(f"Bilateral: {ppl_syn:.2f}  ({gain:+.2f}% vs best frozen)")
+        # coding: Frozen A 18.54  Frozen B ~5.9M  Bilateral  6.49  (+65.00%)
+        # legal:  Frozen A 24.72  Frozen B 38.02  Bilateral  6.88  (+72.15%)
 
 if __name__ == "__main__":
     run_experiment()
 ```
 
-Modules follow a last-in-first-out protocol for clean removal: a specialist can be detached without retraining provided no further bridges have been trained on top of it.
+Modules follow a last-in-first-out protocol for clean removal: a specialist can be detached without retraining provided no further bridges have been trained on top of it. Columns could also be trained sequentially from scratch and frozen in turn, each one added to an existing coupled system, accumulating domain knowledge incrementally without disturbing what has already been learned.
 
 ---
 
@@ -333,7 +325,7 @@ Vocabulary alignment uses token clamping for heterogeneous model pairs. A learne
 
 Multi-bilateral scales as O(n²) in bridge parameters. Star-bilateral is sufficient for most deployments and provides comparable factual accuracy gains.
 
-A proprietary specialist can execute on a local or edge device with no exposure of its weights, while only the bridge tensors and latent activations cross the network boundary to a remotely hosted generalist anchor. The bridge parameter count for a single specialist at d = 768 over five layers is approximately 4.7M, well within the memory envelope of current edge hardware. RC is a natural fit for sovereign, low-latency, and air-gapped deployments where transmitting full model weights is not feasible.
+A proprietary specialist can run on a local or edge device with no exposure of its weights, communicating with a remotely hosted generalist anchor through bridge tensors and latent activations only. The bridge parameter count for a single specialist at d = 768 over five layers is approximately 4.7M, well within the memory envelope of current edge hardware.
 
 All experiments cover 124M to 774M parameter models. The mechanism is not architecture-specific. Behaviour at larger scales has not yet been examined.
 
@@ -344,7 +336,7 @@ Cross-modal coupling is a direct extension of the same mechanism and remains to 
 ## Citation
 
 ```bibtex
-@article{ekin2025rc,
+@article{ekin2026rc,
   title={Computing Between Models: Residual Coupling of Frozen Transformers},
   author={Ekin, Pascal},
   year={2026}
