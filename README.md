@@ -13,12 +13,6 @@
 
 [![Paper PDF](https://img.shields.io/badge/paper-PDF-red?style=flat-square&logo=adobeacrobat)](https://colab.research.google.com/github/YOUR_USERNAME/differance-engine/blob/main/paper/differance_engine.pdf)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000)](https://huggingface.co/)
-[![Google Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff)](https://colab.research.google.com/)
-
 </div>
 
 ---
@@ -232,4 +226,15 @@ Section 2 situates RC relative to model stitching (Ainsworth et al. 2022; Stoica
 ## Acknowledgements
 
 Models from the Hugging Face Hub. Datasets: `lavita/ChatDoctor-HealthCareMagic-100k`, `lex_glue/scotus`, `iamtarun/python_code_instructions_18k_alpaca`, `ccdv/pubmed-summarization`. TruthfulQA evaluation uses the Health category of the MC1 split (Lin et al. 2022).
+
+<div align="center">
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000)](https://huggingface.co/)
+[![Google Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff)](https://colab.research.google.com/)
+
+
+</div>
 
