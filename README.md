@@ -97,7 +97,7 @@ In the three-model medical experiment the PPL gap between multi-unilateral (11.2
 In Colab (no setup):
 
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1-1YW5g4HsQxCo725dZc0k8OPXj0KK-iE?usp=sharing)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/17EINsJ-s-3ZJb4TiGskqc7_7VI_wI7jc?usp=sharing)
 
 Set `DOMAIN` at the top of the notebook to `"medical"`, `"legal"`, `"coding"`, or `"scientific"`. Runs in ~25 minutes on a T4.
 
@@ -131,7 +131,7 @@ Expected output (medical domain):
 ### Run the three-model topology sweep with TruthfulQA (`three_qa.py`)
 
 In Colab:
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Zt8TwtmLYhGd59mxpOaLjtk_zPtPlBLQ?usp=sharing)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1KmglCM7f0m-qoiWryUlLMIfelowjhJgu?usp=sharing)
 
 Three frozen models (GPT-2, DialoGPT-small, finetuned-gpt2-medical-QA) across eight coupling topologies, with TruthfulQA Health evaluation for all outputs. Set `RUN_TRUTHFUL_QA = True` (default).
 
