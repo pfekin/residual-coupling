@@ -9,7 +9,7 @@ from tqdm import tqdm
 # =============================================================================
 # SETTINGS & DOMAIN CONFIGURATION
 # =============================================================================
-DOMAIN         = "scientific"  # Options: "medical", "legal", "coding", "scientific"
+DOMAIN         = "legal"  # Options: "medical", "legal", "coding", "scientific"
 DEVICE         = "cuda" if torch.cuda.is_available() else "cpu"
 SEED           = 42
 
