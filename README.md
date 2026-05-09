@@ -212,7 +212,7 @@ class ResidualCoupler(nn.Module):
 
 ## Ablation: why linearity is not a compromise
 
-The `bilateral_random` condition is the most informative in the ablation. Projection matrices are fixed at random initialization; only the gate scalars are trained. On the coding domain this produces a fused PPL of 499.93 against bilateral's 5.91. The gate alone, applied to a random matrix, recovers almost nothing. The bridge's gains require learned projection structure.
+The `bilateral_random` condition is the most informative in the ablation. Projection matrices are fixed at random initialization and only the gate scalars are trained. On the coding domain this produces a fused PPL of 499.93 against bilateral's 5.91. The gate alone, applied to a random matrix, recovers almost nothing. The bridge's gains require learned projection structure.
 
 | Condition | Fused PPL |
 |---|---:|
