@@ -142,7 +142,7 @@ class LatentBridge(nn.Module):
 `ResidualCoupler` wraps two frozen models, inserts a `LatentBridge` at each designated layer, and produces three outputs: the fused logits and each model's individually steered logits. One non-obvious detail is vocabulary alignment: when the two models use different tokenizers, `torch.clamp` maps out-of-range token indices to the highest valid index before each model's embedding lookup, keeping both forward passes valid without any shared vocabulary requirement. Logits are then padded to the larger vocabulary size before mixing.
 
 ```python
-class DifferanceEngine(nn.Module):  # ResidualCoupler is a cleaner alternative name
+class ResidualCoupler(nn.Module): 
     def __init__(self, model_A, model_B, mode):
         super().__init__()
         self.A, self.B, self.mode = model_A, model_B, mode
