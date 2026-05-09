@@ -1,15 +1,3 @@
-<div align="right">
-
-*“The pure present is an ungraspable advance of the past devouring the future.*
-*In truth, all sensation is already memory.”*
-
-— Henri Bergson, *Matter and Memory* (1896)
-Quoted by a character in Haruki Murakami’s *Kafka on the Shore* (2002), consistent with the verbatim recall of Murakami’s works documented by Liu et al. (2026).
-
-</div>
-
----
-
 <div align="center">
 
 # Computing Between Models with Residual Coupling
@@ -73,7 +61,7 @@ $$
 \mathbf{h}_A^{(\ell)} \leftarrow \mathbf{h}_A^{(\ell)} + \delta \mathbf{h}_A^{(\ell)}
 $$
 
-The frozen layer at $\ell$ then processes the perturbed $\mathbf{h}_A^{(\ell)}$ through its unchanged weights. The bridge does not enter the layer as it writes into the residual stream that the layer reads from, consistent with the standard transformer update pattern.
+The frozen layer at $\ell$ then processes the perturbed $\mathbf{h}_A^{(\ell)}$ through its unchanged weights. The bridge writes into the residual stream that the layer reads from, consistent with the standard transformer update pattern.
 
 The scalar gate $g^{(\ell, B \to A)}$ is initialized to $-2$, so $\sigma(-2) \approx 0.12$ at step 0 and the additive correction is initially small, increasing only as supported by the training signal. The projection $W^{(\ell, B \to A)} \in \mathbb{R}^{d_A \times d_B}$ naturally handles dimensional mismatch between heterogeneous models. No attention heads are introduced and no sequence positions are added. The computational overhead per bridge layer is $O(d^2)$, rather than $O(L^2)$.
 
@@ -107,26 +95,6 @@ pip install torch transformers datasets tqdm
 python benchmark.py   # edit DOMAIN at the top of the file
 ```
 
-Expected output (medical domain):
-```
-═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
- SYNERGY-X: STEERED MULTI-AGENT PERFORMANCE (Test Samples: 50)
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
- MODE                      | GEN (A) PPL/TQA        | SPEC (B) PPL/TQA       | SPEC (C) PPL/TQA      
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
- FROZEN BASELINES          | 57.08   / 16.36%       | 758.38  / 36.36%       | 9209.68 / 23.64%      
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
- logit_ensemble            | 65.41   / 16.36%       | 752.60  / 36.36%       | 9209.68 / 23.64%      
- multi_unilateral          | 11.26   / 23.64%       | 752.60  / 36.36%       | 9209.68 / 23.64%      
- star_bilateral            | 11.07   / 21.82%       | 1241.14 / 38.18%       | 4881.03 / 23.64%      
- multi_bilateral           | 11.02   / 25.45%       | 1233.61 / 30.91%       | 7473.90 / 29.09%      
- hybrid_multi_bilateral    | 11.11   / 23.64%       | 50.02   / 32.73%       | 22.12   / 25.45%      
- multi_bilateral_no_gate   | 16.42   / 30.91%       | 10406328.12 / 25.45%   | 117917.34 / 32.73%    
- multi_bilateral_random    | 166.82  / 20.00%       | 805.35  / 36.36%       | 5856.65 / 30.91%      
- moe                       | 56.80   / 20.00%       | 216.08  / 32.73%       | 259.18  / 18.18%      
-═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-```
-
 ### Run the three-model topology sweep with TruthfulQA (`three_qa.py`)
 
 In Colab:
@@ -140,7 +108,7 @@ Locally:
 python three_qa.py
 ```
 
-## The core mechanism in ~20 lines
+## The core mechanism
 
 The bridge logic from `benchmark.py`. Everything else in the repository is data loading, model loading, and evaluation plumbing.
 
@@ -171,7 +139,7 @@ class LatentBridge(nn.Module):
         return h_A_new, h_B                               # B unchanged (unilateral)
 ```
 
-`ResidualCoupler` (named `DifferanceEngine` in the repository for historical reasons) wraps two frozen models, inserts a `LatentBridge` at each designated layer, and produces three outputs: the fused logits and each model's individually steered logits. One non-obvious detail is vocabulary alignment: when the two models use different tokenizers, `torch.clamp` maps out-of-range token indices to the highest valid index before each model's embedding lookup, keeping both forward passes valid without any shared vocabulary requirement. Logits are then padded to the larger vocabulary size before mixing.
+`ResidualCoupler` wraps two frozen models, inserts a `LatentBridge` at each designated layer, and produces three outputs: the fused logits and each model's individually steered logits. One non-obvious detail is vocabulary alignment: when the two models use different tokenizers, `torch.clamp` maps out-of-range token indices to the highest valid index before each model's embedding lookup, keeping both forward passes valid without any shared vocabulary requirement. Logits are then padded to the larger vocabulary size before mixing.
 
 ```python
 class DifferanceEngine(nn.Module):  # ResidualCoupler is a cleaner alternative name
@@ -294,12 +262,16 @@ All models are loaded via `AutoModelForCausalLM.from_pretrained`. Vocabulary ali
 
 [![Paper PDF](https://img.shields.io/badge/paper-PDF-red?style=flat-square&logo=adobeacrobat)](https://colab.research.google.com/github/YOUR_USERNAME/differance-engine/blob/main/paper/differance_engine.pdf)
 
-Section 2 situates RC relative to model stitching (Ainsworth et al. 2022; Stoica et al. 2023), representational convergence, and adapter-based methods. Section 3 describes the architecture: bridge layers read one model’s hidden state and inject a gated linear projection into the other model’s residual stream. Section 4 provides the theoretical account of why frozen models can coordinate through linear operators (Platonic Representation Hypothesis, Huh et al. 2024), why linearity in the bridge is a design virtue rather than a constraint (the bridge cannot memorize; it can only map between memorized spaces), and why operational closure (Maturana and Varela 1980) makes catastrophic forgetting structurally impossible. Section 5 reports the four experiments. The conclusion draws the Mountcastle cortical column analogy: the column is the memorizer and the connectivity is the generalization space. Crucially, the cycle does not stop at one iteration: new specialists can be added to an existing bridged ensemble at any time, each trained on the manifold established by all preceding frozen columns, with the prior state left intact and recoverable. Maturana and Varela’s (1980) concept of operational closure formalizes why this is structurally guaranteed: a frozen model transforms its input according to its own invariant internal organization rather than being modified by it.
+Section 2 situates RC relative to model stitching (Ainsworth et al. 2022; Stoica et al. 2023), representational convergence, and adapter-based methods. Section 3 describes the architecture: bridge layers read one model’s hidden state and inject a gated linear projection into the other model’s residual stream. Section 4 provides the theoretical account of why frozen models can coordinate through linear operators (Platonic Representation Hypothesis, Huh et al. 2024), why linearity in the bridge is a design virtue rather than a constraint (the bridge cannot memorize; it can only map between memorized spaces), and why operational closure (Maturana and Varela 1980) makes catastrophic forgetting structurally impossible. Section 5 reports the four experiments. The conclusion draws the Mountcastle cortical column analogy: the column is here a memorizer and the connectivity is the generalization space. Crucially, the cycle does not stop at one iteration: new specialists can be added to an existing bridged ensemble at any time, each trained on the manifold established by all preceding frozen columns, with the prior state left intact and recoverable. Maturana and Varela’s (1980) concept of operational closure formalizes why this is structurally guaranteed: a frozen model transforms its input according to its own invariant internal organization rather than being modified by it.
 
 
 ## Acknowledgements
 
 Models from the Hugging Face Hub. Datasets: `lavita/ChatDoctor-HealthCareMagic-100k`, `lex_glue/scotus`, `iamtarun/python_code_instructions_18k_alpaca`, `ccdv/pubmed-summarization`. TruthfulQA evaluation uses the Health category of the MC1 split (Lin et al. 2022).
+
+
+---
+
 
 <div align="center">
 
