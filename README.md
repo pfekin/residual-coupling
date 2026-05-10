@@ -1,13 +1,9 @@
-<div align="center">
-
 # Computing Between Models with Residual Coupling
 
 
 [![Paper PDF](https://img.shields.io/badge/paper-PDF-red?style=flat-square&logo=adobeacrobat)](https://colab.research.google.com/github/YOUR_USERNAME/differance-engine/blob/main/paper/differance_engine.pdf)
 
-</div>
 
----
 
 The standard approach to specialization modifies models. Fine-tuning overwrites weights. Mixture-of-Experts routes tokens to a single expert and discards the rest. Agentic pipelines compress continuous internal geometry into discrete tokens between calls.
 
