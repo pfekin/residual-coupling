@@ -52,9 +52,7 @@ The bridge at layer $\ell$ from model $B$ (specialist) to model $A$ (generalist)
 $$
 \delta \mathbf{h}_A^{(\ell)} = \sigma(g^{(\ell, B \to A)}) W^{(\ell, B \to A)} \mathbf{h}_B^{(\ell)}
 $$
-$$
-\mathbf{h}_A^{(\ell)} \leftarrow \mathbf{h}_A^{(\ell)} + \delta \mathbf{h}_A^{(\ell)}
-$$
+
 
 The frozen layer at $\ell$ then processes the perturbed $\mathbf{h}_A^{(\ell)}$ through its unchanged weights. The bridge writes into the residual stream that the layer reads from, consistent with the standard transformer update pattern.
 
