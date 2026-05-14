@@ -215,8 +215,8 @@ The `bilateral_random` condition is the most informative in the ablation. Projec
 | Logit ensemble | 596.16 |
 | MoE | 878.40 |
 | Unilateral | 15.15 |
-| **Bilateral** | **5.91** |
-| Bilateral no-gate | 4.95 |
+| Bilateral | 5.91 |
+| **Bilateral no-gate** | **4.95** |
 | Bilateral random | 499.93 |
 
 In the legal and coding domains, `bilateral_no_gate` slightly outperforms gated bilateral (8.13 vs. 8.30; 4.95 vs. 5.91). The gate is a conservative default that prevents early-training instability at a small cost in cases where the corrective signal is unambiguous from step 0. In the three-model setting (`three_qa.py`) the pattern reverses: `multi_bilateral_no_gate` reaches 16.42 against `multi_bilateral`'s 11.02, because the more complex coupling surface needs the gate to regulate early contributions.
