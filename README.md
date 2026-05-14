@@ -109,96 +109,98 @@ The bridge logic from `benchmark.py`. Everything else in the repository is data 
 
 ```python
 class LatentBridge(nn.Module):
+    """A cross-model linear operator that enables inter-layer steering."""
     def __init__(self, dim, mode):
         super().__init__()
         self.mode = mode
-
-        # Specialist -> Generalist
+        
+        # Primary steering: Specialist (B) influences Generalist (A)
         self.proj_b2a = nn.Linear(dim, dim, bias=False)
-        self.gate_a   = nn.Parameter(torch.tensor([-2.0]))   # starts near-closed
-
+        self.gate_a = nn.Parameter(torch.tensor([-2.0]))
+        if "no_gate" in mode: self.gate_a.requires_grad = False
+        
+        # Secondary steering: Generalist (A) influences Specialist (B) (Bilateral Mode)
         if "bilateral" in mode:
-            # Generalist -> Specialist (the return signal)
             self.proj_a2b = nn.Linear(dim, dim, bias=False)
-            self.gate_b   = nn.Parameter(torch.tensor([-2.0]))
+            self.gate_b = nn.Parameter(torch.tensor([-2.0]))
+            if "no_gate" in mode: self.gate_b.requires_grad = False
 
     def forward(self, h_A, h_B):
-        ga      = torch.sigmoid(self.gate_a) if "no_gate" not in self.mode else 1.0
-        h_A_new = h_A + ga * self.proj_b2a(h_B)          # steer generalist
-
+        # Steer Model A using B's features
+        ga = torch.sigmoid(self.gate_a) if "no_gate" not in self.mode else 1.0
+        h_A_new = h_A + ga * self.proj_b2a(h_B)
+        
         if "bilateral" in self.mode:
-            gb      = torch.sigmoid(self.gate_b) if "no_gate" not in self.mode else 1.0
-            h_B_new = h_B + gb * self.proj_a2b(h_A)      # steer specialist
+            # Steer Model B using A's features
+            gb = torch.sigmoid(self.gate_b) if "no_gate" not in self.mode else 1.0
+            h_B_new = h_B + gb * self.proj_a2b(h_A)
             return h_A_new, h_B_new
-
-        return h_A_new, h_B                               # B unchanged (unilateral)
+            
+        return h_A_new, h_B # Unilateral: B remains un-steered
 ```
 
 `ResidualCoupler` wraps two frozen models, inserts a `LatentBridge` at each designated layer, and produces three outputs: the fused logits and each model's individually steered logits. One non-obvious detail is vocabulary alignment: when the two models use different tokenizers, `torch.clamp` maps out-of-range token indices to the highest valid index before each model's embedding lookup, keeping both forward passes valid without any shared vocabulary requirement. Logits are then padded to the larger vocabulary size before mixing.
 
 ```python
-class ResidualCoupler(nn.Module): 
+class ResidualCoupler(nn.Module):
+    """Wraps two frozen models and manages inter-layer communication via bridges."""
     def __init__(self, model_A, model_B, mode):
         super().__init__()
         self.A, self.B, self.mode = model_A, model_B, mode
-        self.v_A = model_A.config.vocab_size
-        self.v_B = model_B.config.vocab_size
-
+        self.v_A, self.v_B = model_A.config.vocab_size, model_B.config.vocab_size
+        
+        # Detect actual layer counts from model configs
+        self.L_A = model_A.config.n_layer
+        self.L_B = model_B.config.n_layer
+        
         # One LatentBridge per designated layer, keyed by layer index.
         # Bridge layers are selected proportionally to model depth:
         # every 3rd layer for 12-layer models, every 4th for 24-layer,
         # every 6th for 36-layer.
-        self.bridges = nn.ModuleDict(
-            {str(l): LatentBridge(C["dim"], mode) for l in BRIDGE_LAYERS}
-        )
-
+        self.bridges = nn.ModuleDict({str(l): LatentBridge(C["dim"], mode) for l in BRIDGE_LAYERS})
+        
         # Learned mixing scalar for the fused output.
         # sigmoid(0.0) = 0.5 at initialization: both models contribute equally
         # before any training begins.
         self.mix = nn.Parameter(torch.tensor([0.0]))
 
-        # Freeze all base model parameters. Only bridge projections,
-        # gate scalars, and the mixing scalar receive gradients.
-        for p in self.A.parameters(): p.requires_grad = False
-        for p in self.B.parameters(): p.requires_grad = False
-
     def forward(self, ids):
         pos = torch.arange(ids.size(1), device=ids.device).unsqueeze(0)
-
+        
         # Clamp token indices to each model's vocabulary size before embedding.
         # This handles heterogeneous tokenizers: indices that exceed a model's
         # vocabulary are mapped to the highest valid index rather than raising
         # an error, with no tokenizer alignment or shared vocabulary required.
-        h_A = self.A.transformer.wte(ids.clamp(0, self.v_A-1)) \
-            + self.A.transformer.wpe(pos)
-        h_B = self.B.transformer.wte(ids.clamp(0, self.v_B-1)) \
-            + self.B.transformer.wpe(pos)
+        h_A = self.A.transformer.wte(ids.clamp(0, self.v_A-1)) + self.A.transformer.wpe(pos)
+        h_B = self.B.transformer.wte(ids.clamp(0, self.v_B-1)) + self.B.transformer.wpe(pos)
 
-        # Run both models layer by layer. Bridge is inserted only at
-        # designated layers, not after every layer.
-        for i in range(C["layers"]):
+        curr_B = 0
+        # Iterate through the Generalist's depth
+        for i in range(self.L_A):
+            # Model A always executes one layer per loop step
             h_A = self.A.transformer.h[i](h_A)[0]
-            h_B = self.B.transformer.h[i](h_B)[0]
+            
+            # Model B executes layers proportionally (waiting or running extra blocks)
+            # to stay in sync with Model A's fractional progress.
+            target_B = int((i + 1) * self.L_B / self.L_A)
+            while curr_B < target_B:
+                h_B = self.B.transformer.h[curr_B](h_B)[0]
+                curr_B += 1
+                
+            # Bridges are applied relative to Model A's layer index
             if str(i) in self.bridges:
                 h_A, h_B = self.bridges[str(i)](h_A, h_B)
-
-        # Project final hidden states to logits using each model's own LM head.
-        l_A = self.A.lm_head(self.A.transformer.ln_f(h_A))
-        l_B = self.B.lm_head(self.B.transformer.ln_f(h_B))
-
+	
+	# Project final hidden states to logits using each model's own LM head.
+        l_A, l_B = self.A.lm_head(self.A.transformer.ln_f(h_A)), self.B.lm_head(self.B.transformer.ln_f(h_B))
+        
         # Pad the smaller logit tensor to the larger vocabulary size.
         # Extra positions receive a large negative value so they do not
         # contribute to the probability distribution after softmax.
         max_v = max(self.v_A, self.v_B)
-        def pad(l, v):
-            if l.size(-1) < max_v:
-                return torch.cat(
-                    [l, torch.full((*l.shape[:-1], max_v - v), -1e4, device=DEVICE)],
-                    dim=-1
-                )
-            return l
+        def pad(l, v): return torch.cat([l, torch.full((*l.shape[:-1], max_v-v), -1e4, device=DEVICE)], dim=-1) if l.size(-1)<max_v else l
         l_A, l_B = pad(l_A, self.v_A), pad(l_B, self.v_B)
-
+        
         # Fused output: weighted combination of both models' logit distributions,
         # with the mixing weight learned alongside the bridge projections.
         m = torch.sigmoid(self.mix)
