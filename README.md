@@ -267,7 +267,7 @@ Models from the Hugging Face Hub. Datasets: `lavita/ChatDoctor-HealthCareMagic-1
 ---
 
 
-<div align="center">
+
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -275,5 +275,4 @@ Models from the Hugging Face Hub. Datasets: `lavita/ChatDoctor-HealthCareMagic-1
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000)](https://huggingface.co/)
 [![Google Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff)](https://colab.research.google.com/)
 
-  
-</div>
+
