@@ -263,7 +263,7 @@ Section 2 situates RC relative to model stitching (Ainsworth et al. 2022; Stoica
 
 Residual Coupling moves beyond a post-hoc engineering patch for fine-tuning or prompt-based coordination. It offers several structural advantages for future system design:
 
-* **Eliminating Multi-Turn Latency:** Passing continuous hidden states across parallel columns collapses an iterative, multi-turn text prompting loop into a single parallel forward pass. In some specific scenarios, this significantly boosts the speed and capacity of agentic workflows.
+* **Eliminating Multi-Turn Latency:** Passing continuous hidden states across parallel models collapses an iterative, multi-turn text prompting loop into a single parallel forward pass. In some specific scenarios, this significantly boosts the speed and capacity of agentic workflows.
 * **The Cortical Column Analogy:** This architecture maps directly to Mountcastle's cortical column framework. In the case of RC, localized columns function as invariant domain memorizers, while the cross-model bridge connectivity defines the generalization space.
 * **A Path to Multi-Modal Integration:** By decoupling non-linear memorization from relational alignment, RC bridges provide a framework for scaling multi-model systems and offer a path toward native multi-modal integration without modifying base weights.
 
