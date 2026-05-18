@@ -187,7 +187,10 @@ python three_qa.py
 ---
 
 ## Reference & Citation
-For a comprehensive theoretical exploration of how frozen models coordinate through linear operators (drawing from the Platonic Representation Hypothesis) and why linearity prevents memorization. The text details how freezing base weights guarantees structural protection against catastrophic forgetting, while the decoupled training of models and bridges offers a novel implementation of Maturana and Varela’s operational closure. Read the full text:
+For a comprehensive theoretical exploration of how frozen models coordinate through linear operators (drawing from the Platonic Representation Hypothesis) and why linearity prevents memorization. The text details how freezing base weights guarantees structural protection against catastrophic forgetting, while the decoupled training of models and bridges offers a novel implementation of Maturana and Varela’s operational closure. Read the full text: 
+
+[![Paper PDF](https://img.shields.io/badge/paper-PDF-red?style=flat-square&logo=adobeacrobat)](https://ssrn.com/abstract=6746521)
+
 
 If you use this framework or reference these theoretical findings in your research, please cite the work as follows:
 
