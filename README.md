@@ -20,6 +20,13 @@ corrective updates into another's residual stream at intermediate layers, during
 parallel forward pass. No base weights are modified at any point. What trains is the map
 between what the frozen models have separately memorized.
 
+Where standard practice adds capacity by scaling individual models in depth and width, RC
+adds capacity by training lightweight connections between models of fixed depth. Inference
+latency is bounded by the slowest single model regardless of how many specialists are
+coupled, because all model stacks execute in parallel. Specialists can be added by training
+bridges to a new frozen module, and removed by deactivating their bridges in reverse order,
+leaving all remaining components untouched and requiring no retraining.
+
 `rescoupler` is the library implementation of this architecture.
 
 ---
@@ -64,9 +71,9 @@ only one side.
 
 | Mode | Description |
 |------|-------------|
+| `multi_unilateral` | Specialists inject into the generalist only, no return flow |
+| `star_bilateral` | Generalist and each specialist exchange bidirectionally, specialists do not bridge each other |
 | `multi_bilateral` | All model pairs exchange bidirectional bridge updates |
-| `star_bilateral` | Generalist and each specialist exchange bidirectionally; specialists do not bridge each other |
-| `multi_unilateral` | Specialists inject into the generalist only; no return flow |
 | `moe` | Latent-space MoE baseline: soft-routes hidden states via a learned router at each bridge layer |
 
 ## Architectural implications
@@ -91,6 +98,14 @@ the architecture separates the two functions structurally rather than as a train
 objective. The same pattern extends naturally to multimodal settings: a language model and a
 vision encoder, both frozen, could be coupled through bridge projections on their residual
 streams without architectural modification of either.
+
+Because no model weights are exchanged and the bridge operates on intermediate hidden states,
+the natural next step for `rescoupler` is distributed deployment: a specialist running on a
+local or edge device, a generalist anchor running on a remote server, with hidden states
+crossing the network boundary at each bridge layer. Neither model's weights would be exposed
+to the other party, and the bilateral results show that each model improves individually
+under coupling, not only through the fused output, so the edge device could generate useful
+responses independently while connected.
 
 ---
 
@@ -204,10 +219,23 @@ LLaMA / Mistral family (`model.model.layers`).
 
 ---
 
-## Benchmark results and experiment scripts
+## Results
 
-Full results across four domains and three-model topology sweeps, ablation study, Colab
-notebooks, and configuration details: [EXPERIMENTS.md](EXPERIMENTS.md)
+Three headline numbers from the experiments, all comparing bilateral RC against MoE routing
+with the same frozen models:
+
+- **Medical (three models):** multi-bilateral RC reduces perplexity to 11.02, against 56.80
+  for MoE and 57.08 for the frozen baseline, an 80.7% reduction.
+- **TruthfulQA Health (MC1):** factual accuracy improves by 9.1 percentage points over the
+  frozen baseline, against 3.6 points for MoE. Each model's hallucinations are statistically
+  uncorrelated with the other's, so the bridge gates learn to suppress them without any
+  explicit objective for doing so.
+- **Coding stress test:** CodeGPT-small-py and GPT-2 use different tokenizers, producing a
+  frozen perplexity of approximately 7 million on mismatched text. MoE reaches 878. RC
+  reaches 5.91 by reading hidden states before the output projection collapses them.
+
+Full results across four domains, ablation study, and reproduction instructions:
+[EXPERIMENTS.md](EXPERIMENTS.md)
 
 ---
 
