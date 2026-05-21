@@ -21,7 +21,7 @@ separately memorized.
 ## How it works
 
 <div align="center">
-  <img src="images/architecture.png" alt="Figure 1: RC architecture" width="600"/>
+  <img src="images/architecture.png" alt="RC architecture: two frozen model stacks connected by bridge projections" width="600"/>
 </div>
 
 The bridge at layer $\ell$ from specialist $S$ to generalist $G$ computes:
@@ -53,7 +53,7 @@ only one side.
 ### Topologies
 
 <div align="center">
-  <img src="images/topologies.png" alt="Figure 2: The four topologies" width="600"/>
+  <img src="images/topologies.png" alt="The four coupling topologies" width="600"/>
 </div>
 
 | Mode | Description |
@@ -62,6 +62,29 @@ only one side.
 | `star_bilateral` | Generalist and each specialist exchange bidirectionally; specialists do not bridge each other |
 | `multi_unilateral` | Specialists inject into the generalist only; no return flow |
 | `moe` | Latent-space MoE baseline: soft-routes hidden states via a learned router at each bridge layer |
+
+## Architectural implications
+
+Because bridge operations happen on hidden states rather than output tokens, RC preserves
+geometric structure that token-level handoffs discard. Standard agentic pipelines compress
+each model's continuous intermediate representations into a discrete token sequence at every
+handoff. RC replaces sequential multi-pass text exchange with a single parallel forward pass,
+and the coding experiment makes the practical difference concrete: any method that operates
+on the out-of-distribution specialist's output logits fails entirely, while RC reaches a
+fused perplexity of 5.91 by reading hidden states before the output projection collapses
+them.
+
+Bridge linearity constrains what the projections can learn. A linear map can only navigate
+geometric relationships that already exist between the frozen models' representation spaces,
+so the bridge has no mechanism to amplify model-specific confabulation. During training, gate
+scalars learn to reinforce projections that produce consistent cross-model updates while
+suppressing those that appear on only one side, where each model's private errors live.
+
+By keeping memorization inside frozen base models and relational alignment inside bridges,
+the architecture separates the two functions structurally rather than as a training
+objective. The same pattern extends naturally to multimodal settings: a language model and a
+vision encoder, both frozen, could be coupled through bridge projections on their residual
+streams without architectural modification of either.
 
 ---
 
@@ -184,7 +207,13 @@ notebooks, and configuration details: [EXPERIMENTS.md](EXPERIMENTS.md)
 
 ## Citation
 
-**APA:**
+The paper covers the theoretical account of why frozen models can coordinate through linear
+operators, grounded in the Platonic Representation Hypothesis and Maturana and Varela's
+operational closure; why the linearity constraint prevents the bridge from memorizing rather
+than generalizing; and why freezing base weights makes catastrophic forgetting structurally
+impossible rather than a property to be regularized away.
+
+[![Paper](https://img.shields.io/badge/paper-PDF-red?style=flat-square&logo=adobeacrobat)](https://ssrn.com/abstract=6746521)
 Ekin, P. (2026). *Computing Between Models with Residual Coupling.* SSRN Electronic Journal.
 https://ssrn.com/abstract=6746521
 
