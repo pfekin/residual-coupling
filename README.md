@@ -78,34 +78,30 @@ only one side.
 
 ## Architectural implications
 
-Because bridge operations happen on hidden states rather than output tokens, RC preserves
-geometric structure that token-level handoffs discard. Standard agentic pipelines compress
-each model's continuous intermediate representations into a discrete token sequence at every
-handoff. RC replaces sequential multi-pass text exchange with a single parallel forward pass,
-and the coding experiment makes the practical difference concrete: any method that operates
-on the out-of-distribution specialist's output logits fails entirely, while RC reaches a
-fused perplexity of 5.91 by reading hidden states before the output projection collapses
-them.
+Operating on hidden states rather than output tokens, RC preserves geometric structure that
+token-level pipelines discard. Standard agentic workflows compress each model's continuous
+representations into a discrete token sequence at every handoff. RC runs all model stacks in
+parallel, exchanging hidden states at bridge layers instead. The coding experiment quantifies
+what this entails: CodeGPT-small-py is out of distribution on general text, and every
+method that touches its output logits fails, while RC reaches a fused perplexity of 5.91 by
+reading its hidden states directly.
 
-Bridge linearity constrains what the projections can learn. A linear map can only navigate
-geometric relationships that already exist between the frozen models' representation spaces,
-so the bridge has no mechanism to amplify model-specific confabulation. During training, gate
-scalars learn to reinforce projections that produce consistent cross-model updates while
-suppressing those that appear on only one side, where each model's private errors live.
+Bridge linearity limits the projections to geometric relationships that already exist between
+the frozen models' representation spaces. A linear map has no mechanism to invent or
+propagate model-specific confabulation. Gate scalars reinforce this during training by
+amplifying projections that produce consistent cross-model updates and suppressing those that
+appear on only one base model.
 
-By keeping memorization inside frozen base models and relational alignment inside bridges,
-the architecture separates the two functions structurally rather than as a training
-objective. The same pattern extends naturally to multimodal settings: a language model and a
-vision encoder, both frozen, could be coupled through bridge projections on their residual
-streams without architectural modification of either.
+Keeping memorization in frozen base models and relational alignment in bridges separates the
+two functions at the architectural level. The same structure applies to multimodal settings:
+a language model and a vision encoder, both frozen, could exchange bridge updates on their
+residual streams without modification of either.
 
-Because no model weights are exchanged and the bridge operates on intermediate hidden states,
-the natural next step for `rescoupler` is distributed deployment: a specialist running on a
-local or edge device, a generalist anchor running on a remote server, with hidden states
-crossing the network boundary at each bridge layer. Neither model's weights would be exposed
-to the other party, and the bilateral results show that each model improves individually
-under coupling, not only through the fused output, so the edge device could generate useful
-responses independently while connected.
+Distributed deployment is the natural next step. A specialist on an edge device and a
+generalist on a remote server would exchange hidden states at each bridge layer rather than
+full outputs, with neither model's weights exposed to the other party. Because bilateral
+coupling improves each model's individual output alongside the fused output, the edge device
+could generate useful responses independently while connected.
 
 ---
 
@@ -243,9 +239,8 @@ Full results across four domains, ablation study, and reproduction instructions:
 
 The paper covers the theoretical account of why frozen models can coordinate through linear
 operators, grounded in the Platonic Representation Hypothesis and Maturana and Varela's
-operational closure. It explains why the linearity constraint prevents the bridge from
-memorizing rather than generalizing, and why freezing base weights makes catastrophic
-forgetting structurally impossible rather than a property to be regularized away.
+operational closure. It explains why the linearity constraint limits the bridge to generalizing 
+rather than memorizing, and why frozen base weights make catastrophic forgetting structurally impossible.
 
 [![Paper](https://img.shields.io/badge/paper-PDF-red?style=flat-square&logo=adobeacrobat)](https://ssrn.com/abstract=6746521)
 Ekin, P. (2026). *Computing Between Models with Residual Coupling.* SSRN Electronic Journal.
