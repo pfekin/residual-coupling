@@ -64,9 +64,9 @@ only one side.
 
 | Mode | Description |
 |------|-------------|
-| `multi_unilateral` | Specialists inject into the generalist only, no return flow |
-| `star_bilateral` | Generalist and each specialist exchange bidirectionally, specialists do not bridge each other |
 | `multi_bilateral` | All model pairs exchange bidirectional bridge updates |
+| `star_bilateral` | Generalist and each specialist exchange bidirectionally; specialists do not bridge each other |
+| `multi_unilateral` | Specialists inject into the generalist only; no return flow |
 | `moe` | Latent-space MoE baseline: soft-routes hidden states via a learned router at each bridge layer |
 
 ## Architectural implications
@@ -215,9 +215,9 @@ notebooks, and configuration details: [EXPERIMENTS.md](EXPERIMENTS.md)
 
 The paper covers the theoretical account of why frozen models can coordinate through linear
 operators, grounded in the Platonic Representation Hypothesis and Maturana and Varela's
-operational closure; why the linearity constraint prevents the bridge from memorizing rather
-than generalizing; and why freezing base weights makes catastrophic forgetting structurally
-impossible rather than a property to be regularized away.
+operational closure. It explains why the linearity constraint prevents the bridge from
+memorizing rather than generalizing, and why freezing base weights makes catastrophic
+forgetting structurally impossible rather than a property to be regularized away.
 
 [![Paper](https://img.shields.io/badge/paper-PDF-red?style=flat-square&logo=adobeacrobat)](https://ssrn.com/abstract=6746521)
 Ekin, P. (2026). *Computing Between Models with Residual Coupling.* SSRN Electronic Journal.
@@ -239,3 +239,11 @@ https://ssrn.com/abstract=6746521
 Models via Hugging Face Hub. Datasets: `ChatDoctor-HealthCareMagic-100k`, `scotus`,
 `python_code_instructions_18k_alpaca`, `pubmed-summarization`. TruthfulQA evaluation uses
 the Health category of the MC1 split.
+
+## References
+
+- Huh, M., Cheung, B., Wang, T., and Isola, P. (2024). The Platonic Representation Hypothesis. arXiv:2405.07987.
+- Kornblith, S., Norouzi, M., Lee, H., and Hinton, G. (2019). Similarity of neural network representations revisited. ICML.
+- Liu, X., Mireshghallah, N., Ginsburg, J.C., and Chakrabarty, T. (2026). Alignment whack-a-mole: finetuning activates verbatim recall of copyrighted books in large language models. arXiv:2603.20957.
+- Maturana, H. and Varela, F. (1980). Autopoiesis and Cognition: The Realization of the Living. Reidel.
+- Mountcastle, V.B. (1978). An organizing principle for cerebral function. In Edelman, G.M. and Mountcastle, V.B. (Eds.), The Mindful Brain. MIT Press.
