@@ -21,7 +21,7 @@ Coupling existing frozen models takes a few thousand training steps on a single 
 ### Parallel Frozen Stacks Connected by Bridge Projections
 
 <div align="center">
-  <img src="architecture.png" alt="Figure 1: RC architecture" width="600"/>
+  <img src="images/architecture.png" alt="Figure 1: RC architecture" width="600"/>
 </div>
 
 The bridge at layer $\ell$ from model $B$ (specialist) to model $A$ (generalist) computes an additive correction $\delta \mathbf{h}_A^{(\ell)}$ and injects it into model $A$’s residual stream before layer $\ell+1$ executes:
@@ -37,7 +37,7 @@ The projection matrix $W^{(\ell, B \to A)} \in \mathbb{R}^{d_A \times d_B}$ nati
 ### The Four Coupling Topologies
 
 <div align="center">
-  <img src="topologies.png" alt="Figure 2: The four topologies" width="600"/>
+  <img src="images/topologies.png" alt="Figure 2: The four topologies" width="600"/>
 </div>
 
 Residual Coupling can be deployed across multiple distinct configurations depending on system requirements:
