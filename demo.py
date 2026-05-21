@@ -1,52 +1,62 @@
 import torch
+import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from datasets import load_dataset
 from rescoupler import ResidualCoupler, SteeredTrainer
 
-# 1. Load Tokenizer & Base Models (Using small, open ungated models for a seamless demo)
-print("Loading pretrained tokenizer and models...")
-model_id_A = "gpt2"
-model_id_B = "microsoft/DialoGPT-small"
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-tokenizer = AutoTokenizer.from_pretrained(model_id_A)
+# Load tokenizer and base models
+tokenizer = AutoTokenizer.from_pretrained("gpt2")
 tokenizer.pad_token = tokenizer.eos_token
 
-generalist = AutoModelForCausalLM.from_pretrained(model_id_A)
-specialist = AutoModelForCausalLM.from_pretrained(model_id_B)
+generalist = AutoModelForCausalLM.from_pretrained("gpt2")
+specialist = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-small")
 
-# 2. Initialize the Orchestrator Graph
-print("Initializing ResidualCoupler graph...")
-model = ResidualCoupler(generalist, [specialist], mode="multi_bilateral", device=DEVICE).to(DEVICE)
+# Initialize the coupler (base weights are frozen by default)
+model = ResidualCoupler(
+    anchor_model=generalist,
+    specialist_models=[specialist],
+    mode="multi_bilateral",
+    device=DEVICE
+).to(DEVICE)
 
-# 3. Filter for ONLY the trainable bridge parameters
-optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=1e-4)
+# Only bridge parameters are trainable
+optimizer = torch.optim.AdamW(
+    filter(lambda p: p.requires_grad, model.parameters()), lr=1e-4
+)
 
-# 4. Connect a raw streaming data engine (Using a small, fast-loading subset)
-print("Connecting demo streaming dataset...")
-raw_dataset = load_dataset("lavita/ChatDoctor-HealthCareMagic-100k", split="train", streaming=True)
+# Connect a streaming dataset
+raw_dataset = load_dataset(
+    "lavita/ChatDoctor-HealthCareMagic-100k", split="train", streaming=True
+)
 
 def train_stream():
     for ex in raw_dataset:
-        text = f"Patient: {ex.get('instruction', '')[:100]} Doctor: {ex.get('output', '')[:100]}" 
-        yield tokenizer(text, return_tensors="pt", max_length=128, truncation=True).input_ids.to(model.device)
+        text = (
+            f"Patient: {ex.get('instruction', '')[:100]} "
+            f"Doctor: {ex.get('output', '')[:100]}"
+        )
+        yield tokenizer(
+            text, return_tensors="pt", max_length=128, truncation=True
+        ).input_ids.to(DEVICE)
 
 def quick_eval(model):
-    print("\n[DEMO EVALUATION]")
-    # Grab a small sample token batch to measure perplexity
     test_batch = next(train_stream())
     with torch.no_grad():
         final_logits, _ = model(test_batch)
-        loss = F.cross_entropy(final_logits[:, :-1, :].reshape(-1, final_logits.size(-1)), test_batch[:, 1:].reshape(-1))
-        ppl = torch.exp(loss).item()
-    print(f"Mode: MULTI_BILATERAL | Sample Sequence Perplexity: {ppl:.2f}\n")
+        loss = F.cross_entropy(
+            final_logits[:, :-1, :].reshape(-1, final_logits.size(-1)),
+            test_batch[:, 1:].reshape(-1)
+        )
+    print(f"Sample perplexity: {torch.exp(loss).item():.2f}")
 
-print("Starting demo run...")
 trainer = SteeredTrainer(
     model=model,
     optimizer=optimizer,
     train_stream=train_stream(),
-    eval_fn=quick_eval,       
-    eval_steps=500,           
+    eval_fn=quick_eval,
+    eval_steps=500,
     gradient_accumulation_steps=4
 )
 
