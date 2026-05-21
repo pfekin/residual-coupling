@@ -1,4 +1,4 @@
-# Residual coupling
+# Computing Between Model with Residual Coupling
 
 [![Paper](https://img.shields.io/badge/paper-PDF-red?style=flat-square&logo=adobeacrobat)](https://ssrn.com/abstract=6746521)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
@@ -6,15 +6,21 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000)](https://huggingface.co/)
 
-`rescoupler` connects frozen language models through small learned bridge projections. At
-each designated layer, a bridge reads one model's hidden state and injects an additive
-correction into another model's residual stream. No base weights are modified at any point.
+The standard approach to specializing a language model modifies it. Fine-tuning overwrites
+weights: the updates that encode new domain knowledge simultaneously reactivate whatever was
+memorized during pretraining, and no clean separation between the two effects exists.
+Mixture-of-Experts routing commits each token to a single expert and discards the rest.
+Agentic pipelines pass outputs between models as text, compressing each model's continuous
+internal geometry into a discrete token sequence at every handoff. In all three cases, the
+internal representations of one model do not directly influence the computations of another.
 
-Standard approaches to model specialization all modify or discard: fine-tuning overwrites
-weights and risks catastrophic forgetting, MoE routing commits each token to one expert and
-discards the rest, agentic pipelines compress continuous hidden geometry into discrete tokens
-at every handoff. Residual Coupling trains only the map between what frozen models have
-separately memorized.
+Residual Coupling (RC) takes a different route. Two or more frozen models are connected
+through small learned bridge projections that read one model's hidden states and inject
+corrective updates into another's residual stream at intermediate layers, during a single
+parallel forward pass. No base weights are modified at any point. What trains is the map
+between what the frozen models have separately memorized.
+
+`rescoupler` is the library implementation of this architecture.
 
 ---
 
@@ -58,9 +64,9 @@ only one side.
 
 | Mode | Description |
 |------|-------------|
+| `multi_unilateral` | Specialists inject into the generalist only, no return flow |
+| `star_bilateral` | Generalist and each specialist exchange bidirectionally, specialists do not bridge each other |
 | `multi_bilateral` | All model pairs exchange bidirectional bridge updates |
-| `star_bilateral` | Generalist and each specialist exchange bidirectionally; specialists do not bridge each other |
-| `multi_unilateral` | Specialists inject into the generalist only; no return flow |
 | `moe` | Latent-space MoE baseline: soft-routes hidden states via a learned router at each bridge layer |
 
 ## Architectural implications
