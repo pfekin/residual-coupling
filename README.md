@@ -1,4 +1,4 @@
-# Computing Between Model with Residual Coupling
+# Computing Between Models with Residual Coupling
 
 [![Paper](https://img.shields.io/badge/paper-PDF-red?style=flat-square&logo=adobeacrobat)](https://ssrn.com/abstract=6746521)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
