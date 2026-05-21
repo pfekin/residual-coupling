@@ -14,10 +14,10 @@ trained for 2,000 steps.
 
 | Domain | Anchor | Specialist | Frozen A (PPL) | MoE (PPL) | Bilateral RC (PPL) | Reduction |
 |--------|--------|------------|---------------:|----------:|-------------------:|----------:|
-| Medical | GPT-2 Medium (345M) | DialoGPT-Medium (345M) | 50.05 | 64.66 | 12.01 | 76% |
-| Legal | GPT-2 (124M) | open-australian-legal-gpt2 (124M) | 26.48 | 21.83 | 8.30 | 69% |
-| Coding | GPT-2 (124M) | CodeGPT-small-py (124M) | 16.68 | 878.40 | 5.91 | 65% |
-| Scientific | GPT-2 Large (774M) | gpt2-large-medical (774M) | 28.54 | 26.85 | 17.51 | 39% |
+| Medical | GPT-2 Medium (345M) | DialoGPT-Medium (345M) | 50.05 | 64.66 | **12.01** | 76% |
+| Legal | GPT-2 (124M) | open-australian-legal-gpt2 (124M) | 26.48 | 21.83 | **8.30** | 69% |
+| Coding | GPT-2 (124M) | CodeGPT-small-py (124M) | 16.68 | 878.40 | **5.91** | 65% |
+| Scientific | GPT-2 Large (774M) | gpt2-large-medical (774M) | 28.54 | 26.85 | **17.51** | 39% |
 
 The coding domain is a structural stress test. CodeGPT-small-py uses a different tokenizer
 from GPT-2, producing a frozen perplexity of approximately 7 million on general text. MoE
@@ -55,7 +55,7 @@ conversational data. TruthfulQA Health (MC1) evaluated on n=50 samples.
 | MoE | 56.80 | 20.00% | 0.5% | +3.6 pp |
 | Multi-unilateral | 11.26 | 23.64% | 80.3% | +7.3 pp |
 | Star-bilateral | 11.07 | 21.82% | 80.6% | +5.5 pp |
-| Multi-bilateral | 11.02 | 25.45% | 80.7% | +9.1 pp |
+| Multi-bilateral | **11.02** | **25.45%** | 80.7% | +9.1 pp |
 | Hybrid | 11.11 | 23.64% | 80.5% | +7.3 pp |
 
 MoE reduces perplexity by 0.5% and improves factual accuracy by 3.6 percentage points. All
@@ -80,8 +80,8 @@ learned gates, setting all gate values to 1.0.
 |-----------|----------:|------------------:|
 | Frozen baseline | 57.08 | 16.36% |
 | MoE | 56.80 | 20.00% |
-| Multi-bilateral (trained) | 11.02 | 25.45% |
-| Multi-bilateral (no gate) | 16.42 | 30.91% |
+| Multi-bilateral (trained) | **11.02** | 25.45% |
+| Multi-bilateral (no gate) | 16.42 | **30.91%** |
 | Multi-bilateral (random projections) | 166.82 | 20.00% |
 
 Random bridges make things significantly worse: 166.82 against a frozen baseline of 57.08.
