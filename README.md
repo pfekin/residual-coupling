@@ -78,30 +78,32 @@ only one side.
 
 ## Architectural implications
 
-Operating on hidden states rather than output tokens, RC preserves geometric structure that
-token-level pipelines discard. Standard agentic workflows compress each model's continuous
-representations into a discrete token sequence at every handoff. RC runs all model stacks in
-parallel, exchanging hidden states at bridge layers instead. The coding experiment quantifies
-what this entails: CodeGPT-small-py is out of distribution on general text, and every
-method that touches its output logits fails, while RC reaches a fused perplexity of 5.91 by
-reading its hidden states directly.
+**Replacing token-based model coordination.** Standard agentic pipelines pass outputs between
+models as text. At every handoff, a model's continuous internal representations are collapsed
+into a discrete token sequence, discarding geometric structure in the process. RC runs all
+model stacks in parallel and exchanges hidden states at bridge layers instead. For tasks where
+the relevant signal depends on where a concept sits in representation space rather than how it
+is verbally expressed, this matters: in the coding experiment, CodeGPT-small-py is out of
+distribution on general text, its output logits are incoherent, and every method that operates
+on them fails. RC reaches a fused perplexity of 5.91 by reading its hidden states before the
+output projection collapses them.
 
-Bridge linearity limits the projections to geometric relationships that already exist between
-the frozen models' representation spaces. A linear map has no mechanism to invent or
-propagate model-specific confabulation. Gate scalars reinforce this during training by
-amplifying projections that produce consistent cross-model updates and suppressing those that
-appear on only one base model.
+**Structural suppression of confabulation.** Because bridge projections are linear, they can
+only map geometric relationships that already exist between the frozen models' representation
+spaces. A linear map has no mechanism to invent or propagate model-specific errors. Gate
+scalars reinforce this: during training they amplify projections that produce consistent
+cross-model updates and suppress those that appear in only one model's stream, where privately
+memorized confabulations live. The TruthfulQA results are consistent with this mechanism:
+factual accuracy improves alongside perplexity reduction across all RC topologies.
 
-Keeping memorization in frozen base models and relational alignment in bridges separates the
-two functions at the architectural level. The same structure applies to multimodal settings:
-a language model and a vision encoder, both frozen, could exchange bridge updates on their
-residual streams without modification of either.
-
-Distributed deployment is the natural next step. A specialist on an edge device and a
-generalist on a remote server would exchange hidden states at each bridge layer rather than
-full outputs, with neither model's weights exposed to the other party. Because bilateral
-coupling improves each model's individual output alongside the fused output, the edge device
-could generate useful responses independently while connected.
+**Multimodal and distributed extension.** Separating memorization from relational alignment at
+the architectural level means the same bridge structure applies beyond language pairs. A
+language model and a vision encoder, both frozen, could exchange bridge updates on their
+residual streams without modification of either. Distributed deployment follows from the same
+logic: a specialist on an edge device and a generalist on a remote server would exchange
+hidden states at each bridge layer, with neither model's weights exposed to the other party.
+Because bilateral coupling improves each model's individual output alongside the fused output,
+the edge device could generate useful responses independently while connected.
 
 ---
 
