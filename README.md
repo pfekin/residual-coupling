@@ -34,11 +34,9 @@ deployment: a specialist on an edge device and a generalist on a remote server e
 hidden states at each bridge layer, with neither model's weights exposed to the other party.
 The same bridge structure extends to multimodal settings without modification of either model.
 
-Preliminary experiments suggest that coupled systems support two modes of continued training
-beyond the initial bridge run. Unfreezing the base transformers while keeping bridges frozen
-allows the base models to be further adapted without disturbing the learned alignment.
-Keeping the transformers frozen and retraining only the bridges allows domain updating
-without touching any base weights.
+Preliminary experiments suggest that coupled systems support further training cycles with
+the transformers unfrozen and the bridges in place, allowing continued learning across the
+connected ensemble rather than in isolation.
 
 `rescoupler` is the library implementation of this architecture.
 
