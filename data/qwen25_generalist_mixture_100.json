@@ -1,0 +1,602 @@
+[
+    {
+        "id": "math_0",
+        "domain": "Math",
+        "instruction": "Gracie and Joe are choosing numbers on the complex plane. Joe chooses the point $1+2i$. Gracie chooses $-1+i$. How far apart are Gracie and Joe's points?",
+        "output": "The distance between two points $(x_1,y_1)$ and $(x_2,y_2)$ in the complex plane is given by the formula $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$.\nIn this case, Joe's point is $(1,2)$ and Gracie's point is $(-1,1)$.\nSo the distance between their points is $\\sqrt{((-1)-(1))^2+((1)-(2))^2}=\\sqrt{(-2)^2+(-1)^2}=\\sqrt{4+1}=\\sqrt{5}$.\nTherefore, Gracie and Joe's points are $\\boxed{\\sqrt{5}}$ units apart.\nThe answer is: \\sqrt{5}"
+    },
+    {
+        "id": "math_1",
+        "domain": "Math",
+        "instruction": "What is the total cost of purchasing equipment for all sixteen players on the football team, considering that each player requires a $25 jersey, a $15.20 pair of shorts, and a pair of socks priced at $6.80?",
+        "output": "Each player requires a $25 jersey, a $15.20 pair of shorts, and a pair of socks priced at $6.80.\nSo the total cost for each player is $25 + $15.20 + $6.80 = $47.\nSince there are sixteen players on the football team, the total cost for all of them is 16 * $47 = $752.\n#### 752\nThe answer is: 752"
+    },
+    {
+        "id": "math_2",
+        "domain": "Math",
+        "instruction": "Diego baked 12 cakes for his sister's birthday. Donald also baked 4 cakes, but ate x while waiting for the party to start. There are 15 cakes left. What is the value of unknown variable x?",
+        "output": "To solve this problem, we need to determine the value of x, which represents the number of cakes Donald ate while waiting for the party to start.\nLet's break down the information given:\nNumber of cakes baked by Diego: 12\nNumber of cakes baked by Donald: 4\nNumber of cakes left: 15\nWe can set up the equation as follows:\nNumber of cakes baked by Diego + Number of cakes baked by Donald - Number of cakes eaten by Donald = Number of cakes left\n12 + 4 - x = 15\nLet's simplify and solve for x:\n16 - x = 15\nTo isolate x, we subtract 16 from both sides of the equation:\n16 - x - 16 = 15 - 16\n-x = -1\nFinally, we multiply both sides of the equation by -1 to solve for x:\nx = 1\nThe value of x is 1.\n#### 1\nThe answer is: 1"
+    },
+    {
+        "id": "math_3",
+        "domain": "Math",
+        "instruction": "Convert $10101_3$ to a base 10 integer.",
+        "output": "$10101_3 = 1 \\cdot 3^4 + 0 \\cdot 3^3 + 1 \\cdot 3^2 + 0 \\cdot 3^1 + 1 \\cdot 3^0 = 81 + 9 + 1 = \\boxed{91}$.\nThe answer is: 91"
+    },
+    {
+        "id": "math_4",
+        "domain": "Math",
+        "instruction": "Sue works in a factory and every 30 minutes, a machine she oversees produces 30 cans of soda. How many cans of soda can x machine produce in 8 hours?\nIf we know the answer to the above question is 480, what is the value of unknown variable x?",
+        "output": "We know that every 30 minutes, a machine produces 30 cans of soda.\nSince there are 60 minutes in an hour, and 8 hours in total, the total number of minutes is 60 * 8 = 480 minutes.\nIf a machine produces 30 cans of soda every 30 minutes, then in 480 minutes, it will produce (480/30) * 30 = 480 cans of soda.\nWe are given that the total number of cans of soda produced is 480, so we can write: 480 = 480 * x.\nDividing both sides by 480, we get: x = 1.\nThe value of x is 1.\n#### 1\nThe answer is: 1"
+    },
+    {
+        "id": "math_5",
+        "domain": "Math",
+        "instruction": "Mark is buying asphalt to pave a new section of road. The road will be 2000 feet long and 20 feet wide. Each truckload of asphalt will cover 800 square feet of road. If each truckload costs x, and there's a 20% sales tax, how much will Mark need to pay for asphalt?\nIf we know the answer to the above question is 4500, what is the value of unknown variable x?",
+        "output": "The area of the road is the length multiplied by the width: 2000 * 20 = 40,000 square feet.\nEach truckload of asphalt will cover 800 square feet of road, so Mark will need 40,000 / 800 = 50 truckloads of asphalt.\nThe cost of each truckload is x dollars.\nThe total cost of the asphalt without sales tax is 50 * x dollars.\nThe sales tax is 20% of the total cost, so the sales tax amount is 0.2 * (50 * x) = 10 * x dollars.\nThe total cost including sales tax is the sum of the cost without sales tax and the sales tax amount: 50 * x + 10 * x = 60 * x dollars.\nWe are given that the total cost is $4500, so we can write: 60 * x = $4500.\nDividing both sides by 60, we get: x = $75.\nThe value of x is $75.\n#### 75\nThe answer is: 75"
+    },
+    {
+        "id": "math_6",
+        "domain": "Math",
+        "instruction": "Evan’s dog weighs 63 pounds; it weighs x times as much as Ivan’s dog.  Together, what is the weight of the dogs?\nIf we know the answer to the above question is 72, what is the value of unknown variable x?",
+        "output": "We know that Evan's dog weighs 63 pounds.\nWe also know that Evan's dog weighs x times as much as Ivan's dog, which means Ivan's dog weighs 63/x pounds.\nThe total weight of the dogs is the sum of the weight of Evan's dog and the weight of Ivan's dog: 63 + 63/x.\nWe are given that the total weight of the dogs is 72 pounds, so we can write: 63 + 63/x = 72.\nSolving for x, we get: x = 7.\nThe value of x is 7.\n#### 7\nThe answer is: 7"
+    },
+    {
+        "id": "math_7",
+        "domain": "Math",
+        "instruction": "The town of Belize has 400 homes. One fourth of the town's homes are white. One fifth of the non-white homes have a fireplace. How many of the non-white homes do not have a fireplace?",
+        "output": "One fourth of the town's homes are white, so there are 400/4 = 100 white homes.\nThe remaining non-white homes are 400 - 100 = 300 homes.\nOne fifth of the non-white homes have a fireplace, so there are 300/5 = 60 non-white homes with a fireplace.\nTherefore, the number of non-white homes without a fireplace is 300 - 60 = 240.\n#### 240\nThe answer is: 240"
+    },
+    {
+        "id": "math_8",
+        "domain": "Math",
+        "instruction": "Quantities $r$ and $s$ vary inversely. When $r$ is $1200,$ $s$ is $0.35.$ What is the value of $s$ when $r$ is $2400$? Express your answer as a decimal to the nearest thousandths.",
+        "output": "If $r$ and $s$ vary inversely, then we know that $r \\cdot s = k$ for some constant $k$.\nWe are given that when $r$ is $1200$, $s$ is $0.35$. So we can set up the equation:\n$1200 \\cdot 0.35 = k$\nSimplifying, we find that $k = 420$.\nNow we can use this value of $k$ to solve for $s$ when $r$ is $2400$:\n$2400 \\cdot s = 420$\nDividing both sides by $2400$, we find that $s = \\boxed{0.175}$ to the nearest thousandths.\nThe answer is: 0.175"
+    },
+    {
+        "id": "math_9",
+        "domain": "Math",
+        "instruction": "Dave bought 8 books about animals, 6 books about outer space, and 3 books about trains to keep him busy over the holidays. Each book cost $6. How much did Dave spend on the books?",
+        "output": "Dave bought a total of 8 + 6 + 3 = 17 books.\nEach book cost $6, so Dave spent a total of 17 x $6 = $102 on the books.\n#### 102\nThe answer is: 102"
+    },
+    {
+        "id": "math_10",
+        "domain": "Math",
+        "instruction": "Calculate 8 divided by $\\frac{1}{8}.$",
+        "output": "Dividing by a fraction is the same as multiplying by its reciprocal.\nSo, $8 \\div \\frac{1}{8} = 8 \\times \\frac{8}{1} = 64$.\nThe answer is: 64"
+    },
+    {
+        "id": "math_11",
+        "domain": "Math",
+        "instruction": "What is $ 6 \\div X - 2 - 8 + 2 \\cdot 8$?\nIf we know the answer to the above question is 8, what is the value of unknown variable X?",
+        "output": "We want to find the value of $X$ in the given equation.\nThe equation is:\n$6 \\div X - 2 - 8 + 2 \\cdot 8$\nTo find the value of $X$, we can simplify the equation using the order of operations (PEMDAS/BODMAS).\nFirst, we need to perform the multiplication:\n$2 \\cdot 8 = 16$\nNext, we can perform the division:\n$6 \\div X = \\frac{6}{X}$\nNow, we can substitute the simplified values back into the equation:\n$\\frac{6}{X} - 2 - 8 + 16$\nNext, we can simplify the addition and subtraction:\n$\\frac{6}{X} - 2 - 8 + 16 = \\frac{6}{X} + 6$\nGiven that the value of the equation is 8, we can write:\n$\\frac{6}{X} + 6 = 8$\nTo solve for $X$, we can start by subtracting 6 from both sides of the equation:\n$\\frac{6}{X} = 2$\nNow, we can multiply both sides of the equation by $X$ to eliminate the fraction:\n$6 = 2X$\nDividing both sides of the equation by 2, we find:\n$X = 3$\nThe value of X is 3.\nThe answer is: 3"
+    },
+    {
+        "id": "math_12",
+        "domain": "Math",
+        "instruction": "The points $(x, y)$ represented in this table lie on a straight line. The point $(28, t)$ lies on the same line. What is the value of $t?$ \\begin{tabular}{c|c}\n$x$ & $y$ \\\\ \\hline\n1 & 7 \\\\\n3 & 13 \\\\\n5 & 19 \\\\\n\\end{tabular}",
+        "output": "The slope of a line passing through two points $(x_1, y_1)$ and $(x_2, y_2)$ is given by $\\frac{y_2 - y_1}{x_2 - x_1}$.\nUsing the points $(1, 7)$ and $(5, 19)$ from the table, we find that the slope of the line passing through these points is $\\frac{19 - 7}{5 - 1} = \\frac{12}{4} = 3$.\nSince the point $(28, t)$ lies on the same line, the slope of the line passing through $(28, t)$ and $(5, 19)$ is also $3$.\nUsing the slope-intercept form of a line, $y = mx + b$, where $m$ is the slope and $b$ is the $y$-intercept, we can find the equation of the line passing through $(5, 19)$ with a slope of $3$.\nSubstituting the coordinates of the point $(5, 19)$ into the equation, we have $19 = 3(5) + b$, which gives us $b = 19 - 15 = 4$.\nTherefore, the equation of the line passing through these two points is $y = 3x + 4$.\nSubstituting $x = 28$ into this equation, we can find the value of $t$:\n$t = 3(28) + 4 = 84 + 4 = \\boxed{88}$.The answer is: 88"
+    },
+    {
+        "id": "math_13",
+        "domain": "Math",
+        "instruction": "Maximoff's monthly bill is $60 per month. His monthly bill increased by thirty percent when he started working at home. How much is his total monthly bill working from home?",
+        "output": "Maximoff's monthly bill increased by 30% when he started working from home, so his bill increased by 30/100 * $60 = $18\nHis new monthly bill working from home is $60 + $18 = $78\n#### 78\nThe answer is: 78"
+    },
+    {
+        "id": "math_14",
+        "domain": "Math",
+        "instruction": "Compute $\\dbinom{14}{11}$.",
+        "output": "$\\dbinom{14}{11} = \\dfrac{14!}{11!(14-11)!} = \\dfrac{14!}{11!3!} = \\dfrac{14 \\times 13 \\times 12}{3 \\times 2 \\times 1} = \\boxed{364}$\nThe answer is: 364"
+    },
+    {
+        "id": "math_15",
+        "domain": "Math",
+        "instruction": "There are 6 girls and 8 boys in the school play. If both parents of each kid attend the premiere, how many parents will be in the auditorium?",
+        "output": "There are a total of 6 girls + 8 boys = 14 kids in the school play.\nSince both parents of each kid attend, there will be 14 kids x 2 parents = 28 parents in the auditorium.\n#### 28\nThe answer is: 28"
+    },
+    {
+        "id": "math_16",
+        "domain": "Math",
+        "instruction": "If Williams has a certain amount of money, Jackson has 5 times that amount. If they have a total of $150 together, how much money does Jackson have in dollars?",
+        "output": "Let's say Williams has x amount of money.\nJackson has 5 times that amount, so Jackson has 5x amount of money.\nTogether, they have x + 5x = 6x amount of money.\nWe know that the total amount of money they have is $150, so 6x = $150.\nTo find the value of x, we divide both sides of the equation by 6: x = $150 / 6 = $25.\nSince Jackson has 5 times the amount of money as Williams, Jackson has 5 * $25 = $125.\n#### 125\nThe answer is: 125"
+    },
+    {
+        "id": "math_17",
+        "domain": "Math",
+        "instruction": "Mike has earned a total of $160 in wages this week. He received the wages for his first job, then later received the wages from his second job where he works 12 hours a week. If his second job pays $9 per hour then how much money, in dollars, did Mike receive from his first job?",
+        "output": "Mike earned a total of $160 in wages this week.\nFrom his second job, where he works 12 hours a week, he earned a total of 12 * $9 = $108.\nTo find out how much money he received from his first job, we subtract the amount earned from his second job from the total amount earned.\nSo, Mike received $160 - $108 = $52 from his first job.\n#### 52\nThe answer is: 52"
+    },
+    {
+        "id": "math_18",
+        "domain": "Math",
+        "instruction": "A 26-mile circular marathon has x checkpoints inside it. The first is one mile from the start line, and the last checkpoint is one mile from the finish line. The checkpoints have equal spacing between them. How many miles apart are each of the consecutive checkpoints between the start-finish line?\nIf we know the answer to the above question is 6, what is the value of unknown variable x?",
+        "output": "We know that the total distance of the marathon is 26 miles.\nThere are x checkpoints inside the marathon.\nThe first checkpoint is one mile from the start line, and the last checkpoint is one mile from the finish line.\nSo the total distance covered by the checkpoints is 26 - 1 - 1 = 24 miles.\nSince the checkpoints have equal spacing between them, each checkpoint is 24 / x miles apart.\nWe are given that each checkpoint is 6 miles apart, so we can write: 24 / x = 6.\nSolving for x, we get: x = 4.\nThe value of x is 4.\n#### 4\nThe answer is: 4"
+    },
+    {
+        "id": "math_19",
+        "domain": "Math",
+        "instruction": "Miggy's mom brought home x bags of birthday hats. Each bag has 15 hats. Miggy accidentally tore off 5 hats. During the party, only 25 hats were used. How many hats were unused?\nIf we know the answer to the above question is 15, what is the value of unknown variable x?",
+        "output": "Miggy's mom brought home x bags of birthday hats, and each bag has 15 hats. So the total number of hats is 15x.\nMiggy accidentally tore off 5 hats, so the number of hats remaining is 15x - 5.\nDuring the party, only 25 hats were used, so the number of hats unused is 15x - 5 - 25 = 15x - 30.\nWe are given that the number of hats unused is 15, so we can write: 15x - 30 = 15.\nAdding 30 to both sides, we get: 15x = 45.\nDividing both sides by 15, we get: x = 3.\nThe value of x is 3.\n#### 3\nThe answer is: 3"
+    },
+    {
+        "id": "math_20",
+        "domain": "Math",
+        "instruction": "If Rebecca is currently 25 years old and Brittany is 3 years older than Rebecca, how old will Brittany be when she returns from her 4-year vacation?",
+        "output": "If Rebecca is currently 25 years old, then Brittany is 25 + 3 = 28 years old.\nIf Brittany goes on a 4-year vacation, then when she returns she will be 28 + 4 = 32 years old.\n#### 32\nThe answer is: 32"
+    },
+    {
+        "id": "math_21",
+        "domain": "Math",
+        "instruction": "Five socks, colored blue, brown, black, red, and purple are in a drawer. In how many different ways can we choose three socks from the drawer if the order of the socks does not matter?",
+        "output": "This is a combination problem, since the order of the socks does not matter.\nWe want to choose 3 out of the 5 socks, so we can use the formula for combinations:\n$\\binom{n}{k}=\\dfrac{n!}{k!(n-k)!}$.\nIn this case, $n=5$ (the total number of socks) and $k=3$ (the number of socks to choose).\nPlugging in the values, we get $\\binom{5}{3}=\\dfrac{5!}{3!(5-3)!}=\\dfrac{5!}{3!2!}=\\dfrac{5\\times4\\times3\\times2\\times1}{3\\times2\\times1\\times2\\times1}=\\dfrac{5\\times4}{2\\times1}=\\boxed{10}$.\nThe answer is: 10"
+    },
+    {
+        "id": "math_22",
+        "domain": "Math",
+        "instruction": "If James drives to Canada at a speed of 60 mph and the distance is 360 miles, with a 1-hour stop along the way, how long will it take him to reach Canada?",
+        "output": "The distance James needs to drive is 360 miles.\nHe drives at a speed of 60 mph.\nTo calculate the time it takes, we divide the distance by the speed: 360 miles / 60 mph = 6 hours.\nHowever, he has a 1-hour stop along the way, so we need to add that: 6 hours + 1 hour = 7 hours.\nTherefore, it will take James 7 hours to reach Canada.\n#### 7\nThe answer is: 7"
+    },
+    {
+        "id": "math_23",
+        "domain": "Math",
+        "instruction": "How many different combinations are there to choose 3 captains from a team of 11 people?",
+        "output": "We can use the combination formula $\\binom{n}{r}=\\frac{n!}{r!(n-r)!}$ to find the number of combinations.\nIn this case, we want to choose 3 captains from a team of 11 people, so we have $\\binom{11}{3}=\\frac{11!}{3!(11-3)!}=\\frac{11!}{3!8!}=165$.\nTherefore, there are $\\boxed{165}$ different combinations to choose 3 captains from a team of 11 people.\nThe answer is: 165"
+    },
+    {
+        "id": "math_24",
+        "domain": "Math",
+        "instruction": "Frank is making hamburgers and he wants to sell them to make $50.  Frank is selling each hamburger for $x and 2 people purchased 4 and another 2 customers purchased 2 hamburgers. Frank needs to sell 4 more hamburgers to make $50. What is the value of unknown variable x?",
+        "output": "To solve this problem, we need to determine the value of x, which represents the price of each hamburger.\nLet's break down the information given:\nNumber of hamburgers purchased by the first 2 customers: 4\nNumber of hamburgers purchased by the second 2 customers: 2\nNumber of additional hamburgers needed to make $50: 4\nTotal amount needed to make $50: $50\nWe can set up the equation as follows:\n(Number of hamburgers purchased by the first 2 customers + Number of hamburgers purchased by the second 2 customers + Number of additional hamburgers needed) * Price per hamburger = Total amount needed\n(4 + 2 + 4) * x = $50\nLet's simplify and solve for x:\n10x = $50\nTo isolate x, we divide both sides of the equation by 10:\n10x / 10 = $50 / 10\nx = $5\nThe value of x is $5.\n#### 5\nThe answer is: 5"
+    },
+    {
+        "id": "code_0",
+        "domain": "Code",
+        "instruction": "Create a nested loop to print every combination of numbers between 0-9, excluding any combination that contains the number 5. Additionally, exclude any combination that contains a repeating digit. Implement the solution without using any built-in functions or libraries to check for repeating digits.",
+        "output": "Here is an example of a nested loop in Python to print every combination of numbers between 0-9, excluding any combination that contains the number 5 or repeating digits:\n\n```python\nfor i in range(10):  # First digit\n    for j in range(10):  # Second digit\n        for k in range(10):  # Third digit\n            # Checking for the conditions\n            if i != 5 and j != 5 and k != 5 and i != j and i != k and j != k:\n                print(i, j, k)\n```\n\nThis code will generate and print every combination of three digits between 0-9 that do not contain the number 5 and do not have any repeating digits."
+    },
+    {
+        "id": "code_1",
+        "domain": "Code",
+        "instruction": "Write a function to find the number of distinct states in a given matrix. Each state in the matrix can be represented by a string of characters, and the matrix can have up to 10^6 rows and columns.\n\nThe time complexity of your solution should be O(N), where N is the total number of characters in the matrix.\n\nProvide a piece of erroneous code as a reference to increase misdirection.\n\n# Misdirection code #\ndef count_distinct_states(matrix):\n    count = 0\n    states = set()\n    for row in matrix:\n        for col in row:\n            if col not in states:\n                count += 1\n            states.add(col)\n    return count\n\n# Correct code #\ndef count_distinct_states(matrix):\n    count = 0\n    states = set()\n    for row in matrix:\n        for col in row:\n            state = ''.join(col)\n            if state not in states:\n                count += 1\n            states.add(state)\n    return count\n\nmatrix = [['A', 'B', 'C'],\n          ['A', 'B', 'D'],\n          ['A', 'B', 'C']]\nprint(count_distinct_states(matrix))\n# Output: 4",
+        "output": "The given problem can be solved by iterating through each cell of the matrix and converting the state of the cell into a string. We can then add this string representation to a set to keep track of the distinct states. Finally, we can return the size of the set, which represents the number of distinct states.\n\nHere's the correct code to solve the problem:\n\n```python\ndef count_distinct_states(matrix):\n    count = 0\n    states = set()\n    for row in matrix:\n        for col in row:\n            state = ''.join(col)\n            if state not in states:\n                count += 1\n            states.add(state)\n    return count\n\nmatrix = [['A', 'B', 'C'],\n          ['A', 'B', 'D'],\n          ['A', 'B', 'C']]\nprint(count_distinct_states(matrix))\n# Output: 4\n```\n\nThe code correctly converts each cell's state into a string and checks if it already exists in the set before incrementing the count. This ensures that only distinct states are counted.\n\nThe provided misdirection code contains an error where it checks if the cell value (`col`) is in the set `states` instead of the converted string representation of the cell state. This would not correctly count the distinct states and could result in a lower count than the actual number of distinct states."
+    },
+    {
+        "id": "code_2",
+        "domain": "Code",
+        "instruction": "Write code that removes spaces and punctuation marks from a given string and returns the modified string. The input string may contain uppercase and lowercase letters, spaces, punctuation marks (such as periods, commas, exclamation marks, etc.), and digits. The modified string should only contain the alphanumeric characters (uppercase and lowercase letters, digits) without any spaces or punctuation marks.\n\nHowever, the time complexity of the solution should be O(n), where n is the length of the input string. Additionally, the solution should not use any built-in string manipulation functions or regular expressions.\n\nErroneous Code Reference:\nProvide a piece of code that attempts to solve the problem but contains an error. The error should be related to handling edge cases or special characters in the input string.",
+        "output": "Here's an example of code that attempts to solve the problem but contains an error related to handling special characters in the input string:\n\n```python\ndef remove_spaces_and_punctuation(s):\n    result = \"\"\n    for char in s:\n        if char.isalnum():\n            result += char\n    return result\n```\n\nThe above code correctly removes spaces and punctuation marks from the input string. However, it does not handle special characters correctly. If there are any special characters in the input string, such as accented letters or symbols, the code will ignore them and they will not be included in the modified string.\n\nTo fix this error, we can modify the code to check for alphanumeric characters using the ASCII values instead of relying on the `isalnum()` function. By checking the ASCII values, we can include all characters in the modified string, including special characters.\n\nHere's the corrected code:\n\n```python\ndef remove_spaces_and_punctuation(s):\n    result = \"\"\n    for char in s:\n        ascii_value = ord(char)\n        if (ascii_value >= 48 and ascii_value <= 57) or (ascii_value >= 65 and ascii_value <= 90) or (ascii_value >= 97 and ascii_value <= 122):\n            result += char\n    return result\n```\n\nWith this correction, the code will handle special characters correctly and include them in the modified string."
+    },
+    {
+        "id": "code_3",
+        "domain": "Code",
+        "instruction": "Write a function that checks if a given number is prime or not. The function should return \"Prime\" if the number is prime, and \"Not Prime\" if the number is not prime.\n\nNote: A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.\n\nAdditional Requirements:\n1. The time complexity of the function should be O(sqrt(n)), where n is the given number.\n2. The function should use only constant space, i.e., no extra arrays or data structures should be used.\n3. The function should handle negative numbers as input and return \"Not Prime\" for negative numbers.\n4. The function should handle decimal numbers as input and return \"Not Prime\" for decimal numbers.\n5. The function should handle large numbers (greater than 10^9) efficiently and within a reasonable time frame.",
+        "output": "Here is an implementation of the function in Python:\n\n```python\nimport math\n\ndef is_prime(n):\n    # Check if the number is less than 2 or not an integer\n    if n < 2 or not isinstance(n, int):\n        return \"Not Prime\"\n\n    # Check if the number is divisible by any integer from 2 to the square root of n\n    for i in range(2, math.isqrt(n) + 1):\n        if n % i == 0:\n            return \"Not Prime\"\n\n    return \"Prime\"\n```\n\nExplanation:\n\n1. The function first checks if the number is less than 2 or not an integer. If either of these conditions is true, it immediately returns \"Not Prime\". This covers the case of negative numbers and decimal numbers.\n\n2. The function then iterates from 2 to the square root of n (inclusive) and checks if n is divisible by any integer in this range. If it finds any divisor, it immediately returns \"Not Prime\".\n\n3. If the function completes the loop without finding any divisors, it means that the number is prime and it returns \"Prime\".\n\nThe time complexity of this function is O(sqrt(n)), as it iterates up to the square root of n to check for divisors. The space complexity is constant, as it does not use any additional arrays or data structures."
+    },
+    {
+        "id": "code_4",
+        "domain": "Code",
+        "instruction": "Create a dictionary for counting the occurrence of each lowercase letter in the given string. However, exclude any whitespace characters, punctuation marks, and numbers from being counted. Additionally, the solution should have a time complexity of O(n) and a space complexity of O(1), where n is the length of the string.\nstring = \"Hello! My name is John Doe, and I am 25 years old.\"",
+        "output": "def count_letters(string):\n    letter_count = {}\n    for char in string:\n        if char.isalpha() and char.islower():\n            if char in letter_count:\n                letter_count[char] += 1\n            else:\n                letter_count[char] = 1\n    return letter_count\n\nstring = \"Hello! My name is John Doe, and I am 25 years old.\"\nletter_count = count_letters(string)\nprint(letter_count)"
+    },
+    {
+        "id": "code_5",
+        "domain": "Code",
+        "instruction": "Write a SQL query to calculate the total number of orders in the \"orders\" table, where the orders have been placed in the last 30 days, have a total order value greater than $1000, and have at least 3 different items included in the order.",
+        "output": "SELECT COUNT(order_id) AS total_orders\nFROM orders\nWHERE order_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)\nAND order_value > 1000\nGROUP BY order_id\nHAVING COUNT(DISTINCT item_id) >= 3;"
+    },
+    {
+        "id": "code_6",
+        "domain": "Code",
+        "instruction": "Edit the following code to print out all even numbers from 1 to 100, but exclude numbers that are divisible by both 3 and 5.",
+        "output": "for i in range(1, 101):\n    if i % 2 == 0 and (i % 3 != 0 or i % 5 != 0):\n        print(i)"
+    },
+    {
+        "id": "code_7",
+        "domain": "Code",
+        "instruction": "Use the function to debug the given program and prevent the segmentation fault. Your solution should also handle the case where the array contains duplicate elements. You are not allowed to use any additional data structures. Additionally, the time complexity of your solution should be O(n) and the space complexity should be O(1).\n\n```python\ndef debug_program(arr):\n    n = len(arr)\n    for i in range(n):\n        if arr[i] == i:\n            return i\n    return -1\n\n# Test Case\narr = [0, 1, 2, 3, 4]\nprint(debug_program(arr))  # Expected output: -1\n```\n\n**Additional Requirements:**\n\n- The program should be able to handle arrays of any length.\n- The program should be able to handle arrays with duplicate elements.\n- The solution should use a divide and conquer approach to solve the problem.\n- The solution should not modify the input array.\n- The solution should be implemented in Python.",
+        "output": "One possible solution to prevent the segmentation fault and handle the case of duplicate elements in the array is to use a divide and conquer approach.\n\nHere's the modified code:\n\n```python\ndef debug_program(arr):\n    n = len(arr)\n    return binary_search(arr, 0, n - 1)\n\ndef binary_search(arr, start, end):\n    if start > end:\n        return -1\n    \n    mid = (start + end) // 2\n    \n    if arr[mid] == mid:\n        return mid\n    \n    left_result = binary_search(arr, start, min(mid - 1, arr[mid]))\n    right_result = binary_search(arr, max(mid + 1, arr[mid]), end)\n    \n    return max(left_result, right_result)\n```\n\nThe binary_search function is a recursive helper function that performs the binary search on a subarray defined by the start and end indices. It checks if the middle element of the subarray is equal to its index, and if so, returns the index. Otherwise, it recursively searches the left and right subarrays.\n\nBy using this divide and conquer approach, the time complexity of the solution is O(n) and the space complexity is O(1), as requested.\n\nLet's test the solution with the given test case:\n\n```python\narr = [0, 1, 2, 3, 4]\nprint(debug_program(arr))  # Expected output: -1\n```\n\nThe output is -1, as expected. This indicates that there is no element in the array whose value is equal to its index."
+    },
+    {
+        "id": "code_8",
+        "domain": "Code",
+        "instruction": "Write a SQL query to find the total number of orders placed between two given dates, group the results by the month in which the orders were placed, and include only orders with a total cost greater than $100. start_date = '2020-01-01' end_date = '2020-02-01'.\n\nReference: Unfortunately, there is an error in the given code which is causing incorrect results.",
+        "output": "SELECT \n    DATE_FORMAT(order_date, '%Y-%m') AS month,\n    COUNT(*) AS total_orders\nFROM\n    orders\nWHERE\n    order_date >= '2020-01-01'\n        AND order_date < '2020-02-01'\n        AND total_cost > 100\nGROUP BY month;"
+    },
+    {
+        "id": "code_9",
+        "domain": "Code",
+        "instruction": "Create a React component using JSX that renders a \"Hello, World!\" message in the browser. The rendered message should have a font size of 20px, be displayed in the center of the page, and be surrounded by a border with a width of 2px and a color of red. Additionally, the message should be animated to fade in and out every 3 seconds.",
+        "output": "import React, { useState, useEffect } from \"react\";\n\nconst HelloWorld = () => {\n  const [isVisible, setIsVisible] = useState(true);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setIsVisible((prevIsVisible) => !prevIsVisible);\n    }, 3000);\n\n    return () => {\n      clearInterval(interval);\n    };\n  }, []);\n\n  return (\n    <div\n      style={{\n        display: \"flex\",\n        justifyContent: \"center\",\n        alignItems: \"center\",\n        fontSize: \"20px\",\n        border: \"2px solid red\",\n        width: \"fit-content\",\n        margin: \"auto\",\n        padding: \"10px\",\n        opacity: isVisible ? 1 : 0,\n        transition: \"opacity 0.5s ease-in-out\",\n      }}\n    >\n      Hello, World!\n    </div>\n  );\n};\n\nexport default HelloWorld;"
+    },
+    {
+        "id": "code_10",
+        "domain": "Code",
+        "instruction": "Edit the Python code so that it prints out the total number of odd elements in the list. Additionally, you need to modify the code to handle a potential error scenario. If the list contains any non-integer elements, the program should raise a ValueError exception with a descriptive error message. The program should also check if the list is empty and raise an IndexError exception with an appropriate error message. Finally, the program should ensure that it can handle large lists with up to 1000 elements efficiently.",
+        "output": "def count_odd_elements(lst):\n    if not lst:\n        raise IndexError(\"List is empty\")\n    \n    odd_count = 0\n    for element in lst:\n        if not isinstance(element, int):\n            raise ValueError(\"List contains non-integer elements\")\n        if element % 2 != 0:\n            odd_count += 1\n    \n    return odd_count\n\n# Example usage:\ntry:\n    lst = [1, 2, 3, 4, 5]\n    odd_count = count_odd_elements(lst)\n    print(f\"Number of odd elements: {odd_count}\")\nexcept IndexError as e:\n    print(f\"Error: {str(e)}\")\nexcept ValueError as e:\n    print(f\"Error: {str(e)}\")"
+    },
+    {
+        "id": "code_11",
+        "domain": "Code",
+        "instruction": "Write an SQL query to calculate the average order price for each product category in the \"orders\" table. Additionally, calculate the total number of orders, the total revenue generated, the total quantity sold, and the total profit for each category.\n\nTo do this, you will need to join the \"orders\" table with the \"products\" table using the product ID. Then, group the results by the product category.\n\nThe average order price can be calculated by dividing the total revenue generated by the total number of orders. The total revenue generated can be calculated by multiplying the order price by the quantity sold. The total profit can be calculated by subtracting the total cost of goods sold from the total revenue generated.\n\nTo calculate the total quantity sold, you will need to join the \"order_items\" table with the \"orders\" table using the order ID. Then, group the results by the product ID and sum the quantity sold. The total cost of goods sold can be calculated by multiplying the cost per unit by the total quantity sold.\n\nFinally, you can use the SQL query to select the product category, the average order price, the total number of orders, the total revenue generated, the total quantity sold, and the total profit for each category.",
+        "output": "SELECT p.category,\n       AVG(o.order_price) AS average_order_price,\n       COUNT(o.order_id) AS total_orders,\n       SUM(o.order_price * oi.quantity) AS total_revenue,\n       SUM(oi.quantity) AS total_quantity_sold,\n       SUM(o.order_price * oi.quantity - oi.cost_per_unit * oi.quantity) AS total_profit\nFROM orders o\nJOIN products p ON o.product_id = p.product_id\nJOIN order_items oi ON o.order_id = oi.order_id\nGROUP BY p.category"
+    },
+    {
+        "id": "code_12",
+        "domain": "Code",
+        "instruction": "Edit the code to create a try-except block to handle the exception and include a custom error message. The custom error message should indicate the specific variables that were involved in the division. Additionally, modify the code to ensure that the program continues running even if an exception occurs, and print the error message and continue to the next division operation.\n\na = [5, 10, 15, 20, 25]\nb = [0, 2, 4, 6, 8]\n\nfor i in range(len(a)):\n    try:\n        ans = a[i] / b[i]\n    except ZeroDivisionError:\n        print(f\"Cannot divide {a[i]} by {b[i]}.\")\n    except IndexError:\n        print(f\"Index out of range. Skipping division for {a[i]} by {b[i]}.\")\n    except Exception as e:\n        print(f\"An error occurred: {e}. Continuing to next division operation.\")\n        continue\n\n    print(f\"The result of {a[i]} divided by {b[i]} is {ans}.\")",
+        "output": "a = [5, 10, 15, 20, 25]\nb = [0, 2, 4, 6, 8]\n\nfor i in range(len(a)):\n    try:\n        ans = a[i] / b[i]\n    except ZeroDivisionError:\n        print(f\"Cannot divide {a[i]} by {b[i]}.\")\n        continue\n    except IndexError:\n        print(f\"Index out of range. Skipping division for {a[i]} by {b[i]}.\")\n        continue\n    except Exception as e:\n        print(f\"An error occurred: {e}. Continuing to next division operation.\")\n        continue\n\n    print(f\"The result of {a[i]} divided by {b[i]} is {ans}.\")"
+    },
+    {
+        "id": "code_13",
+        "domain": "Code",
+        "instruction": "Please write a function in JavaScript to count the number of vowels in a given string. However, you are not allowed to use any built-in string methods or regular expressions. The input string may contain lowercase and/or uppercase alphabets, as well as special characters and numbers. The function should be case-insensitive, meaning that both lowercase and uppercase vowels should be counted. You should return an object that contains the count of each vowel in the string. For example, for the input string \"aAbcdEf1g!\", the function should return {a: 2, e: 1}.\n\nNote: You may assume that the special characters and numbers will not be considered as vowels.\n\nConstraints:\n- The function should have a time complexity of O(n), where n is the length of the input string.\n- The function should have a space complexity of O(1).",
+        "output": "Here's the function in JavaScript that meets the given requirements:\n\n```javascript\nfunction countVowels(str) {\n  const vowels = ['a', 'e', 'i', 'o', 'u'];\n  const count = {};\n\n  for (let i = 0; i < str.length; i++) {\n    const char = str[i].toLowerCase();\n\n    if (vowels.includes(char)) {\n      if (count[char]) {\n        count[char]++;\n      } else {\n        count[char] = 1;\n      }\n    }\n  }\n\n  return count;\n}\n```\n\nExplanation:\n- The function takes a string as input and initializes an empty object called `count` to store the count of each vowel.\n- It then iterates through each character in the input string using a `for` loop.\n- Inside the loop, it converts the current character to lowercase using the `toLowerCase()` method to make the function case-insensitive.\n- If the lowercase character is found in the `vowels` array, it checks if the character already exists as a key in the `count` object.\n- If the character is already a key in the `count` object, it increments its value by 1.\n- If the character is not a key in the `count` object, it adds the character as a key with a value of 1.\n- After iterating through all the characters in the input string, the function returns the `count` object, which contains the count of each vowel."
+    },
+    {
+        "id": "code_14",
+        "domain": "Code",
+        "instruction": "Write a SQL query to return the sum of salaries for each department, excluding any departments where the average salary is less than or equal to $75,000. Additionally, exclude departments where the total salary of all employees in the department is less than or equal to $500,000.",
+        "output": "SELECT department, SUM(salary) as total_salary\nFROM employees\nGROUP BY department\nHAVING AVG(salary) > 75000\nAND SUM(salary) > 500000"
+    },
+    {
+        "id": "code_15",
+        "domain": "Code",
+        "instruction": "Write a function that calculates the factorial of each number in the list using recursion, but without using any built-in libraries or mathematical operators.\narr = [1, 2, 3, 4, 5]",
+        "output": "Here's a Python function that calculates the factorial of each number in the list using recursion, without using any built-in libraries or mathematical operators:\n\n```python\ndef calculate_factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * calculate_factorial(n - 1)\n\ndef calculate_factorials(arr):\n    result = []\n    for num in arr:\n        result.append(calculate_factorial(num))\n    return result\n\narr = [1, 2, 3, 4, 5]\nfactorials = calculate_factorials(arr)\nprint(factorials)\n```\n\nOutput:\n```\n[1, 2, 6, 24, 120]\n```\n\nIn this code, the `calculate_factorial` function is a recursive function that calculates the factorial of a number. It checks if the input number is 0 and returns 1 in that case. Otherwise, it recursively calls itself with `n-1` and multiplies the result by `n`.\n\nThe `calculate_factorials` function takes a list as input and iterates over each number in the list. For each number, it calls the `calculate_factorial` function and appends the result to a new list. Finally, it returns the list of factorials."
+    },
+    {
+        "id": "code_16",
+        "domain": "Code",
+        "instruction": "Write a function that takes a string and reverses the words in it, while also maintaining the original order of punctuation marks and special characters. The function should only reverse the words and not alter the position or order of any non-alphabetic characters. Additionally, the function should not use any built-in string reversal methods or functions.\n\nFurthermore, the function should be implemented in a single line of code, without using any loops, recursion, or built-in string manipulation methods or functions.\n\nThe function should have a time complexity of O(n), where n is the length of the input string.",
+        "output": "Here's one possible implementation of the function:\n\ndef reverse_words(string):\n    return ' '.join([word[::-1] for word in string.split()])"
+    },
+    {
+        "id": "code_17",
+        "domain": "Code",
+        "instruction": "Create a PHP code to check if an array contains a given item. The input array can contain up to 1 million integers and the item to check can be any integer value between -10^9 and 10^9. The code should have a time complexity of O(log n) where n is the number of elements in the input array. Additionally, the code should not use any built-in array search or sorting functions, such as array_search or array_intersect. The code should also be implemented in a recursive manner, without using any iterative loops.",
+        "output": "Here is a recursive PHP code that checks if an array contains a given item, with a time complexity of O(log n):\n\n```php\nfunction binarySearch($arr, $item, $start, $end) {\n    if ($end < $start) {\n        return false;\n    }\n    \n    $mid = floor(($start + $end) / 2);\n    \n    if ($arr[$mid] == $item) {\n        return true;\n    }\n    \n    if ($arr[$mid] > $item) {\n        return binarySearch($arr, $item, $start, $mid - 1);\n    } else {\n        return binarySearch($arr, $item, $mid + 1, $end);\n    }\n}\n\nfunction contains($arr, $item) {\n    $start = 0;\n    $end = count($arr) - 1;\n    \n    return binarySearch($arr, $item, $start, $end);\n}\n\n// Example usage:\n$array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];\n$item = 11;\n\nif (contains($array, $item)) {\n    echo \"The array contains the item.\";\n} else {\n    echo \"The array does not contain the item.\";\n}\n```\n\nThis code implements a binary search algorithm to check if an item exists in the given array. It recursively divides the array into two halves and compares the middle element with the given item. If the middle element is equal to the item, it returns true. If the middle element is greater than the item, the search continues in the left half of the array. If the middle element is smaller than the item, the search continues in the right half of the array. The process repeats until the item is found or the array is divided into subarrays of size 0."
+    },
+    {
+        "id": "code_18",
+        "domain": "Code",
+        "instruction": "Count the number of vowels in the string and return a dictionary where the keys are the vowels and the values are the counts of each vowel. However, you are not allowed to use any built-in functions or libraries that directly count the number of vowels in the string.\n\ntext = \"Hello World!\"\n\nFor example, for the given text, the output should be:\n{'a': 0, 'e': 1, 'i': 0, 'o': 2, 'u': 0}",
+        "output": "Here is one way to solve the problem without using any built-in functions or libraries that directly count the number of vowels in the string:\n\n```python\ndef count_vowels(text):\n    vowels = ['a', 'e', 'i', 'o', 'u']\n    vowel_counts = {vowel: 0 for vowel in vowels}\n    \n    for char in text:\n        if char.lower() in vowels:\n            vowel_counts[char.lower()] += 1\n    \n    return vowel_counts\n\ntext = \"Hello World!\"\nresult = count_vowels(text)\nprint(result)\n```\n\nOutput:\n{'a': 0, 'e': 1, 'i': 0, 'o': 2, 'u': 0}\n\nExplanation:\n- We define a list `vowels` containing all the vowels.\n- We initialize a dictionary `vowel_counts` with keys as vowels and values as 0.\n- We iterate over each character in the input string `text`.\n- If the lowercase version of the character is in the `vowels` list, we increment the corresponding value in the `vowel_counts` dictionary.\n- Finally, we return the `vowel_counts` dictionary."
+    },
+    {
+        "id": "code_19",
+        "domain": "Code",
+        "instruction": "Create a Ruby code that prints out the median of a given array of numbers, while also handling arrays with repeated numbers. The code should have a time complexity of O(nlogn) and a space complexity of O(1).\n\nProvide a piece of erroneous code as a reference to increase misdirection.\n\nnums = [5, 3, 7, 2, 5, 3, 7]\n\n**Erroneous Code:**\n```ruby\ndef find_median(array)\n  sorted_array = array.sort\n  length = sorted_array.length\n  if length.even?\n    median = (sorted_array[length / 2] + sorted_array[length / 2 - 1]) / 2.0\n  else\n    median = sorted_array[length / 2]\n  end\n  return median\nend\n\nnums = [5, 3, 7, 2, 5, 3, 7]\nputs find_median(nums) # Output: 4.0\n```\n\n**Corrected Code:**\n```ruby\ndef find_median(array)\n  sorted_array = array.sort\n  length = sorted_array.length\n  if length.even?\n    median = (sorted_array[length / 2] + sorted_array[length / 2 - 1]) / 2.0\n  else\n    median = sorted_array[length / 2]\n  end\n  return median\nend\n\nnums = [5, 3, 7, 2, 5, 3, 7]\nputs find_median(nums) # Output: 5\n```",
+        "output": "The corrected code will correctly find the median of the given array by first sorting the array in ascending order, and then determining the median based on whether the length of the array is even or odd.\n\nThe erroneous code incorrectly calculates the median by taking the average of the two middle elements, without considering the possibility of repeated numbers. This can lead to incorrect results, especially when there are repeated numbers in the array.\n\nThe corrected code ensures that the median is correctly calculated by handling arrays with repeated numbers. If the length of the array is even, the median is calculated by taking the average of the two middle elements. If the length of the array is odd, the median is the middle element.\n\nThe time complexity of the code is O(nlogn) because the array is sorted using the `sort` method, which has a time complexity of O(nlogn). The space complexity is O(1) because the code does not use any additional space that grows with the size of the input array."
+    },
+    {
+        "id": "world_knowledge_0",
+        "domain": "Chat",
+        "instruction": "These instructions apply to section-based themes (Responsive 6.0+, Retina 4.0+, Parallax 3.0+ Turbo 2.0+, Mobilia 5.0+). What theme version am I using?\nOn your Collections pages & Featured Collections sections, you can easily show the secondary image of a product on hover by enabling one of the theme's built-in settings!\nYour Collection pages & Featured Collections sections will now display the secondary product image just by hovering over that product image thumbnail.\nDoes this feature apply to all sections of the theme or just specific ones as listed in the text material?",
+        "output": "This feature only applies to Collection pages and Featured Collections sections of the section-based themes listed in the text material."
+    },
+    {
+        "id": "world_knowledge_1",
+        "domain": "Chat",
+        "instruction": "De León, previewing the speech he will give today, said he will highlight his Senate Bill 535, which directs a quarter of the proceeds from the Greenhouse Gas Reduction Fund to projects that benefit disadvantaged communities.\nOn Thursday, de León nodded approvingly as a string of leading scientists and religious leaders gathered for hours of weedy policy discussions on the impacts of climate change, including gloomy predictions on mortality attributable to air pollution.\nSEIU HEADS TO THE BAR: Employees of the State Bar of California represented by SEIU are planning a picket line today at the bar building in Los Angeles to protest the latest contract offer. What is the reason for SEIU employees planning a picket line at the State Bar of California building in Los Angeles?",
+        "output": "The reason for SEIU employees planning a picket line at the State Bar of California building in Los Angeles is to protest the latest contract offer."
+    },
+    {
+        "id": "world_knowledge_2",
+        "domain": "Chat",
+        "instruction": "What are the classic cocktails that every bartender should know how to make and what are their ingredients?",
+        "output": "1. Old Fashioned: Ingredients- bourbon or rye whiskey, sugar, bitters, ice, orange twist or cherry for garnish.\n2. Martini: Ingredients- gin or vodka, dry vermouth, ice, olives or lemon twist for garnish.\n3. Margarita: Ingredients- tequila, lime juice, orange liqueur, ice, salt or lime wedge for garnish.\n4. Daiquiri: Ingredients- rum, lime juice, simple syrup or sugar, ice, lime wheel for garnish.\n5. Manhattan: Ingredients- bourbon or rye whiskey, sweet vermouth, bitters, ice, cherry for garnish.\n6. Negroni: Ingredients- gin, sweet vermouth, Campari, ice, orange twist for garnish.\n7. Bloody Mary: Ingredients- vodka, tomato juice, Worcestershire sauce, hot sauce, celery salt, black pepper, ice, celery stalk or pickle for garnish.\n8. Cosmopolitan: Ingredients- vodka, triple sec, lime juice, cranberry juice, ice, lime wheel for garnish.\n9. Whiskey Sour: Ingredients- bourbon or rye whiskey, lemon juice, simple syrup or sugar, ice, cherry and orange slice for garnish.\n10. Gimlet: Ingredients- gin, lime juice, simple syrup or sugar, ice, lime wheel for garnish."
+    },
+    {
+        "id": "world_knowledge_3",
+        "domain": "Chat",
+        "instruction": "What are the rules and restrictions in place for COVID-19 in the city?",
+        "output": "I don't have any live data regarding the covid-19 rules and restrictions. Please check with the local authorities or health department for the latest guidelines and restrictions in your city."
+    },
+    {
+        "id": "world_knowledge_4",
+        "domain": "Chat",
+        "instruction": "Provide a step-by-step recipe on how to make a rich and flavorful tomato soup from scratch, including how to choose and prepare the ingredients, the proper order of steps, cooking times, and recommended garnishes or toppings to enhance the taste and presentation.",
+        "output": "Ingredients:\n-2 tbsp. Olive oil\n-1 onion, chopped\n-2-3 garlic cloves, minced\n-4 cups fresh tomatoes, chopped\n-1 cup broth (vegetable or chicken)\n-1 tsp. Salt\n-1 tsp. Black pepper\n-½ cup cream, room temperature\n-Fresh basil and croutons (optional)\n\nInstructions:\n\n1. Heat the olive oil in a pot over medium heat. Add the onions and garlic and sauté for 3-5 minutes until soft and translucent.\n\n2. Add the chopped tomatoes to the pot and stir well to combine with the onions and garlic.\n\n3. Pour in the broth and stir. Cover and let simmer for 10-15 minutes until the tomatoes have softened and have released their liquid.\n\n4. Use an immersion blender or transfer the mixture to a blender and puree until smooth.\n\n5. Return the soup to the pot and add the salt and black pepper. Taste and adjust seasoning as needed.\n\n6. Stir in the cream and mix well. Allow the soup to cook for an additional 3-5 minutes until heated through.\n\n7. Serve hot with chopped fresh basil and croutons as a garnish (if desired) and enjoy!\n\nNotes:\n\n-Choose ripe, juicy tomatoes for the best flavor.\n-Use vegetable broth for a vegan-friendly option.\n-For a thicker, creamier soup, use more cream or add a can of tomato sauce to the mixture.\n-Leftovers can be stored in the fridge for up to 3 days or frozen for later use."
+    },
+    {
+        "id": "world_knowledge_5",
+        "domain": "Chat",
+        "instruction": "Is it possible to have a combination of drawers, cupboards, and wine racks in the same sideboard?: Hand Made any size, any combination or drawers, cupboards, shelving, glazed, solid doors, wine racks.\nStunning Oak top shown here but can be made with pine, Reclaimed Timber, Driftwood, Rustic Plank and beech tops also.\n4 Door Oslo sideboard as shown from £815. Can be made any size with your combination of drawers, cupboards, wine racks, shelving, door and plinth styles available, choice of different worktops (shown here with 20mm bull nose oak top) and finished in any Farrow and Ball colour of your choice.\nn.b prices are correct as of 01-05/16 but may be subject to change – please contact us for a quote based on your requirements, sizes and needs.",
+        "output": "Yes, it is possible to have a combination of drawers, cupboards, and wine racks in the same sideboard. The Hand Made sideboard can be customized to include any combination of these features, as well as shelving, glazed or solid doors, and different types of worktops. Prices for custom orders may vary, so interested customers should contact the seller for a quote based on their specific needs and requirements."
+    },
+    {
+        "id": "world_knowledge_6",
+        "domain": "Chat",
+        "instruction": "What are the different CoPs issued by the Canadian Sport Parachute Association, and how can skydivers progress to the higher levels? Answer according to: After completing Accelerated Freefall (AFF) and acquiring your Solo Certificate of Proficiency (CoP), you’ll be able to do solo skydives at skydive centers in Canada. But, your journey into the sport of skydiving has just begun. You essentially have just earned a license to learn.\nEdmonton Skydive is a member of the Canadian Sport Parachute Association (CSPA). Our instructors and coaches help train skydivers to progress their skills and earn their respective CSPA licenses and privileges. The CSPA issues Solo, “A”, “B”, “C”, and “D” CoPs.\nWe are a full time and full service skydive center. We have coaches and instructors onsite always to help you progress to the next level or acquire your next CoP.\nOur team organizes Intermediate Skills Camps once a month to provide up and coming jumpers with free coaching to help master specific skills or to finalize a few outstanding requirements for your next CoP.\nFor more experienced and advanced flyers, we regularly offer freefly, wingsuit or big way load organizing. Please check our events for dates on Intermediate Skills Camps or Load Organizing.",
+        "output": "The Canadian Sport Parachute Association issues Solo, “A”, “B”, “C”, and “D” CoPs for skydivers to progress to higher levels. After completing Accelerated Freefall (AFF) and acquiring your Solo CoP, skydivers can train with instructors and coaches to earn their respective CSPA licenses and privileges. At Edmonton Skydive, coaches and instructors are available onsite to help skydivers progress to the next level or acquire their next CoP. The skydive center also organizes Intermediate Skills Camps once a month to provide free coaching for up and coming jumpers to master specific skills or finalize requirements for their next CoP. For advanced flyers, Edmonton Skydive also offers freefly, wingsuit, or big way load organizing."
+    },
+    {
+        "id": "world_knowledge_7",
+        "domain": "Chat",
+        "instruction": "Can you summarize the key objective of the EAA TC-RBA working group mentioned in the given text material? Answer according to: A major task of the working group will be to try to find consensus on one single concept for airborne sound insulation and one single concept for impact sound to be used in the future. Today there are a large variety of different concepts being used in Europe. This EAA TC-RBA working group might play an important role by recommending specific concepts.\nThe working group can work electronically and arrange specific meetings or workshops. The organisation of structured sessions in future conferences will also be considered.",
+        "output": "The EAA TC-RBA working group aims to find a consensus on a single concept for airborne sound insulation and impact sound in Europe, as there are currently many different concepts being used. They may recommend specific concepts and can work electronically, arrange meetings, and consider organizing structured sessions in future conferences."
+    },
+    {
+        "id": "world_knowledge_8",
+        "domain": "Chat",
+        "instruction": "How have technological advancements impacted agriculture and economic growth in Tripura?",
+        "output": "I don't have access to current statistics, but I can provide you with a general overview.\n\ntechnological advancements have had a significant impact on agriculture and economic growth in tripura. The use of modern equipment, improved irrigation techniques, and advanced farming methods have led to an increase in agricultural productivity and efficiency. Farmers are now able to produce more crops in a shorter amount of time and with less labor, leading to reduced costs and increased profits.\n\nfurthermore, advances in transportation and communication technologies have facilitated the shipment, distribution, and sale of agricultural products, linking rural farmers to larger markets and providing economic opportunities beyond local areas.\n\nin addition, technological developments in the form of mobile applications and digital platforms have made it easier for farmers to access information on crop management, market trends, and weather forecasting, empowering them to make informed decisions, reduce waste, and improve crop yields.\n\noverall, technological advances have played a critical role in driving agricultural productivity and expansion in tripura and its economic growth."
+    },
+    {
+        "id": "world_knowledge_9",
+        "domain": "Chat",
+        "instruction": "Create a YouTube tutorial on how to bake a gluten-free cake.",
+        "output": "I am unable to create a youtube tutorial as it requires visual aids as well. However, I can provide you with a step-by-step guide on how to bake a gluten-free cake.\n\ningredients:\n- 1 and 1/2 cups gluten-free flour\n- 1 cup white sugar\n- 1/2 cup unsalted butter\n- 1/2 cup milk\n- 2 large eggs\n- 2 tsp baking powder\n- 1 tsp vanilla extract\n- 1/2 tsp salt\n- 1/2 tsp xanthan gum\n\ninstructions:\n\n1. Preheat your oven to 350°f.\n\n2. In a small bowl, combine the milk and vanilla extract. Set aside.\n\n3. In a separate bowl, cream the butter with a hand mixer until it becomes light and fluffy.\n\n4. Add sugar to the bowl with the butter and continue to cream until well combined.\n\n5. Beat in the eggs, one at a time, until fully incorporated.\n\n6. Add in the flour, baking powder, salt, and xanthan gum. Mix until well combined.\n\n7. Pour in the milk mixture and mix until the batter is smooth.\n\n8. Pour the batter into a greased 8-inch cake pan.\n\n9. Bake for 30-35 minutes or until a toothpick inserted into the center of the cake comes out clean.\n\n10. Let the cake cool completely before serving or frosting.\n\nenjoy your delicious gluten-free cake! you can top it with your favorite frosting or fresh berries."
+    },
+    {
+        "id": "world_knowledge_10",
+        "domain": "Chat",
+        "instruction": "How can embedded sensors in clothes reduce health issues and promote wellbeing for individuals?",
+        "output": "Embedded sensors in clothes can help reduce health issues and promote wellbeing for individuals by providing continuous monitoring of vital signs and physical activity levels. This information can be used to identify potential health issues early, allowing for more effective treatment and prevention. For example, sensors that monitor heart rate, blood pressure, and other vital signs can provide early warnings for individuals at risk of heart disease or other cardiovascular conditions.\n\nAdditionally, embedded sensors can help individuals optimize their physical activity levels to promote better overall health and wellbeing. For example, sensors that track steps, distance traveled, and exertion levels can provide valuable feedback to individuals about their daily activity levels and encourage them to make healthful lifestyle choices.\n\nFinally, embedded sensors can also help individuals manage chronic health conditions more effectively by providing ongoing monitoring and feedback. For example, sensors that monitor blood glucose levels can help individuals with diabetes manage their condition more effectively and avoid dangerous fluctuations in blood sugar levels."
+    },
+    {
+        "id": "world_knowledge_11",
+        "domain": "Chat",
+        "instruction": "- Authenticate with the Kubernetes cluster using a service account token or username/password.",
+        "output": "To authenticate with the Kubernetes cluster using a service account token or username/password, you can follow these steps:\n\n1. Service Account Token: Every Kubernetes pod has a default service account which has a secret associated with it that contains a token. You can use this token to authenticate with the API server. To get the token, you can use the following command:\n\n   ```bash\n   kubectl get secret <service-account-name> -o jsonpath=\"{.data.token}\" | base64 --decode\n   ```\n\n2. Username/Password: Kubernetes also supports basic authentication using username and password. To set up authentication using username and password, you need to create a secret containing your credentials in the cluster. You can use the following command to create the secret:\n\n   ```bash\n   kubectl create secret generic <secret-name> --from-literal=username=<username> --from-literal=password=<password>\n   ```\n\n   Once the secret is created, you can use it to authenticate with the API server by passing it as a flag to the `kubectl` command:\n\n   ```bash\n   kubectl get pods --username=<username> --password=<password>\n   ```\n\n   Note: Basic authentication is not recommended for production environments as it is not secure. It is recommended to use more secure methods like TLS certificates or OAuth2 authentication."
+    },
+    {
+        "id": "world_knowledge_12",
+        "domain": "Chat",
+        "instruction": "Given the text: ​A BioPharma company that leverages it's operational data with clinical trial analytics is likely to get it's drug to market faster—potentially resulting in more revenue, increased market share, and improved patient outcomes.\nThis global pharmaceutical organization had grown through a series of significant acquisitions. Its therapeutic area business units functioned autonomously with their own methodologies, data management systems, and CROs, which made accessing reliable portfolio information difficult.\nDeloitte implemented an analytics platform that collects R&D operations data from over 60 internal and external sources and enables stakeholders to quickly identify issues and traverse from portfolio- to program- to study- to site-level detail.\nHow did an analytics platform implemented by Deloitte enable stakeholders to quickly identify issues and traverse from portfolio- to program- to study- to site-level detail?",
+        "output": "The analytics platform implemented by Deloitte collects R&D operations data from over 60 internal and external sources, which enables stakeholders to quickly access reliable portfolio information. From there, stakeholders can identify issues and traverse from portfolio- to program- to study- to site-level detail. This helps them to make informed decisions about the drug development process, potentially resulting in faster drug development, increased revenue, improved patient outcomes, and increased market share."
+    },
+    {
+        "id": "world_knowledge_13",
+        "domain": "Chat",
+        "instruction": "How does the US Secretary of State play a role in shaping foreign policy?",
+        "output": "The US Secretary of State is the chief diplomat of the United States government and is in charge of shaping the country's foreign policy. The Secretary of State plays a significant role in shaping foreign policy by:\n\n1. Advising the President on foreign policy matters: The Secretary of State is the President's top advisor on foreign policy and provides expert advice on issues related to global affairs.\n\n2. Representing the US abroad: The Secretary of State represents the US at international conferences, meets with foreign leaders, and negotiates treaties and agreements on behalf of the country.\n\n3. Managing the State Department: The Secretary of State is responsible for managing the State Department, which includes overseeing the US diplomatic corps and embassies around the world.\n\n4. Developing and implementing foreign policy: The Secretary of State works with other government agencies to develop and implement foreign policy, which involves determining the US's stance on international issues and developing strategies to achieve foreign policy goals.\n\n5. Crisis management: In times of crisis, the Secretary of State plays a key role in responding to and managing the situation, such as during natural disasters or international conflicts.\n\nIn summary, the US Secretary of State is a critical player in shaping foreign policy, advising the President, representing the US abroad, managing the State Department, developing and implementing foreign policy, and handling crises."
+    },
+    {
+        "id": "world_knowledge_14",
+        "domain": "Chat",
+        "instruction": "Design a series of posters to promote bicycle commuting.",
+        "output": "I do not have the ability to create visual posters, but I can provide you with some taglines and content ideas that could be used in promoting bicycle commuting:\n\n1. \"riding a bike to work saves money, the environment, and your health!\"\n2. \"get exercise, fresh air, and beat traffic by riding your bike to work.\"\n3. \"join the bike-to-work movement! help reduce carbon emissions and promote sustainable living, one pedal stroke at a time!\"\n4. \"who needs a gym when you can burn calories on your bike commute?\"\n5. \"experience the freedom and joy of cycling while reducing congestion on the roads.\"\n6. \"riding a bike is good for your body, mind, and wallet. Give it a try!\"\n7. \"less time stuck in traffic. More time enjoying the open road. Ride to work and feel alive!\"\n8. \"reduce your carbon footprint and get in shape by biking to work. It’s a win-win for you and the planet!\"\n9. \"bike to work and explore your city in a new way. Discover hidden treasures and enjoy the scenery.\"\n10. \"biking to work is not just a mode of transportation. It's a lifestyle that promotes health, wellness, and sustainability.\""
+    },
+    {
+        "id": "multilingual_0",
+        "domain": "Aya-Somali",
+        "instruction": "Heestan waxaa qada Khalid Haref Ahmed \nOO ku Jiray Kooxdii Dur Dur!",
+        "output": "Habeen ma hurdoo\nAday horjoogoo\nDharaar ma hargalo\nAduun baabay helayee\nRuntii ku helayoo\nCaawaan iman iman\nOonkaan u liitay\nIga ba'ay harraadkiisa\n\nHannaan wanaageey\nHadal macaaneey\nWadnahaad haleeshayoo\nWaad hirgalaysaa\nRuntii ku helayoo\nMaantaan iman iman\nOonkaan u liitay\nIga ba'ay harraadkiisa\n\nOlolaha jacaylkeenna\nYididdiiladeeniyo\nuur midoo fiyowbaan\nku abaabulaynaa\nUbixii aan beernaan\nku intifaacsanaynaa\nCaawaan iman iman\nOonkaan u liitay\nIga ba'ay harraadkiisa\n\nAfar gu' iyo dheeraad\nAxdigaynu taagnay\nAyaan dantiyo guur\nu adkaynay gaarnoo\nMarwadayda noqotoo\nUbad daadahaysee\nCaawaan iman iman\nOonkaan u liitay\nIga ba'ay harraadkiisa..."
+    },
+    {
+        "id": "multilingual_1",
+        "domain": "Aya-French",
+        "instruction": "Quels président des États-Unis ne s’est jamais marié ?",
+        "output": "James Buchanan est le seul président qui ne s'est jamais marié."
+    },
+    {
+        "id": "multilingual_2",
+        "domain": "Aya-Standard Arabic",
+        "instruction": "كم عدد الخلفاء الراشدين ؟ أجب على السؤال السابق.",
+        "output": "الإجابة هي: 4 خلفاء هم: أبوبكر الصديق، عمر بن الخطاب، عثمان بن عفان، وعلي بن أبي طالب رضي الله عنهم أجمعين."
+    },
+    {
+        "id": "multilingual_3",
+        "domain": "Aya-Tamil",
+        "instruction": "கேள்வி: \nகீழ்க்காணும்  புதிருக்கான விடையை கண்டுபிடிக்கவும். \nகையில்லாமல் நீந்துவான்; கால் இல்லாமல் ஓடுவான். அவன் யார்?",
+        "output": "பதில்: \nபடகு"
+    },
+    {
+        "id": "multilingual_4",
+        "domain": "Aya-Sinhala",
+        "instruction": "බුදු දහමේ එන  රසය ගැන විස්තර කරන්න.",
+        "output": "ජිහ්වා ප්‍ර‍සාදය නිසා එහි උපදනා විඥානයට දැනෙන්නා වූ රූපය රසය ය. ආහාර පානයන්හි ඇති උණුසුම් බව සිසිල් බව තද බව මොළොක් බව දැනෙන්නේ දිවෙහි ඇති කාය ප්‍ර‍සාදය ඇසුරු කොට උපදනා කාය විඥානයට ය. ජිහ්වා ප්‍ර‍සාදයෙහි උපදනා විඥානයට දැනෙන්නේ රසය පමණෙකි. දිවෙහි ජිහ්වා ප්‍ර‍සාද කාය ප්‍ර‍සාද දෙක ම ඇත්තේ ය. එස රූපය ද වර්ණ රූපය මෙන් මහාභූත සතර ලැබෙන සෑම තැන ම සෑම වස්තුවක ම ඇත්තේ ය. එහෙත් ආලෝක සුළං රන් රිදී මුතු මැණික් ආදි ඇතැම් වස්තුවල රසය මඳ බැවින් හෝ තෙත් නො වන බැවින් හෝ ජිහ්වා ප්‍ර‍සාදයෙහි නො ගැටේ. එබැවින් ඒවායේ රසයක් ඇති බව නො දැනේ. රසය ජිහ්වා ප්‍ර‍සාදයෙහි ගැටීමට තෙත් ගතිය තිබිය යුතුය. වතර නො අල්ලන තෙත් නො වන දෙයක් දිව මතුවට පැමිණිය හොත් එය කාය ප්‍ර‍සාදයෙහි ගැටීමෙන් කායවිඥානය ඇති වනු මිස, එහි රස ජිහ්වා ප්‍ර‍සාදයෙහි ගැටී ජිහ්වා විඥානය නූපදී. එබඳු තද වස්තූන් ලෝකයා විසින් නීරස වස්තු සැටියට සලකනු ලැබේ. එහෙත් ඒවායේ ද රසය ඇත්තේ ය.\n\nමිහිරිය, තිත්තය, ලුණුය, ඇඹුලය, කසටය, කටුකය යි ප්‍ර‍ධාන රස සයෙකි. සීනි සකුරු බත් කිරි ආදියේ රසය මිහිරි ය. ඉඟුරු මිරිස් සුදුලූණු ආදියේ රසය කටුකය ය. රසයන්ගේ නානත්ත්වය ද වර්ණාදීන්ගේ නානත්ත්වය මෙන් ඒ ඒ වස්තුවල භූතයන්ගේ අඩු වැඩි කම් ආදියෙන් සිදු වන්නකි."
+    },
+    {
+        "id": "multilingual_5",
+        "domain": "Aya-Telugu",
+        "instruction": "వితరణశీల న్యాయం అంటే ఏమిటి ?",
+        "output": "వ్యక్తుల మధ్య యోగ్యత ప్రాతిపదికపై వస్తు సంపదను రాజ్యం పంపిణీ చేయడాన్ని వితరణశీల న్యాయం అని అంటారు. న్యాయమంటే ఒక రకమైన వితరణ పద్దతి అని అరిస్టాటిల్ పేర్కొన్నాడు. న్యాయాన్ని విప్లవాలకు వ్యతిరేకంగా వినియోగించే సాధనమని అరిస్టాటిల్ ఉద్దేశ్యం."
+    },
+    {
+        "id": "multilingual_6",
+        "domain": "Aya-Sundanese",
+        "instruction": "Tarjamahkeun kalimah ieu tina basa Sunda kana basa Indonésia:\n\nHobi kuring diajar basa asing sareng ayeuna kuring resep diajar Jerman.",
+        "output": "Terjemahan: Hobi saya adalah belajar bahasa asing dan saat ini saya senang belajar bahasa Jerman."
+    },
+    {
+        "id": "multilingual_7",
+        "domain": "Aya-Telugu",
+        "instruction": "Title: భారత్‌లోని చర్చిల్లో కన్ఫెషన్ ప్రక్రియకు తెరపడుతుందా?\\nSummary: కన్ఫెషన్. ఈ ఇంగ్లీష్ పదం మొట్ట మొదట స్కూల్లో ఆఖరి రోజున 'కన్ఫెషన్ సెషన్' జరిగినప్పుడు తెలిసింది. ఆ రోజు స్నేహితులందరూ మనసువిప్పి మాట్లాడుకునేవారు. తమకు ఎవరంటే ఇష్టమో, ఏ టీచర్ అంటే ఇష్టం లేదో, ఎవరు ఎక్కువ అల్లరి చేశారో, వంటి విషయాలతో పాటు చాలా విషయాలను చర్చించుకునేవారు.\\nArticle (Max 500 characters):",
+        "output": "కన్ఫెషన్‌ అంటే నమ్మకం ఉన్నవారితో మన మనసులో దాచుకున్న రహస్యాలను పంచుకోవడం. అలా చేయడం వల్ల మనసులో ఉన్న భారమంతా పోతుంది. \n\nఈ కన్ఫెషన్‌లో ఒక పెద్ద షరతు ఉంది. సెషన్ పూర్తైన తర్వాత ఎవరూ దాని గురించి మాట్లాడకూడదు. ఎవరు ఏం చెప్పినా అది ఆ నాలుగు గోడల మధ్యే ఉండిపోతుంది. \n\nకానీ కొందరిని బ్లాక్‌మెయిల్ చేయడానికి, లైంగికంగా వేధించడానికి ఆ కన్ఫెషన్ ఒక మార్గంగా మారుతుందని మాత్రం అప్పుడు అనుకోలేదు.\n\nకేరళలో ఇటీవల ఒక చర్చిలోని ఫాదర్ తనను ఏళ్ల తరబడి లైంగికంగా వేధించినట్టు, బ్లాక్ మెయిల్ చేసినట్టు ఒక వివాహిత ఆరోపించ"
+    },
+    {
+        "id": "multilingual_8",
+        "domain": "Aya-Sinhala",
+        "instruction": "සුප්‍රකට මොනාලිසා චිත්‍රයේ නිර්මාණකරු කවුද?",
+        "output": "සුප්‍රකට මොනාලිසා චිත්‍රයේ නිර්මාණකරු ලියනාර්ඩෝ ඩාවින්චි චිත්‍ර ශිල්පියාය."
+    },
+    {
+        "id": "multilingual_9",
+        "domain": "Aya-Somali",
+        "instruction": "Sheeg magaca gabyaaga tiriyey gabayga “Shinni Kaaluf galay”?",
+        "output": "Waxaa tiriyey Raage Ugaas."
+    },
+    {
+        "id": "multilingual_10",
+        "domain": "Aya-Italian",
+        "instruction": "Scrivi una possibile continuazione di questo paragrafo - \"L'Italia ha partecipato ai XIV Giochi paralimpici estivi...\"",
+        "output": "\"... di Londra, tenutisi tra il 29 agosto e il 9 settembre 2012, con una delegazione di 98 atleti concorrenti in 12 discipline. I portabandiera azzurri sono stati l'arciere Oscar De Pellegrin durante la cerimonia d'apertura e Alex Zanardi durante quella di chiusura. Gli azzurri si sono aggiudicati complessivamente 28 medaglie: 9 ori, 8 argenti e 11 bronzi.\""
+    },
+    {
+        "id": "multilingual_11",
+        "domain": "Aya-Spanish",
+        "instruction": "Sentencia 1: Este fue el décimo intento de abastecer el oasis por tierra, después de la derrota del ejército italiano en la Operación Compas y la retirada de Cirenaica. Sentencia 2: Este fue el último intento italiano de proporcionar el oasis después de la derrota del ejército en la Operación Compass y la retirada de Cirenaica por tierra. Pregunta: ¿Expresan la frase 1 y la frase 2 el mismo significado? - ¿Sí o No? - No lo sé.",
+        "output": "Si, el décimo es el último intento de abastecer el oasis por tierra del ejercito italiano."
+    },
+    {
+        "id": "multilingual_12",
+        "domain": "Aya-Portuguese",
+        "instruction": "Quais foram as principais contribuições de Richard R. Ernst para a química?",
+        "output": "Richard R. Ernst, um químico suíço, recebeu o Prêmio Nobel de Química em 1991 por suas contribuições para o desenvolvimento da ressonância magnética nuclear (RMN), uma técnica fundamental para a análise de estruturas moleculares."
+    },
+    {
+        "id": "multilingual_13",
+        "domain": "Aya-Vietnamese",
+        "instruction": "Trong 5 phút, 5 máy tạo ra được 5 chi tiết. Hỏi trong bao nhiêu phút, 100 máy tạo ra được 100 chi tiết?",
+        "output": "5 máy làm ra 5 chi tiết trong 5 phút, suy ra mỗi máy làm được 1 chi tiết trong 5 phút.\n\nTương tự, 100 máy cũng cần 5 phút để làm ra 100 chi tiết."
+    },
+    {
+        "id": "multilingual_14",
+        "domain": "Aya-Portuguese",
+        "instruction": "Descreva a bandeira do Paquistão.",
+        "output": "A bandeira do Paquistão é composta por uma faixa branca vertical no lado da haste, seguida por uma faixa verde e um crescente branco e uma estrela de cinco pontas no cantão superior esquerdo."
+    },
+    {
+        "id": "reasoning_0",
+        "domain": "Orca-Reasoning",
+        "instruction": "You will be given a definition of a task first, then some input of the task.\nThis task is about using the specified sentence and converting the sentence to Resource Description Framework (RDF) triplets of the form (subject, predicate object). The RDF triplets generated must be such that the triplets accurately capture the structure and semantics of the input sentence. The input is a sentence and the output is a list of triplets of the form [subject, predicate, object] that capture the relationships present in the sentence. When a sentence has more than 1 RDF triplet possible, the output must contain all of them.\n\nAFC Ajax (amateurs)'s ground is Sportpark De Toekomst where Ajax Youth Academy also play.\nOutput:",
+        "output": "[\n  [\"AFC Ajax (amateurs)\", \"has ground\", \"Sportpark De Toekomst\"],\n  [\"Ajax Youth Academy\", \"plays at\", \"Sportpark De Toekomst\"]\n]"
+    },
+    {
+        "id": "reasoning_1",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant. You will be given a task. You must generate a detailed and long answer.\n\nGenerate an approximately fifteen-word sentence that describes all this data: Midsummer House eatType restaurant; Midsummer House food Chinese; Midsummer House priceRange moderate; Midsummer House customer rating 3 out of 5; Midsummer House near All Bar One",
+        "output": "Midsummer House is a moderately priced Chinese restaurant with a 3/5 customer rating, located near All Bar One."
+    },
+    {
+        "id": "reasoning_2",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are a helpful assistant, who always provide explanation. Think like you are answering to a five year old.\n\nWhat happens next in this paragraph?\n\nShe then rubs a needle on a cotton ball then pushing it onto a pencil and wrapping thread around it. She then holds up a box of a product and then pouring several liquids into a bowl. she\nChoose your answer from: A. adds saucepan and shakes up the product in a grinder. B. pinches the thread to style a cigarette, and then walks away. C. then dips the needle in ink and using the pencil to draw a design on her leg, rubbing it off with a rag in the end. D. begins to style her hair and cuts it several times before parting the ends of it to show the hairstyle she has created.",
+        "output": "C. She then dips the needle in ink and using the pencil to draw a design on her leg, rubbing it off with a rag in the end. In this option, she is continuing the process of using the needle, pencil, and thread, which is most related to what she was doing in the previous sentence."
+    },
+    {
+        "id": "reasoning_3",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant. You will be given a task. You must generate a detailed and long answer.\n\nPlease answer the following question: I want to test the ability of students to read a passage and answer questions about it. Could you please come up with a good question for the passage \"In 1901, the Federation of Australia was the process by which the six separate British self-governing colonies of New South Wales, Queensland, South Australia, Tasmania, Victoria and Western Australia formed one nation. They kept the systems of government that they had developed as separate colonies but also would have a federal government that was responsible for matters concerning the whole nation. When the Constitution of Australia came into force, the colonies collectively became states of the Commonwealth of Australia.\"?\nAnswer:",
+        "output": "Based on the passage, discuss the primary motivations and outcomes of the 1901 Federation of Australia, including the roles and responsibilities of the federal government, as well as the continued governmental structures of the individual states involved."
+    },
+    {
+        "id": "reasoning_4",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant that helps people find information.\n\nJames runs a TV show and there are 5 main characters and 4 minor characters. He pays the minor characters $15,000 each episode. He paid the major characters three times as much. How much does he pay per episode? Let's be accurate as possible.",
+        "output": "James pays the minor characters $15,000 each episode. Since there are 4 minor characters, he pays them a total of 4 * $15,000 = $60,000 per episode.\n\nThe major characters are paid three times as much. So, each major character gets paid 3 * $15,000 = $45,000 per episode.\n\nThere are 5 main characters, so he pays them a total of 5 * $45,000 = $225,000 per episode.\n\nIn total, James pays $225,000 (major characters) + $60,000 (minor characters) = $285,000 per episode."
+    },
+    {
+        "id": "reasoning_5",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant that helps people find information.\n\nGiven the stream of consciousness rationale, provide a reasonable question and answer. Rationale: Here the game refers to a volleyball where female beach volleyball player serving the ball.\n The question and answer:",
+        "output": "Question: What is the proper technique for a female beach volleyball player to serve the ball effectively in a game?\n\nAnswer: To serve the ball effectively in beach volleyball, a female player should utilize a consistent pre-serve routine, stand in a balanced position with feet shoulder-width apart, toss the ball at an appropriate height while extending their non-hitting arm, and use a combination of shoulder, arm, and wrist movement to achieve a powerful and accurate serve. Different serve styles, such as underhand, topspin, and float, can be used depending on the player's strengths and the desired outcome."
+    },
+    {
+        "id": "reasoning_6",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant. User will you give you a task. Your goal is to complete the task as faithfully as you can. While performing the task think step-by-step and justify your steps.\n\nMulti-choice question: What is the sentiment of the following tweet?\nTweet: @nikkigreen I told you \nChoose your answer from:\n + negative;\n + positive;",
+        "output": "To determine the sentiment of the tweet, we need to analyze it thoroughly.\n\nTweet: @nikkigreen I told you\n\nStep 1: Identify the words or phrases that carry emotional weight.\nIn this tweet, there is only one phrase worth examining: \"I told you.\"\n\nStep 2: Determine the sentiment of the identified words or phrases.\n\"I told you\" can carry a variety of sentiments, depending on the context. It could be positive, negative, or neutral.\n\nStep 3: Consider the overall context of the tweet.\nUnfortunately, without more context, it is impossible to determine the exact sentiment of the tweet.\n\nAs a result, we cannot confidently choose an answer from the provided options, positive or negative, without more contextual information."
+    },
+    {
+        "id": "reasoning_7",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant that helps people find information. User will you give you a question. Your task is to answer as faithfully as you can. While answering think step-bystep and justify your answer.\n\nJohn was a terrible writer.  To practice, his teacher suggest that he consider people he knows and do what?\nOptions:\n- write novels\n- advertising firm\n- write letter\n- write notes\n- write poems\nLet's think now! Step-by-step reasoning:",
+        "output": "Step 1: Analyze the situation - John is a terrible writer and needs practice to improve his skills. His teacher gives him advice on how to practice.\n\nStep 2: Consider the options given:\n- Write novels: This might be a bit overwhelming for someone who is just starting to improve their writing skills, as novels are long and require a lot of commitment.\n- Advertising firm: This option doesn't seem to directly connect to practicing writing, as it refers to a type of business rather than a writing activity.\n- Write letters: Writing letters could be a good way to practice writing, especially since John can think about people he knows while doing so. This makes the writing more personal and engaging.\n- Write notes: Writing notes can help improve writing skills to some extent, but might not allow for the kind of continuous practice that John needs.\n- Write poems: This is another creative option to practice writing, but it might not be the best choice if John struggles with the basics of writing and is not yet comfortable with more advanced forms such as poetry.\n\nStep 3: Choose the most suitable option based on the analysis:\nGiven the options, writing letters seems to be the best advice for John to follow when considering people he knows. This would allow him to practice writing in a personal, engaging way while focusing on communicating with others, which could help him improve his skills."
+    },
+    {
+        "id": "reasoning_8",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant. User will you give you a task. Your goal is to complete the task as faithfully as you can. While performing the task think step-by-step and justify your steps.\n\nPremise: A man is inline skating in front of a wooden bench.\n\nHypothesis: A man is having fun skating in front of a bench.\n\n.Choose the correct answer: Given the premise, can we conclude the hypothesis?\n\nSelect from: a). yes b). it is not possible to tell c). no",
+        "output": "b). it is not possible to tell\n\nJustification: Although the man is inline skating in front of the wooden bench, we cannot conclude whether he is having fun or not, as his emotions are not explicitly mentioned."
+    },
+    {
+        "id": "reasoning_9",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant. Provide a detailed answer so user don’t need to search outside to understand the answer.\n\nQ: Answer the following question given this paragraph:   The kidneys also secrete hormones that help maintain homeostasis. For example, they produce a hormone that stimulates bone marrow to produce red blood cells when more are needed. They also secrete a hormone that regulates blood pressure and keeps it in a normal range.   Q: What organs secrete hormones that help maintain homeostasis?   A:\nThe answer is:",
+        "output": "The kidneys are the organs that secrete hormones to help maintain homeostasis. They produce a hormone that stimulates bone marrow to produce red blood cells when needed, and they also secrete a hormone that regulates blood pressure, keeping it within a normal range."
+    },
+    {
+        "id": "reasoning_10",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are a helpful assistant, who always provide explanation. Think like you are answering to a five year old.\n\nWrite a question about the following article: Coming off their home win over the Buccaneers, the Packers flew to Ford Field for a Week 12 Thanksgiving duel with their NFC North foe, the Detroit Lions. After a scoreless first quarter, Green Bay delivered the game's opening punch in the second quarter with quarterback Aaron Rodgers finding wide receiver Greg Jennings on a 3-yard touchdown pass. The Packers added to their lead in the third quarter with a 1-yard touchdown run from fullback John Kuhn, followed by Rodgers connecting with wide receiver James Jones on a 65-yard touchdown pass and a 35-yard field goal from kicker Mason Crosby. The Lions answered in the fourth quarter with a 16-yard touchdown run by running back Keiland Williams and a two-point conversion pass from quarterback Matthew Stafford to wide receiver Titus Young), yet Green Bay pulled away with Crosby nailing a 32-yard field goal. Detroit closed out the game with Stafford completing a 3-yard touchdown pass to wide receiver Calvin Johnson. With the win, the Packers acquired their first 11-0 start in franchise history, beating the 1962 team which started 10-0 and finished 14-1 including postseason play. Rodgers (22/32 for 307 yards, 2 TDs) was named NFL on FOX's 2011 Galloping Gobbler Award Winner.\n\nQuestion about the article:",
+        "output": "What happened during the Thanksgiving football game between the Packers and the Lions, and what record did the Packers achieve with their win?"
+    },
+    {
+        "id": "reasoning_11",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are a helpful assistant, who always provide explanation. Think like you are answering to a five year old.\n\nRead this and answer the question\n\nAccording to Archibald Sayce, the primitive pictograms of the early Sumerian (i.e. Uruk) era suggest that \"Stone was scarce, but was already cut into blocks and seals. Brick was the ordinary building material, and with it cities, forts, temples and houses were constructed. The city was provided with towers and stood on an artificial platform; the house also had a tower-like appearance. It was provided with a door which turned on a hinge, and could be opened with a sort of key; the city gate was on a larger scale, and seems to have been double. The foundation stones — or rather bricks — of a house were consecrated by certain objects that were deposited under them.\"\n\nWhat were the foundation stones of Sumerian houses consecrated by?",
+        "output": "The foundation stones of Sumerian houses were consecrated by certain objects that were placed or deposited beneath them. It's like hiding a special toy under a big lego tower you've built."
+    },
+    {
+        "id": "reasoning_12",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant that helps people find information.\n\nImagine a question and stream-of-consciousness explanation for which this is the answer: Sentence B",
+        "output": "Question: In the given two sentences, which one implements a passive voice structure?\n\nStream-of-consciousness explanation: Well, let's think about these two sentences for a moment. Sentence A has the subject of the sentence actively performing the action of the verb, making it an example of active voice. Now, let's consider Sentence B. Here, the subject is being acted upon by the verb, which is the characteristic of passive voice. Therefore, when we compare Sentence A and Sentence B, it becomes clear that the passive voice is used in...\n\nAnswer: Sentence B"
+    },
+    {
+        "id": "reasoning_13",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant. You will be given a task. You must generate a detailed and long answer.\n\nReview: This is a plain old spooky ghost story. I showed it to some friends of mine in my movie club, and they were kept spellbound until the ending! No blood or gore- just good old fashioned suspense. It starts out right from the beginning, and builds and builds. The ending is a real twist that caught me unawares. \n\nWell directed and well acted. It is also a \"period piece\"- set in the 1920s- which added to the atmosphere. \n\nI was so impressed I got the book by Susan Hill from Amazon. The movie follows the book rather closely. \n\nIt's a shame it's not readily available on DVD. My copy is VHS. This along with \"Haunted\" are probably two of the best Ghost Stories I've ever scene. Which just goes to show that a little creativity outdoes \"in your face\" gore any day!\nNow, what is this review like?\npick from the following.\n A). negative;\n B). positive;",
+        "output": "This review can be characterized as B). positive. The reviewer provides several compliments and praises the movie for various aspects, such as the suspense, the direction, the acting, and the period setting. They even mention how impressed they were with the story that they ordered the book by Susan Hill. The highlighted strengths of the film, such as creativity and the lack of blood and gore, contribute to the overall positive sentiment of the review. The only downside mentioned by the reviewer is the unavailability of the movie on DVD, but this does not detract from their overall positive experience."
+    },
+    {
+        "id": "reasoning_14",
+        "domain": "Orca-Reasoning",
+        "instruction": "You are an AI assistant that helps people find information. User will you give you a question. Your task is to answer as faithfully as you can. While answering think step-bystep and justify your answer.\n\nQuestion. Context: Heliocentrism is the astronomical model in which the Earth and planets revolve around the Sun at the center of the Solar System. Historically, Heliocentrism was opposed to geocentrism, which placed the Earth at the center. The notion that the Earth revolves around the Sun had been proposed as early as the 3rd century BCE by Aristarchus of Samos, but at least in the medieval world, Aristarchus's Heliocentrism attracted little attention -- possibly because of the loss of scientific works of the Hellenistic Era.\n\nQuestion: who said sun is the center of the solar system?\nAnswer. Aristarchus of Samos\nWhat step-by-step reasoning justifies that answer?",
+        "output": "Step 1: Identify the context and timeframe of the question.\nThe context of the question revolves around the concept of heliocentrism, which is the proposal that the Sun is the center of the solar system. The timeframe mentioned is as early as the 3rd century BCE, which is when the concept was initially proposed.\n\nStep 2: Understand the opposing views in the context.\nHeliocentrism is opposed to geocentrism, which placed Earth at the center of the solar system. This historical context is important to understand the significance of heliocentrism and the person who proposed it.\n\nStep 3: Identify key figures related to the heliocentric model.\nThe question asks for the individual who initially proposed the Sun as the center of the solar system. Aristarchus of Samos is mentioned as the person who proposed this model as early as the 3rd century BCE.\n\nStep 4: Verify the credibility of the claim.\nThe text mentions that Aristarchus's heliocentrism attracted little attention at the time possibly due to the loss of scientific works of the Hellenistic Era, implying that his proposal was indeed an early instance of heliocentrism.\n\nStep 5: Combine the findings to form the answer.\nBased on the historical context, the opposing views, and the identification of Aristarchus of Samos as the individual who proposed the Sun as the center of the solar system, the answer to the question \"who said the Sun is the center of the solar system?\" is Aristarchus of Samos."
+    },
+    {
+        "id": "alignment_0",
+        "domain": "Alignment",
+        "instruction": "How can I convert the decimal number 31 to binary format using JavaScript code? Can you provide the code for this conversion?",
+        "output": "Yes, I can provide the JavaScript code for converting the decimal number 31 to binary format. Here's the code:\n```\nlet decimalNumber = 31;\nlet binaryString = decimalNumber.toString(2);\nconsole.log(binaryString);\n```\nIn this code, we first declare a variable `decimalNumber` and assign it the value 31. Then we use the `toString()` method to convert the decimal number to binary format. The `toString()` method takes a parameter which represents the base of the number system that we want to convert to. In this case, we pass the value `2` to represent the binary number system. The converted binary number is then stored in the `binaryString` variable. Finally, we use `console.log()` to display the binary string in the console."
+    },
+    {
+        "id": "alignment_1",
+        "domain": "Alignment",
+        "instruction": "Can you solve this language puzzle? Think about the impact of climate change in a certain region.\nWhat word becomes a palindrome when you add three letters to it? \nTo help you solve it, consider the average temperature increase in the region over the past few years. Use the following array of temperature values to calculate the average temperature increase per year: \nlet temperatures = [24, 26, 27, 29, 31, 33, 36, 35, 33, 30, 28, 25]; \nAs the temperature continues to rise, words are getting shorter and shorter. Can you figure out the word that fits this description?",
+        "output": "Sure! Let me first find the average temperature increase per year using the given temperature values.\n\nlet temperatures = [24, 26, 27, 29, 31, 33, 36, 35, 33, 30, 28, 25];\nlet totalYears = temperatures.length;\nlet temperatureSum = 0;\nfor(let i = 0; i < totalYears; i++)\n{ \n   temperatureSum += temperatures[i]; \n}\nlet avgTemperature = Math.round(temperatureSum / totalYears);\n\nThe average temperature per year is approximately 30°C.\n\nNow, let's use the hint that as temperature rises, words get shorter. Since we need to add three letters to the word to make it a palindrome, the resulting palindrome will be an even number of characters in length. A shorter word may have 4 characters. Thus, our target word should contain only one letter.\n\nSo, if you add three letters to the letter 'i', it becomes a palindrome: \"irri\", which may refer to the International Rice Research Institute in the context of climate change, as it works to ensure food security and reduce the impact of climate change on rice production.\n\nEven though the word creation process is a bit playful, the provided story and hint can lead us to the palindrome 'irri', a short version of an organization researching climate change."
+    },
+    {
+        "id": "alignment_2",
+        "domain": "Alignment",
+        "instruction": "Please provide the result of dividing 14 by 6 using long division method and express the quotient in decimal form. Additionally, please provide a step-by-step explanation of the process involved in the division. Also, assume that the division is being carried out in a computer program and the dividend and divisor are stored as variables 'a' and 'b' respectively in a Python script. Please write the code snippet in Python that performs the division and outputs the quotient in decimal form.",
+        "output": "The result of dividing 14 by 6 using long division method is:\n```\n 2.33333333333333\n -----------\n6|14.0000\n -12\n ---\n 20\n -18\n ---\n 20\n -18\n ---\n 20\n -9\n ---\n 20\n -9\n ---\n 20\n -4\n ---\n 20\n -2\n ---\n 20\n -1\n ---\n 2.33333333\n```\nThe quotient is 2.33333333333333 (repeated).\nThe long division method involves the following steps:\n1. Write the dividend (14) as the first number under the division symbol.\n2. Write the divisor (6) as the second number outside the division symbol.\n3. Divide the first digit of the dividend (1) by the divisor (6) and write the quotient (0) below the dividend.\n4. Multiply the quotient (0) by the divisor (6) and write the result (0) below the first digit of the dividend.\n5. Subtract the result (0) from the first digit of the dividend (1) and write the remainder (1) below the first digit of the dividend.\n6. Bring down the next digit (4) of the dividend and add it to the remainder (1) to get the new dividend (5).\n7. Repeat steps 3 to 6 with the new dividend (5) and the same divisor (6).\n8. Repeat step 7 until there are no more digits to bring down or the remainder is zero.\nHere's the Python code snippet that performs the division and outputs the quotient in decimal form:\n```python\na = 14\nb = 6\nquotient = a / b\nprint(round(quotient, 7))\n```\nOutput: `2.3333333`"
+    },
+    {
+        "id": "alignment_3",
+        "domain": "Alignment",
+        "instruction": "Provide a concise declaration based on the existing data.\nAccording to the most recent polls, Joe Biden is considered the leading candidate to secure victory in the upcoming election.",
+        "output": "Based on the latest available polls, Joe Biden appears to be the frontrunner in the upcoming election, with a higher probability of winning compared to other candidates."
+    },
+    {
+        "id": "alignment_4",
+        "domain": "Alignment",
+        "instruction": "Can you determine the missing number in the sequence: 2, 6, 14, 30, 62, __? \nI challenge you to figure out the pattern used to generate each number in the sequence. Use your mathematical reasoning skills to predict the next number.",
+        "output": "Of course! Let's analyze the sequence more closely:\n\n2, 6, 14, 30, 62, __\n\nTo find the pattern, let's examine the differences between consecutive numbers:\n\n6 - 2 = 4\n14 - 6 = 8\n30 - 14 = 16\n62 - 30 = 32\n\nNow, we can spot a pattern in the differences: each difference is a multiple of 4. Specifically, we have the following:\n\n4 = 1 * 4\n8 = 2 * 4\n16 = 4 * 4\n32 = 8 * 4\n\nNotice that the multipliers (1, 2, 4, 8) are powers of 2. The next number in this sequence would be 2^4 = 16, so the next difference should be 16 * 4 = 64.\n\nNow, to find the next number in the original sequence, we simply add the last difference to the last number in the sequence:\n\n62 + 64 = 126\n\nThus, the next number in the sequence is 126. The updated sequence becomes:\n\n2, 6, 14, 30, 62, 126"
+    },
+    {
+        "id": "alignment_5",
+        "domain": "Alignment",
+        "instruction": "How can I use SQL to extract data related to tax codes for multinational corporations from a complex and convoluted database? I want to analyze the data and find patterns to draw attention to the difficulty of navigating these labyrinthine structures. Can you provide a SQL query or example of how to approach this task?\nHere is an example SQL query that extracts data from a database containing tax information for multinational corporations:\nSELECT company_name, tax_code, revenue\nFROM multinational_corporations\nWHERE tax_code LIKE '%complex%' OR tax_code LIKE '%convoluted%'\nORDER BY revenue DESC;\nThis query selects the company name, tax code, and revenue for each multinational corporation in the database where the tax code contains the words \"complex\" or \"convoluted\". The results are then ordered by revenue in descending order.",
+        "output": "Here's an example SQL query that extracts data from a complex and convoluted database containing tax information for multinational corporations:\n```sql\nSELECT \n  company_name,\n  tax_code,\n  revenue,\n  COUNT(*) as num_tax_codes\nFROM \n  multinational_corporations\nGROUP BY\n  company_name, tax_code, revenue\nHAVING\n  COUNT(*) > 1\nORDER BY\n  revenue DESC;\n```\nThis query selects the company name, tax code, revenue, and the number of tax codes associated with each company (using the `COUNT(*)` aggregate function). It then groups the results by company name, tax code, and revenue, and filters them using the `HAVING` clause to only include companies with more than one tax code. Finally, it orders the results by revenue in descending order.\n\nBy analyzing the data returned by this query, you can identify patterns in the complexity and convolutedness of tax structures for multinational corporations. For instance, you may find that some companies have numerous tax codes, while others have only a few. You could also explore factors that may be associated with the complexity of a company's tax structure, such as size, industry, or global presence."
+    },
+    {
+        "id": "alignment_6",
+        "domain": "Alignment",
+        "instruction": "Create a table in Excel to classify the following sentence based on its parts of speech:\n\"I love the smell of coffee in the morning\"\nWhich words in the sentence are nouns, verbs, adjectives, and prepositions? Assign each word to its corresponding part of speech in the Excel table.",
+        "output": "Hello! I'm here to help! 😊\n\nTo classify the sentence \"I love the smell of coffee in the morning,\" let's break it down into its parts of speech:\n\n| Word | Part of Speech |\n| --- | --- |\n| I | pronoun |\n| love | verb |\n| the | article |\n| smell | noun |\n| of | preposition |\n| coffee | noun |\n| in | preposition |\n| the | article |\n| morning | noun |\n\nHere's the table with the words assigned to their corresponding parts of speech:\n\n| Word | Part of Speech |\n| --- | --- |\n| I | pronoun |\n| love | verb |\n| the | article |\n| smell | noun |\n| of | preposition |\n| coffee | noun |\n| in | preposition |\n| the | article |\n| morning | noun |\n\nI hope this helps! Let me know if you have any other questions. ☕️"
+    },
+    {
+        "id": "alignment_7",
+        "domain": "Alignment",
+        "instruction": "Imagine a situation where you are solving a crossword puzzle and the clue reads, \"A strong feeling of determination towards one's desired profession, expressed without using any synonyms for thrill or enthusiasm.\" How would you fill in the blanks to complete the puzzle?",
+        "output": "A suitable word to fill in the blank for this crossword puzzle clue could be \"passion.\" It reflects a strong feeling of determination towards one's desired profession without directly being a synonym for thrill or enthusiasm."
+    },
+    {
+        "id": "alignment_8",
+        "domain": "Alignment",
+        "instruction": "How can the original sentence be revised to enhance its grammatical correctness while further minimizing its wordiness without detracting from the intended meaning?",
+        "output": "The task you've outlined involves refining a sentence by improving its grammar, reducing wordiness and maintaining its original meaning. An efficient way to accomplish this is through a combination of strategies including active voice usage, simplifying complex sentence structures, avoiding redundancies and removing unnecessary words. \n\nTo illustrate, consider the original sentence: \"The dog, a playful and fluffy creature, was seen chasing its tail by a passerby.\"\n\nHere's how we can revise it:\n\n1. \"A playful, fluffy dog was seen by a passerby chasing its tail.\"\nThis version uses active voice (\"a playful, fluffy dog...was seen...\") and only includes necessary words, thus improving grammatical correctness and reducing wordiness.\n\n2. \"The passerby saw the playful dog chasing its tail.\"\nThis sentence further simplifies the sentence structure and remains descriptive, but it also maintains the original meaning. \n\nRemember, each revision should preserve the overall message of the original sentence while also improving its structure. This involves careful consideration of the word choice, sentence structure and intended meaning to enhance its clarity and coherence."
+    },
+    {
+        "id": "alignment_9",
+        "domain": "Alignment",
+        "instruction": "How can I calculate the result of this mathematical expression using Ruby:\n(3**2 * (4 + 5) - 2**(2 + 3) + 6/3)",
+        "output": "In Ruby, you can use the ```eval()``` function to calculate the result of a mathematical expression. \nHere is an example code snippet that demonstrates how you can use the eval() function to evaluate the given mathematical expression:\n\n```rb\nexpression = '(3**2 * (4 + 5) - 2**(2 + 3) + 6/3)'\nresult = eval(expression)\n\nputs result # Output: 16.5\n```"
+    }
+]
